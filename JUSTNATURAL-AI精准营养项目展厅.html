@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JUSTNATURAL · AI 精准营养定制 · 项目展厅</title>
+<meta name="description" content="64 款分子通路靶向配方、健康管理平台与智能分装设备，构成 JUSTNATURAL AI 精准营养定制的完整链路。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307251B'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23F2EEE3' text-anchor='middle'%3EJN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --ink:#0A1B14;
+  --deep:#07251B;
+  --deepest:#04170F;
+  --forest:#0E3423;
+  --moss:#2C5540;
+  --lime:#C6DC6E;
+  --lime-soft:#DDEA9E;
+  --cream:#F2EEE3;
+  --paper:#FAF7EE;
+  --gold:#B3915A;
+  --line:rgba(242,238,227,.18);
+  --line-dark:rgba(10,27,20,.14);
+  --serif:"Noto Serif SC","Songti SC","Source Han Serif SC",Georgia,serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --pad:20px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--deep);color:var(--cream);
+  font-family:var(--sans);font-size:16px;line-height:1.75;
+  font-weight:400;letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3,h4{margin:0;font-weight:500;letter-spacing:.02em}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+.sec{position:relative;padding:72px var(--pad) 84px;scroll-margin-top:56px}
+.wrap{max-width:1220px;margin:0 auto}
+.cream{background:var(--cream);color:var(--ink)}
+.forest{background:var(--forest)}
+.paper{background:var(--paper);color:var(--ink)}
+.deep{background:var(--deep)}
+
+/* ---------- 通用排印组件 ---------- */
+.chapter{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.chapter .num{font-family:var(--serif);font-size:15px;letter-spacing:.14em;color:var(--gold)}
+.chapter .rule{flex:0 0 34px;height:1px;background:var(--gold);opacity:.55;transform:translateY(-4px)}
+.chapter .label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;opacity:.62}
+.h2{font-family:var(--serif);font-size:clamp(28px,6.2vw,46px);line-height:1.32;font-weight:500;letter-spacing:.01em}
+.lede{font-size:15px;line-height:1.9;opacity:.78;max-width:38em;margin-top:16px}
+.hair{height:1px;background:currentColor;opacity:.14}
+.kicker{font-family:var(--serif);font-size:13px;letter-spacing:.12em;color:var(--lime)}
+.serif{font-family:var(--serif)}
+
+/* ---------- 顶栏 ---------- */
+.topbar{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px var(--pad);
+  background:rgba(7,37,27,.82);
+  border-bottom:1px solid rgba(242,238,227,.1);
+  backdrop-filter:blur(8px);
+}
+.topbar .brand{display:flex;align-items:center;gap:10px;min-width:0}
+.topbar .brand img{height:34px;width:auto}
+.topbar .brand span{font-size:11px;letter-spacing:.16em;opacity:.5;white-space:nowrap}
+.top-actions{display:flex;align-items:center;gap:10px}
+.mode{
+  display:flex;border:1px solid rgba(242,238,227,.26);border-radius:2px;overflow:hidden;
+}
+.mode button{
+  padding:7px 12px;font-size:12.5px;letter-spacing:.06em;color:rgba(242,238,227,.66);
+  min-height:34px;
+}
+.mode button[aria-pressed="true"]{background:var(--lime);color:var(--deep);font-weight:500}
+.toc-btn{
+  display:flex;align-items:center;gap:8px;padding:7px 12px;min-height:34px;
+  border:1px solid rgba(242,238,227,.26);border-radius:2px;font-size:12.5px;letter-spacing:.06em;
+}
+.toc-btn .bars{display:inline-block;width:12px;height:9px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;position:relative}
+.toc-btn .bars::after{content:"";position:absolute;left:0;top:3px;width:12px;height:1px;background:currentColor}
+.toc-panel{
+  position:fixed;z-index:70;top:58px;right:var(--pad);width:min(300px,86vw);
+  background:var(--paper);color:var(--ink);border:1px solid rgba(10,27,20,.16);
+  padding:8px;display:none;
+}
+.toc-panel.open{display:block}
+.toc-panel a{display:flex;gap:12px;align-items:baseline;padding:11px 12px;font-size:14px;border-bottom:1px solid rgba(10,27,20,.08)}
+.toc-panel a:last-child{border-bottom:0}
+.toc-panel a .n{font-family:var(--serif);font-size:12px;color:var(--gold);min-width:20px}
+.toc-panel a:hover{background:rgba(10,27,20,.05)}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:96px var(--pad) 40px;overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 78% 8%,rgba(198,220,110,.13),transparent 60%),
+    radial-gradient(90% 70% at 10% 90%,rgba(44,85,64,.55),transparent 62%),
+    var(--deepest);
+}
+.hero-net{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.9}
+.hero-net svg{width:100%;height:100%}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1220px;margin:0 auto}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.2em;
+  color:rgba(242,238,227,.6);margin-bottom:26px;
+}
+.hero-eyebrow::before{content:"";width:26px;height:1px;background:var(--lime)}
+.hero h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(38px,10.4vw,86px);line-height:1.16;letter-spacing:-.01em;
+  color:var(--cream);max-width:16em;
+}
+.hero h1 em{font-style:normal;color:var(--lime);position:relative;display:inline-block}
+.hero h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.06em;height:1px;background:var(--lime);
+  transform:scaleX(0);transform-origin:left;animation:rule 1.4s 1.1s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes rule{to{transform:scaleX(1)}}
+.hero-sub{
+  margin-top:22px;max-width:34em;font-size:15px;line-height:1.95;color:rgba(242,238,227,.8);
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;
+  background:var(--lime);color:var(--deep);font-size:14px;font-weight:500;letter-spacing:.04em;
+  border:1px solid var(--lime);transition:background .2s,color .2s;
+}
+.btn:hover{background:transparent;color:var(--lime)}
+.btn-ghost{border:1px solid rgba(242,238,227,.32);color:var(--cream);background:none;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+.hero-stats{
+  margin-top:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 0;
+  border-top:1px solid var(--line);padding-top:22px;max-width:640px;
+}
+.stat .v{font-family:var(--serif);font-size:clamp(26px,7vw,38px);line-height:1;color:var(--cream)}
+.stat .v small{font-size:12px;letter-spacing:.1em;color:var(--lime);margin-left:6px;font-family:var(--sans)}
+.stat .k{font-size:11.5px;letter-spacing:.14em;color:rgba(242,238,227,.5);margin-top:8px}
+.hero-foot{
+  position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;
+  gap:16px;margin-top:34px;font-size:11px;letter-spacing:.14em;color:rgba(242,238,227,.42);
+}
+.scroll-cue{display:flex;align-items:center;gap:10px}
+.scroll-cue .track{width:34px;height:1px;background:rgba(242,238,227,.35);position:relative;overflow:hidden}
+.scroll-cue .track::after{content:"";position:absolute;inset:0;background:var(--lime);transform:translateX(-100%);animation:cue 2.6s 2s ease-in-out infinite}
+@keyframes cue{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* ---------- 01 一页看懂 ---------- */
+.chain{
+  display:grid;grid-template-columns:1fr;gap:0;margin-top:34px;
+  border-top:1px solid var(--line-dark);
+}
+.chain-step{
+  display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px 0;
+  border-bottom:1px solid var(--line-dark);position:relative;
+}
+.chain-step .idx{font-family:var(--serif);font-size:20px;color:var(--gold);line-height:1.2}
+.chain-step h3{font-size:16px;font-weight:500;letter-spacing:.02em}
+.chain-step h3 span{font-family:var(--serif);font-weight:400;opacity:.5;font-size:13px;margin-left:8px}
+.chain-step p{font-size:14px;line-height:1.85;color:rgba(10,27,20,.68);margin-top:6px}
+.chain-step .ex{font-size:12.5px;color:var(--moss);margin-top:8px;letter-spacing:.02em}
+.why{display:grid;gap:18px;margin-top:44px}
+.why-item{border-left:2px solid rgba(10,27,20,.16);padding-left:16px}
+.why-item b{display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:5px}
+.why-item span{font-size:13.5px;line-height:1.85;color:rgba(10,27,20,.66)}
+
+/* ---------- 02 科学底座 ---------- */
+.science-grid{display:grid;gap:34px;margin-top:30px}
+.case-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin-bottom:6px}
+.case-head .tagline{font-size:12px;letter-spacing:.16em;color:var(--lime-soft)}
+.case-head h3{font-family:var(--serif);font-size:26px;font-weight:500}
+.case-sub{font-size:13.5px;opacity:.66;line-height:1.8;max-width:36em}
+.path-list{margin-top:22px;border-top:1px solid var(--line)}
+.path-item{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.path-item .n{font-family:var(--serif);font-size:12px;color:var(--gold);letter-spacing:.08em}
+.path-item h4{font-size:14.5px;font-weight:500;margin-bottom:4px;color:var(--lime-soft)}
+.path-item p{font-size:13px;line-height:1.8;color:rgba(242,238,227,.7)}
+.dims{margin-top:26px}
+.dim-block{margin-bottom:26px}
+.dim-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.dim-title .d{font-family:var(--serif);font-size:17px}
+.dim-title .ln{flex:1;height:1px;background:var(--line)}
+.dim-title .c{font-size:11px;letter-spacing:.12em;opacity:.45}
+.ing-row{
+  display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;
+  padding:12px 14px;border:1px solid rgba(242,238,227,.14);margin-bottom:8px;
+  cursor:pointer;transition:border-color .2s,background .2s;
+  min-height:44px;
+}
+.ing-row:hover,.ing-row[aria-expanded="true"]{border-color:rgba(198,220,110,.6);background:rgba(198,220,110,.05)}
+.ing-row .nm{font-size:14px;font-weight:500}
+.ing-row .mk{font-size:11.5px;letter-spacing:.06em;color:rgba(242,238,227,.5);margin-top:2px}
+.ing-row .pm{font-family:var(--serif);font-size:16px;color:var(--gold);align-self:center;transition:transform .25s}
+.ing-row[aria-expanded="true"] .pm{transform:rotate(45deg)}
+.ing-mech{display:none;padding:0 14px 16px;font-size:13px;line-height:1.9;color:rgba(242,238,227,.72);border:1px solid rgba(198,220,110,.6);border-top:0;background:rgba(198,220,110,.05);margin-bottom:8px}
+.ing-mech.show{display:block}
+.syn-box{margin-top:8px;padding:20px;border:1px solid rgba(198,220,110,.28);background:linear-gradient(180deg,rgba(198,220,110,.06),transparent)}
+.syn-box h4{font-size:12px;letter-spacing:.16em;color:var(--lime);margin-bottom:10px}
+.syn-box p{font-size:13.5px;line-height:1.9;color:rgba(242,238,227,.82)}
+
+/* ---------- 03 产品矩阵 ---------- */
+.matrix-head{display:grid;gap:20px}
+.filter-bar{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.search{
+  width:100%;display:flex;align-items:center;gap:10px;
+  border:1px solid rgba(242,238,227,.24);padding:0 14px;background:rgba(242,238,227,.04);
+}
+.search input{
+  flex:1;border:0;background:none;color:var(--cream);font-size:16px;padding:13px 0;outline:none;
+  font-family:var(--sans);min-width:0;
+}
+.search input::placeholder{color:rgba(242,238,227,.4)}
+.search .cnt{font-size:12px;color:var(--lime);letter-spacing:.06em;white-space:nowrap}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;border:1px solid rgba(242,238,227,.24);padding:8px 13px;font-size:12.5px;
+  letter-spacing:.04em;color:rgba(242,238,227,.72);min-height:36px;transition:all .2s;
+}
+.chip b{font-family:var(--serif);font-weight:400;color:var(--gold);margin-left:5px}
+.chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+.chip[aria-pressed="true"] b{color:var(--deep)}
+.grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px;
+}
+.card{
+  position:relative;background:var(--cream);color:var(--ink);border:0;padding:0;
+  text-align:left;display:block;overflow:hidden;cursor:pointer;
+  transition:transform .25s,box-shadow .25s;
+}
+.card:hover,.card:focus-visible{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.35);outline:none}
+.card.dim{opacity:.28;filter:grayscale(.4)}
+.card .ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
+.card .ph img{width:100%;height:100%;object-fit:contain;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.05)}
+.card .no{
+  position:absolute;top:8px;left:10px;font-family:var(--serif);font-size:12px;
+  color:rgba(10,27,20,.5);letter-spacing:.06em;
+}
+.card .meta{padding:10px 11px 12px;border-top:1px solid rgba(10,27,20,.1)}
+.card .meta .nm{font-size:13.5px;font-weight:500;letter-spacing:.02em;line-height:1.4}
+.card .meta .is{font-size:11px;color:rgba(10,27,20,.55);margin-top:3px;letter-spacing:.04em}
+.empty{padding:40px 0;font-size:14px;opacity:.6}
+
+/* ---------- 04 平台 ---------- */
+.plat-grid{display:grid;gap:30px;margin-top:30px}
+.shot{border:1px solid rgba(10,27,20,.16);background:#fff;padding:8px}
+.shot img{width:100%;height:auto}
+.shot .cap{font-size:11.5px;color:rgba(10,27,20,.55);padding:8px 4px 2px;letter-spacing:.04em}
+.steps{margin-top:4px}
+.step{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--line-dark)}
+.step .dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold);margin-top:9px;position:relative}
+.step .dot::after{content:"";position:absolute;left:50%;top:16px;width:1px;height:calc(100% + 24px);background:rgba(10,27,20,.14);transform:translateX(-50%)}
+.step:last-child .dot::after{display:none}
+.step h4{font-size:14.5px;font-weight:500}
+.step p{font-size:13px;line-height:1.8;color:rgba(10,27,20,.66);margin-top:3px}
+.qr-block{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px}
+.qr-card{border:1px solid var(--line-dark);padding:16px;display:flex;flex-direction:column;gap:10px}
+.qr-card img{width:100%;max-width:150px;aspect-ratio:1/1;object-fit:contain;image-rendering:pixelated}
+.qr-card h4{font-size:13.5px;font-weight:500}
+.qr-card p{font-size:11.5px;line-height:1.65;color:rgba(10,27,20,.58)}
+.qr-card a{font-size:12px;border-bottom:1px solid rgba(10,27,20,.3);align-self:flex-start;padding-bottom:2px}
+.qr-card a:hover{border-color:var(--moss);color:var(--moss)}
+
+/* ---------- 05 设备 ---------- */
+.dev-hero{display:grid;gap:22px;margin-top:28px}
+.dev-hero figure{margin:0;border:1px solid var(--line);overflow:hidden}
+.dev-hero img{width:100%;height:100%;object-fit:cover}
+.spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:30px}
+.spec{background:var(--forest);padding:18px 16px}
+.spec .v{font-family:var(--serif);font-size:22px;line-height:1.2;color:var(--lime-soft)}
+.spec .k{font-size:11.5px;color:rgba(242,238,227,.55);margin-top:6px;letter-spacing:.05em}
+.usage{display:grid;gap:14px;margin-top:34px}
+.usage-step{display:flex;gap:14px;align-items:baseline;font-size:13.5px;color:rgba(242,238,227,.78)}
+.usage-step b{font-family:var(--serif);color:var(--gold);font-weight:400;font-size:13px;min-width:22px}
+
+/* ---------- 06 资质 ---------- */
+.cred-grid{display:grid;gap:26px;margin-top:30px}
+.people{border-top:1px solid var(--line-dark)}
+.person{display:grid;grid-template-columns:80px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line-dark);align-items:start}
+.person .avatar{width:80px;height:100px;object-fit:cover;object-position:center 18%;border:1px solid rgba(10,27,20,.16);filter:saturate(.92)}
+@media (min-width:600px){
+  .person{grid-template-columns:104px minmax(0,1fr);gap:18px;padding:20px 0}
+  .person .avatar{width:104px;height:130px}
+}
+.person .ptxt{display:grid;gap:4px;min-width:0}
+.person .nm{font-family:var(--serif);font-size:17px}
+.person .ttl{font-size:11.5px;letter-spacing:.1em;color:var(--moss)}
+.person p{font-size:13px;line-height:1.8;color:rgba(10,27,20,.66);margin-top:4px}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-dark);margin-top:8px}
+.metric{background:var(--cream);padding:18px 16px}
+.metric .v{font-family:var(--serif);font-size:26px;line-height:1.1}
+.metric .k{font-size:11.5px;color:rgba(10,27,20,.55);margin-top:5px;letter-spacing:.06em}
+.cert-table{margin-top:32px;width:100%;border-collapse:collapse;table-layout:fixed;font-size:12.5px}
+.cert-table th,.cert-table td{border-bottom:1px solid var(--line-dark);padding:11px 8px;text-align:left;vertical-align:top;word-break:break-word}
+.cert-table th{font-weight:500;font-size:11px;letter-spacing:.1em;color:rgba(10,27,20,.5)}
+.cert-note{font-size:11.5px;color:rgba(10,27,20,.5);margin-top:10px;line-height:1.7}
+
+/* ---------- 07 合作 / 体验 ---------- */
+.offer-grid{display:grid;gap:1px;background:var(--line);margin-top:30px}
+.offer{background:var(--deep);padding:22px 20px}
+.offer .n{font-family:var(--serif);font-size:12px;color:var(--gold);letter-spacing:.1em}
+.offer h4{font-size:16px;font-weight:500;margin-top:8px}
+.offer p{font-size:13px;line-height:1.85;color:rgba(242,238,227,.68);margin-top:8px}
+.fit{margin-top:30px;display:grid;gap:10px}
+.fit-row{display:grid;grid-template-columns:88px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.fit-row span:first-child{color:var(--lime);letter-spacing:.06em;font-size:12px}
+.contact{margin-top:34px;display:grid;gap:12px;align-items:start}
+.contact .line{font-size:13px;color:rgba(242,238,227,.7)}
+.contact .big{font-family:var(--serif);font-size:clamp(22px,5vw,30px);line-height:1.35;color:var(--cream);max-width:20em}
+
+/* 个人模式：体验动线 */
+.journey{margin-top:28px;display:grid;gap:0}
+.j-item{display:grid;grid-template-columns:38px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.j-item .n{font-family:var(--serif);color:var(--gold);font-size:13px}
+.j-item h4{font-size:15px;font-weight:500}
+.j-item p{font-size:13px;line-height:1.85;color:rgba(242,238,227,.68);margin-top:4px}
+
+/* ---------- 产品详情 ---------- */
+.sheet{
+  position:fixed;inset:0;z-index:90;display:none;
+}
+.sheet.open{display:block}
+.sheet .scrim{position:absolute;inset:0;background:rgba(4,18,12,.72);backdrop-filter:blur(3px)}
+.sheet .panel{
+  position:absolute;left:0;right:0;bottom:0;top:6vh;
+  background:var(--paper);color:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch;
+  transform:translateY(18px);opacity:0;animation:rise .32s ease forwards;
+  border-top:1px solid rgba(10,27,20,.3);
+}
+@keyframes rise{to{transform:none;opacity:1}}
+.sheet .close{
+  position:sticky;top:0;z-index:2;display:flex;justify-content:flex-end;
+  padding:10px 12px;background:linear-gradient(var(--paper) 70%,transparent);
+}
+.sheet .close button{
+  width:38px;height:38px;border:1px solid rgba(10,27,20,.28);display:grid;place-items:center;font-size:18px;line-height:1;
+}
+.sheet-body{padding:4px 18px 40px}
+.sheet-top{display:grid;gap:16px}
+.sheet-top .img{border:1px solid rgba(10,27,20,.14);background:var(--cream)}
+.sheet-top .img img{width:100%;aspect-ratio:1/1;object-fit:contain}
+.sheet-top .no{font-family:var(--serif);font-size:12px;color:var(--gold);letter-spacing:.1em}
+.sheet-top h3{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.3;margin-top:2px}
+.sheet-top .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sheet-top .tags span{font-size:11px;border:1px solid rgba(10,27,20,.2);padding:3px 8px;letter-spacing:.04em}
+.sheet-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sheet-actions .btn{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.sheet-actions .btn:hover{background:transparent;color:var(--forest)}
+.sheet-actions .note{font-size:11.5px;color:rgba(10,27,20,.55);align-self:center;max-width:22em;line-height:1.6}
+.acc{margin-top:24px;border-top:1px solid var(--line-dark)}
+.acc-head{display:flex;justify-content:space-between;gap:10px;padding:14px 0;cursor:pointer;align-items:baseline}
+.acc-head h4{font-size:13px;letter-spacing:.12em;color:var(--moss);font-weight:500}
+.acc-head .t{font-size:11.5px;color:rgba(10,27,20,.5)}
+.acc-body{border-top:1px solid var(--line-dark);padding-top:12px}
+.p-item{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid rgba(10,27,20,.07);font-size:12.5px;line-height:1.85}
+.p-item .n{font-family:var(--serif);color:var(--gold);font-size:11px}
+.p-item p{color:rgba(10,27,20,.72)}
+.dim-lite{padding:12px 0;border-bottom:1px solid rgba(10,27,20,.08)}
+.dim-lite .d{font-family:var(--serif);font-size:14.5px;margin-bottom:6px}
+.dim-lite .i{display:flex;flex-wrap:wrap;gap:6px}
+.dim-lite .i span{font-size:11.5px;background:rgba(10,27,20,.06);padding:4px 8px}
+.syn-lite{margin-top:18px;padding:14px;border-left:2px solid var(--moss);background:rgba(10,27,20,.04);font-size:12.5px;line-height:1.9;color:rgba(10,27,20,.76)}
+
+/* ---------- 页脚 ---------- */
+.footer{background:var(--deepest);padding:46px var(--pad) 40px;font-size:11.5px;line-height:1.9;color:rgba(242,238,227,.5)}
+.footer .wrap{display:grid;gap:16px}
+.footer .frow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:flex-end}
+.footer img{height:48px;opacity:.9}
+.disc{max-width:60em}
+
+/* ---------- 响应式 ---------- */
+@media (min-width:600px){
+  :root{--pad:32px}
+  .hero-stats{grid-template-columns:repeat(4,1fr);gap:0}
+  .stat + .stat{border-left:1px solid var(--line);padding-left:18px}
+  .stat:first-child{padding-left:0}
+  .grid{grid-template-columns:repeat(4,1fr);gap:12px}
+  .qr-block{grid-template-columns:repeat(3,1fr)}
+  .spec-grid{grid-template-columns:repeat(3,1fr)}
+  .metrics{grid-template-columns:repeat(4,1fr)}
+  .offer-grid{grid-template-columns:repeat(3,1fr)}
+  .cert-table{font-size:13px}
+}
+@media (min-width:900px){
+  :root{--pad:48px}
+  .sec{padding:104px var(--pad) 112px}
+  .chain{grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line-dark);gap:0}
+  .chain-step{grid-template-columns:1fr;padding:22px 18px 22px 0;border-bottom:0;border-right:1px solid var(--line-dark)}
+  .chain-step:last-child{border-right:0}
+  .chain-step .idx{font-size:26px;margin-bottom:8px}
+  .chain-step h3{font-size:15.5px}
+  .chain-step h3 span{display:block;margin-left:0;margin-top:2px}
+  .why{grid-template-columns:repeat(3,1fr);gap:0}
+  .why-item{border-left:0;border-top:1px solid rgba(10,27,20,.16);padding:18px 22px 0 0}
+  .science-grid{grid-template-columns:1.02fr .98fr;gap:56px}
+  .grid{grid-template-columns:repeat(6,1fr)}
+  .plat-grid{grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  .dev-hero{grid-template-columns:1.35fr .65fr;gap:18px}
+  .dev-hero figure:last-child{margin-top:0}
+  .cred-grid{grid-template-columns:1fr 1fr;gap:56px}
+  .sheet .panel{top:0;left:auto;width:min(920px,94vw);border-left:1px solid rgba(10,27,20,.3);border-top:0}
+  .sheet-body{padding:0 40px 56px}
+  .sheet-top{grid-template-columns:280px 1fr;gap:28px;align-items:start}
+  .footer .frow{flex-wrap:nowrap}
+  .hero h1{max-width:12em}
+}
+@media (min-width:1280px){
+  .grid{grid-template-columns:repeat(8,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero h1 em::after{animation:none;transform:scaleX(1)}
+  .hero-net{display:none}
+  .scroll-cue .track::after{animation:none}
+  .sheet .panel{animation:none;transform:none;opacity:1}
+  .card,.card .ph img{transition:none}
+}
+</style>
+</head>
+<body data-mode="b2b">
+
+<header class="topbar">
+  <div class="brand">
+    <img src="assets/logo-light.png" alt="JUSTNATURAL">
+    <span>AI 精准营养定制</span>
+  </div>
+  <div class="top-actions">
+    <div class="mode" role="group" aria-label="切换浏览身份">
+      <button type="button" data-mode-btn="b2b" aria-pressed="true">机构版</button>
+      <button type="button" data-mode-btn="b2c" aria-pressed="false">个人版</button>
+    </div>
+    <button class="toc-btn" type="button" id="tocBtn" aria-expanded="false" aria-controls="tocPanel">
+      <span class="bars" aria-hidden="true"></span>目录
+    </button>
+  </div>
+</header>
+<nav class="toc-panel" id="tocPanel" aria-label="章节导航">
+  <a href="#s1"><span class="n">01</span>配方底层逻辑</a>
+  <a href="#s2"><span class="n">02</span>科学底座 · 解剖一款产品</a>
+  <a href="#s3"><span class="n">03</span>64 款配方矩阵</a>
+  <a href="#s4"><span class="n">04</span>健康管理平台</a>
+  <a href="#s5"><span class="n">05</span>智能分装与交付</a>
+  <a href="#s6"><span class="n">06</span>团队与资质</a>
+  <a href="#s7"><span class="n">07</span><span class="t-b2b">合作路径</span><span class="t-b2c" hidden>我的体验动线</span></a>
+</nav>
+
+<!-- ===== 首屏 ===== -->
+<section class="hero" id="top">
+  <div class="hero-net" aria-hidden="true">
+    <svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="netg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#C6DC6E" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#C6DC6E" stop-opacity=".12"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#netg)" stroke-width=".8">
+        <path class="nline" d="M120 560 C 260 470 330 330 470 300 S 700 250 880 150"/>
+        <path class="nline" d="M60 300 C 200 330 300 250 420 210 S 640 120 820 90"/>
+        <path class="nline" d="M160 640 C 300 600 420 520 520 470 S 700 420 900 380"/>
+        <path class="nline" d="M300 690 C 380 560 330 430 430 360 S 560 300 610 190"/>
+        <path class="nline" d="M520 640 C 560 520 700 480 760 400 S 810 300 790 220"/>
+        <path class="nline" d="M240 120 C 340 180 480 150 540 90"/>
+      </g>
+      <g fill="#C6DC6E">
+        <circle class="ndot" cx="470" cy="300" r="2.6" opacity=".85"/>
+        <circle class="ndot" cx="300" cy="250" r="2" opacity=".7"/>
+        <circle class="ndot" cx="700" cy="250" r="2.2" opacity=".7"/>
+        <circle class="ndot" cx="520" cy="470" r="2.8" opacity=".85"/>
+        <circle class="ndot" cx="760" cy="400" r="2" opacity=".65"/>
+        <circle class="ndot" cx="430" cy="360" r="2.4" opacity=".8"/>
+        <circle class="ndot" cx="610" cy="190" r="1.8" opacity=".6"/>
+        <circle class="ndot" cx="240" cy="120" r="2" opacity=".55"/>
+        <circle class="ndot" cx="880" cy="150" r="2.2" opacity=".6"/>
+      </g>
+      <g font-family="Georgia,serif" font-size="13" fill="#C6DC6E" opacity=".5">
+        <text x="716" y="322">NF-κB</text>
+        <text x="452" y="404">PI3K / Akt</text>
+        <text x="205" y="392">Nrf2</text>
+        <text x="600" y="512">ZO-1</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">JUSTNATURAL · 分子营养 × AI 科技</div>
+    <h1>不是缺什么补什么，<br>而是<em>哪条通路</em>失衡。</h1>
+    <p class="hero-sub">64 款固体饮料，一款对应一个人体健康问题。每一款都从底层分子生物学通路出发，拆出需要修复的几个维度，再用食品级原料把每个维度补齐——配方不是拼料，而是对通路的一次精确干预。</p>
+    <div class="hero-cta">
+      <a class="btn" href="#s3">看 64 款配方矩阵</a>
+      <a class="btn btn-ghost" href="#s1">配方底层逻辑</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="v">64<small>款</small></div><div class="k">靶向配方</div></div>
+      <div class="stat"><div class="v">218<small>个</small></div><div class="k">解决维度</div></div>
+      <div class="stat"><div class="v">316<small>条</small></div><div class="k">成分证据</div></div>
+      <div class="stat"><div class="v">12<small>大</small></div><div class="k">生理系统</div></div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <span>上海智沃生物 × 筑波大学生命科学研究所</span>
+    <span class="scroll-cue"><span class="track"></span>向下</span>
+  </div>
+</section>
+
+<!-- ===== 01 一页看懂 ===== -->
+<section class="sec cream" id="s1">
+  <div class="wrap">
+    <div class="chapter"><span class="num">01</span><span class="rule"></span><span class="label">How a formula is built</span></div>
+    <h2 class="h2">先找通路，再找原料。<br>顺序反过来，就只是拼料。</h2>
+    <p class="lede">传统营养补充剂的起点是“某种营养素不够”，终点是把它补进去。我们的起点是一个具体的健康问题，终点是一份能对上通路的组合。中间这五步，决定了配方为什么这样配。</p>
+
+    <div class="chain" id="chain">
+      <div class="chain-step"><span class="idx">01</span><div><h3>锁定健康问题<span>Problem</span></h3><p>64 个问题，从消化不良、失眠到桥本氏甲状腺炎、脑卒中风险，一个问题一款产品，不做广谱配方。</p><p class="ex">例：功能性消化不良</p></div></div>
+      <div class="chain-step"><span class="idx">02</span><div><h3>拆解分子通路<span>Pathway</span></h3><p>这个问题在分子层面是哪几条通路失衡？动力、炎症、屏障、离子通道——先看清战场。</p><p class="ex">例：5-HT/5-HT4R、TRPV1/Ca²⁺、NF-κB、ZO-1 紧密连接</p></div></div>
+      <div class="chain-step"><span class="idx">03</span><div><h3>定义解决维度<span>Dimension</span></h3><p>通路不能只堵一处。把修复拆成 3–4 个必须同时成立的方向，缺一个，问题就会从另一头冒回来。</p><p class="ex">例：促动力 · 抗炎舒缓 · 黏膜保护</p></div></div>
+      <div class="chain-step"><span class="idx">04</span><div><h3>匹配食品级原料<span>Material</span></h3><p>每个维度里，从 99 种可食用原料中挑出真正作用在该靶点上的那一味，而不是“听起来相关”的那一味。</p><p class="ex">例：陈皮（橙皮苷）· 黑胡椒（胡椒碱）· 甘草（甘草酸）· 阿拉伯胶</p></div></div>
+      <div class="chain-step"><span class="idx">05</span><div><h3>校准剂量与协同<span>Dose</span></h3><p>每一种成分的每日量，都放在“临床研究有效量”与“安全剂量上限”之间取值，再看四味之间是否互相增效、是否互相拖累。</p><p class="ex">例：有效量 200mg / 安全上限 1500mg</p></div></div>
+    </div>
+
+    <div class="why">
+      <div class="why-item"><b>单点补充会被身体关掉</b><span>通路天生带负反馈。只补一个点，受体敏感度下调，越补越钝——这是“坚持吃却没用”的常见原因。</span></div>
+      <div class="why-item"><b>一条通路连着几十条</b><span>激活一处会牵动上下游。单成分容易引起连锁失衡，组合才是给网络而不是给节点。</span></div>
+      <div class="why-item"><b>每个人的阈值不一样</b><span>基因 SNP 差异让同一条通路的基础活性不同，标准化配方无法适配个体差异，这也是 AI 定制的必要所在。</span></div>
+    </div>
+  </div>
+</section>
+<!-- ===== 02 科学底座 ===== -->
+<section class="sec forest" id="s2">
+  <div class="wrap">
+    <div class="chapter"><span class="num">02</span><span class="rule"></span><span class="label">Anatomy of one formula</span></div>
+    <h2 class="h2">把一款产品拆开看，<br>分子层面的逻辑才露出来。</h2>
+    <p class="lede">以「悦飨派」为例。它解决的是功能性消化不良——一个听起来很日常的问题，底下却是四条同时失衡的通路。以下内容摘自产品库原始资料。</p>
+
+    <div class="science-grid">
+      <div>
+        <div class="case-head">
+          <span class="tagline">CASE 01 / 64</span>
+          <h3>悦飨派固体饮料</h3>
+        </div>
+        <p class="case-sub">功能性消化不良的发生与胃肠动力障碍、内脏高敏感性及黏膜低度炎症密切相关。其底层调控主要涉及四条核心通路。</p>
+
+        <div class="path-list">
+          <div class="path-item"><span class="n">P1</span><div><h4>胃肠动力与神经递质调控</h4><p>肠嗜铬细胞分泌的 5-HT 与 5-HT4R 结合，是调节胃肠蠕动与分泌的核心神经内分泌机制；胃动素（MOT）直接参与胃排空与小肠推进。</p></div></div>
+          <div class="path-item"><span class="n">P2</span><div><h4>TRP 与钙离子信号</h4><p>感觉神经末梢的 TRPV1 被激活后引起胞内 Ca²⁺ 内流，直接触发平滑肌收缩——这是胃肠动力的物理基础。</p></div></div>
+          <div class="path-item"><span class="n">P3</span><div><h4>炎症信号（NF-κB 轴）</h4><p>NF-κB 作为促炎因子的“总开关”，过度活化会释放 TNF-α、IL-6，引发疼痛与黏膜微损伤。</p></div></div>
+          <div class="path-item"><span class="n">P4</span><div><h4>上皮紧密连接（ZO-1 / Claudins）</h4><p>紧密连接蛋白构成物理屏障，完整性受损导致通透性升高（“肠漏”），反过来加剧消化不良症状。</p></div></div>
+        </div>
+
+        <div class="syn-box">
+          <h4>四味为什么必须一起</h4>
+          <p>陈皮与黑胡椒分别从神经内分泌（5-HT/MOT）和离子通道（TRPV1/Ca²⁺）两个层面驱动平滑肌，解决动力不足；甘草精准压制 NF-κB 介导的炎症，缓解上腹疼痛与灼热；阿拉伯胶物理覆盖并上调 ZO-1 等紧密连接蛋白，修复屏障。三者构成“促动力—抑炎症—修屏障”的立体网，缺一环，症状就会从另一头回来。</p>
+        </div>
+      </div>
+
+      <div class="dims">
+        <div class="dims-head chapter" style="margin-bottom:18px"><span class="num">03</span><span class="rule"></span><span class="label">三个维度 · 四味原料</span></div>
+
+        <div class="dim-block">
+          <div class="dim-title"><span class="d">促进消化</span><span class="ln"></span><span class="c">2 味</span></div>
+          <div class="ing-row" data-mech="mech1" aria-expanded="false" role="button" tabindex="0">
+            <div><div class="nm">陈皮提取物</div><div class="mk">核心功能成分 · 橙皮苷</div></div><div class="pm" aria-hidden="true">+</div>
+          </div>
+          <div class="ing-mech" id="mech1">促进肠嗜铬细胞分泌 5-HT，并上调 5-HT4R 受体及胃动素（MOT）的表达，激活胃肠动力神经信号通路，加速胃排空与小肠推进。</div>
+
+          <div class="ing-row" data-mech="mech2" aria-expanded="false" role="button" tabindex="0">
+            <div><div class="nm">黑胡椒提取物</div><div class="mk">核心功能成分 · 胡椒碱</div></div><div class="pm" aria-hidden="true">+</div>
+          </div>
+          <div class="ing-mech" id="mech2">作为天然激动剂激活肠道感觉神经末梢的 TRPV1 受体，引发胞质内 Ca²⁺ 浓度依赖性升高，直接刺激胃肠平滑肌收缩，增强蠕动节律。</div>
+        </div>
+
+        <div class="dim-block">
+          <div class="dim-title"><span class="d">抗炎舒缓</span><span class="ln"></span><span class="c">1 味</span></div>
+          <div class="ing-row" data-mech="mech3" aria-expanded="false" role="button" tabindex="0">
+            <div><div class="nm">甘草提取物</div><div class="mk">核心功能成分 · 甘草酸</div></div><div class="pm" aria-hidden="true">+</div>
+          </div>
+          <div class="ing-mech" id="mech3">阻断 NF-κB 信号通路的核转位，下调 TNF-α、IL-6 等下游促炎因子的转录表达，清除自由基，减轻胃肠道黏膜的低度炎症反应与氧化应激。</div>
+        </div>
+
+        <div class="dim-block">
+          <div class="dim-title"><span class="d">黏膜保护</span><span class="ln"></span><span class="c">1 味</span></div>
+          <div class="ing-row" data-mech="mech4" aria-expanded="false" role="button" tabindex="0">
+            <div><div class="nm">阿拉伯胶</div><div class="mk">核心功能成分 · 可溶性膳食纤维</div></div><div class="pm" aria-hidden="true">+</div>
+          </div>
+          <div class="ing-mech" id="mech4">在肠上皮表面形成物理凝胶保护层，上调紧密连接蛋白（ZO-1、Claudin-1）的基因表达，修复受损的物理屏障，降低肠道通透性。</div>
+        </div>
+
+        <p class="case-sub" style="margin-top:18px;opacity:.55">每味原料的每日剂量、临床研究有效量、安全剂量上限，以及对应的公开文献，收录在产品库的分级权限中。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 产品矩阵 ===== -->
+<section class="sec deep" id="s3">
+  <div class="wrap">
+    <div class="chapter"><span class="num">03</span><span class="rule"></span><span class="label">The 64 formula matrix</span></div>
+    <div class="matrix-head">
+      <h2 class="h2">64 款配方，<br>铺满人体十二个系统。</h2>
+      <p class="lede">从消化不良到脑卒中风险管理，每一个健康问题都有一款对应的固体饮料。点开任意一款，可以看到它的通路分析、解决维度与每味原料的作用机制。</p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+        <input type="search" id="q" placeholder="搜索健康问题或产品名，如「睡眠」「稳唐派」" aria-label="搜索产品">
+        <span class="cnt" id="cnt">64 / 64</span>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="按系统筛选"></div>
+    </div>
+
+    <div class="grid" id="grid">
+<button class="card" type="button" data-no="1" data-sys="消化与胃肠" aria-label="查看 悦飨派固体饮料 详情"><div class="ph"><span class="no">01</span><img src="assets/p01.jpg" alt="悦飨派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">悦飨派固体饮料</div><div class="is">消化不良 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="2" data-sys="消化与胃肠" aria-label="查看 安绥派固体饮料 详情"><div class="ph"><span class="no">02</span><img src="assets/p02.jpg" alt="安绥派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">安绥派固体饮料</div><div class="is">胃炎 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="3" data-sys="消化与胃肠" aria-label="查看 安适派固体饮料 详情"><div class="ph"><span class="no">03</span><img src="assets/p03.jpg" alt="安适派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">安适派固体饮料</div><div class="is">胃溃疡 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="4" data-sys="消化与胃肠" aria-label="查看 清幽派固体饮料 详情"><div class="ph"><span class="no">04</span><img src="assets/p04.jpg" alt="清幽派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清幽派固体饮料</div><div class="is">幽门螺旋杆菌感染 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="5" data-sys="消化与胃肠" aria-label="查看 顺和派固体饮料 详情"><div class="ph"><span class="no">05</span><img src="assets/p05.jpg" alt="顺和派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">顺和派固体饮料</div><div class="is">胃食管返流 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="6" data-sys="消化与胃肠" aria-label="查看 舒畅派固体饮料 详情"><div class="ph"><span class="no">06</span><img src="assets/p06.jpg" alt="舒畅派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">舒畅派固体饮料</div><div class="is">腹泻 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="7" data-sys="消化与胃肠" aria-label="查看 安舒派固体饮料 详情"><div class="ph"><span class="no">07</span><img src="assets/p07.jpg" alt="安舒派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">安舒派固体饮料</div><div class="is">肠易激综合征 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="8" data-sys="消化与胃肠" aria-label="查看 畅道派固体饮料 详情"><div class="ph"><span class="no">08</span><img src="assets/p08.jpg" alt="畅道派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">畅道派固体饮料</div><div class="is">便秘 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="9" data-sys="消化与胃肠" aria-label="查看 颐和派固体饮料 详情"><div class="ph"><span class="no">09</span><img src="assets/p09.jpg" alt="颐和派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">颐和派固体饮料</div><div class="is">慢性肠炎 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="10" data-sys="消化与胃肠" aria-label="查看 清蕴派固体饮料 详情"><div class="ph"><span class="no">10</span><img src="assets/p10.jpg" alt="清蕴派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清蕴派固体饮料</div><div class="is">肠息肉 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="11" data-sys="免疫与过敏" aria-label="查看 敏安派固体饮料 详情"><div class="ph"><span class="no">11</span><img src="assets/p11.jpg" alt="敏安派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">敏安派固体饮料</div><div class="is">过敏性鼻炎 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="12" data-sys="代谢与内分泌" aria-label="查看 恒元派固体饮料 详情"><div class="ph"><span class="no">12</span><img src="assets/p12.jpg" alt="恒元派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">恒元派固体饮料</div><div class="is">桥本氏甲状腺炎 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="13" data-sys="免疫与过敏" aria-label="查看 沁润派固体饮料 详情"><div class="ph"><span class="no">13</span><img src="assets/p13.jpg" alt="沁润派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">沁润派固体饮料</div><div class="is">荨麻疹 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="14" data-sys="免疫与过敏" aria-label="查看 润障派固体饮料 详情"><div class="ph"><span class="no">14</span><img src="assets/p14.jpg" alt="润障派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">润障派固体饮料</div><div class="is">湿疹 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="15" data-sys="免疫与过敏" aria-label="查看 衡元派固体饮料 详情"><div class="ph"><span class="no">15</span><img src="assets/p15.jpg" alt="衡元派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">衡元派固体饮料</div><div class="is">其他自身免疫性疾病 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="16" data-sys="免疫与过敏" aria-label="查看 沁颜派固体饮料 详情"><div class="ph"><span class="no">16</span><img src="assets/p16.jpg" alt="沁颜派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">沁颜派固体饮料</div><div class="is">银屑病 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="17" data-sys="免疫与过敏" aria-label="查看 利节派固体饮料 详情"><div class="ph"><span class="no">17</span><img src="assets/p17.jpg" alt="利节派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">利节派固体饮料</div><div class="is">类风湿性关节炎 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="18" data-sys="免疫与过敏" aria-label="查看 宁馨派固体饮料 详情"><div class="ph"><span class="no">18</span><img src="assets/p18.jpg" alt="宁馨派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">宁馨派固体饮料</div><div class="is">抗炎 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="19" data-sys="免疫与过敏" aria-label="查看 元卫派固体饮料 详情"><div class="ph"><span class="no">19</span><img src="assets/p19.jpg" alt="元卫派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">元卫派固体饮料</div><div class="is">免疫力提升 · 免疫与过敏</div></div></button>
+<button class="card" type="button" data-no="20" data-sys="心脑血管" aria-label="查看 清醇派固体饮料 详情"><div class="ph"><span class="no">20</span><img src="assets/p20.jpg" alt="清醇派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清醇派固体饮料</div><div class="is">高血脂 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="21" data-sys="心脑血管" aria-label="查看 畅然派固体饮料 详情"><div class="ph"><span class="no">21</span><img src="assets/p21.jpg" alt="畅然派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">畅然派固体饮料</div><div class="is">动脉粥样硬化风险 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="22" data-sys="心脑血管" aria-label="查看 稳衡派固体饮料 详情"><div class="ph"><span class="no">22</span><img src="assets/p22.jpg" alt="稳衡派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">稳衡派固体饮料</div><div class="is">高血压 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="23" data-sys="心脑血管" aria-label="查看 源本派固体饮料 详情"><div class="ph"><span class="no">23</span><img src="assets/p23.jpg" alt="源本派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">源本派固体饮料</div><div class="is">心血管健康支持 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="24" data-sys="心脑血管" aria-label="查看 谐律派固体饮料 详情"><div class="ph"><span class="no">24</span><img src="assets/p24.jpg" alt="谐律派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">谐律派固体饮料</div><div class="is">缓慢型心律失常 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="25" data-sys="心脑血管" aria-label="查看 宁谧派固体饮料 详情"><div class="ph"><span class="no">25</span><img src="assets/p25.jpg" alt="宁谧派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">宁谧派固体饮料</div><div class="is">快速型心律失常 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="26" data-sys="心脑血管" aria-label="查看 源力派固体饮料 详情"><div class="ph"><span class="no">26</span><img src="assets/p26.jpg" alt="源力派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">源力派固体饮料</div><div class="is">缺血性心肌病风险 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="27" data-sys="女性健康" aria-label="查看 衡妍派固体饮料 详情"><div class="ph"><span class="no">27</span><img src="assets/p27.jpg" alt="衡妍派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">衡妍派固体饮料</div><div class="is">女性荷尔蒙失衡 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="28" data-sys="女性健康" aria-label="查看 姿韵派固体饮料 详情"><div class="ph"><span class="no">28</span><img src="assets/p28.jpg" alt="姿韵派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">姿韵派固体饮料</div><div class="is">女性荷尔蒙平衡支持 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="29" data-sys="女性健康" aria-label="查看 悦蕴派固体饮料 详情"><div class="ph"><span class="no">29</span><img src="assets/p29.jpg" alt="悦蕴派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">悦蕴派固体饮料</div><div class="is">女性备孕 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="30" data-sys="女性健康" aria-label="查看 柔嘉派固体饮料 详情"><div class="ph"><span class="no">30</span><img src="assets/p30.jpg" alt="柔嘉派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">柔嘉派固体饮料</div><div class="is">乳腺增生 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="31" data-sys="女性健康" aria-label="查看 舒和派固体饮料 详情"><div class="ph"><span class="no">31</span><img src="assets/p31.jpg" alt="舒和派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">舒和派固体饮料</div><div class="is">乳腺纤维瘤 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="32" data-sys="女性健康" aria-label="查看 清衡派固体饮料 详情"><div class="ph"><span class="no">32</span><img src="assets/p32.jpg" alt="清衡派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清衡派固体饮料</div><div class="is">子宫肌瘤 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="33" data-sys="女性健康" aria-label="查看 巢律派固体饮料 详情"><div class="ph"><span class="no">33</span><img src="assets/p33.jpg" alt="巢律派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">巢律派固体饮料</div><div class="is">多囊卵巢综合征 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="34" data-sys="女性健康" aria-label="查看 坤泰派固体饮料 详情"><div class="ph"><span class="no">34</span><img src="assets/p34.jpg" alt="坤泰派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">坤泰派固体饮料</div><div class="is">卵巢囊肿 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="35" data-sys="女性健康" aria-label="查看 静昕派固体饮料 详情"><div class="ph"><span class="no">35</span><img src="assets/p35.jpg" alt="静昕派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">静昕派固体饮料</div><div class="is">更年期综合征 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="36" data-sys="消化与胃肠" aria-label="查看 安和派固体饮料 详情"><div class="ph"><span class="no">36</span><img src="assets/p36.jpg" alt="安和派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">安和派固体饮料</div><div class="is">溃疡性结肠炎 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="37" data-sys="消化与胃肠" aria-label="查看 克安派固体饮料 详情"><div class="ph"><span class="no">37</span><img src="assets/p37.jpg" alt="克安派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">克安派固体饮料</div><div class="is">克罗恩病 · 消化与胃肠</div></div></button>
+<button class="card" type="button" data-no="38" data-sys="肝胆" aria-label="查看 清甘派固体饮料 详情"><div class="ph"><span class="no">38</span><img src="assets/p38.jpg" alt="清甘派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清甘派固体饮料</div><div class="is">肝功能损伤 · 肝胆</div></div></button>
+<button class="card" type="button" data-no="39" data-sys="肝胆" aria-label="查看 清晓派固体饮料 详情"><div class="ph"><span class="no">39</span><img src="assets/p39.jpg" alt="清晓派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清晓派固体饮料</div><div class="is">肝脏炎症 · 肝胆</div></div></button>
+<button class="card" type="button" data-no="40" data-sys="肝胆" aria-label="查看 利舒派固体饮料 详情"><div class="ph"><span class="no">40</span><img src="assets/p40.jpg" alt="利舒派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">利舒派固体饮料</div><div class="is">慢性胆囊炎 · 肝胆</div></div></button>
+<button class="card" type="button" data-no="41" data-sys="肝胆" aria-label="查看 澈净派固体饮料 详情"><div class="ph"><span class="no">41</span><img src="assets/p41.jpg" alt="澈净派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">澈净派固体饮料</div><div class="is">胆囊息肉 · 肝胆</div></div></button>
+<button class="card" type="button" data-no="42" data-sys="肝胆" aria-label="查看 淳和派固体饮料 详情"><div class="ph"><span class="no">42</span><img src="assets/p42.jpg" alt="淳和派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">淳和派固体饮料</div><div class="is">肝脏健康支持 · 肝胆</div></div></button>
+<button class="card" type="button" data-no="43" data-sys="肝胆" aria-label="查看 轻畅派固体饮料 详情"><div class="ph"><span class="no">43</span><img src="assets/p43.jpg" alt="轻畅派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">轻畅派固体饮料</div><div class="is">脂肪肝 · 肝胆</div></div></button>
+<button class="card" type="button" data-no="44" data-sys="代谢与内分泌" aria-label="查看 启元派固体饮料 详情"><div class="ph"><span class="no">44</span><img src="assets/p44.jpg" alt="启元派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">启元派固体饮料</div><div class="is">代谢健康支持 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="45" data-sys="代谢与内分泌" aria-label="查看 舒泰派固体饮料 详情"><div class="ph"><span class="no">45</span><img src="assets/p45.jpg" alt="舒泰派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">舒泰派固体饮料</div><div class="is">甲状腺功能亢进 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="46" data-sys="代谢与内分泌" aria-label="查看 甲源派固体饮料 详情"><div class="ph"><span class="no">46</span><img src="assets/p46.jpg" alt="甲源派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">甲源派固体饮料</div><div class="is">甲状腺功能减退 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="47" data-sys="神经与睡眠" aria-label="查看 元力派固体饮料 详情"><div class="ph"><span class="no">47</span><img src="assets/p47.jpg" alt="元力派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">元力派固体饮料</div><div class="is">慢性疲劳综合征 · 神经与睡眠</div></div></button>
+<button class="card" type="button" data-no="48" data-sys="神经与睡眠" aria-label="查看 安寐派固体饮料 详情"><div class="ph"><span class="no">48</span><img src="assets/p48.jpg" alt="安寐派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">安寐派固体饮料</div><div class="is">睡眠 · 神经与睡眠</div></div></button>
+<button class="card" type="button" data-no="49" data-sys="神经与睡眠" aria-label="查看 释然派固体饮料 详情"><div class="ph"><span class="no">49</span><img src="assets/p49.jpg" alt="释然派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">释然派固体饮料</div><div class="is">焦虑症 · 神经与睡眠</div></div></button>
+<button class="card" type="button" data-no="50" data-sys="神经与睡眠" aria-label="查看 欣怡派固体饮料 详情"><div class="ph"><span class="no">50</span><img src="assets/p50.jpg" alt="欣怡派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">欣怡派固体饮料</div><div class="is">抑郁症 · 神经与睡眠</div></div></button>
+<button class="card" type="button" data-no="51" data-sys="代谢与内分泌" aria-label="查看 风清派固体饮料 详情"><div class="ph"><span class="no">51</span><img src="assets/p51.jpg" alt="风清派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">风清派固体饮料</div><div class="is">高尿酸 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="52" data-sys="代谢与内分泌" aria-label="查看 稳唐派固体饮料 详情"><div class="ph"><span class="no">52</span><img src="assets/p52.jpg" alt="稳唐派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">稳唐派固体饮料</div><div class="is">高血糖 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="53" data-sys="代谢与内分泌" aria-label="查看 轻澈派固体饮料 详情"><div class="ph"><span class="no">53</span><img src="assets/p53.jpg" alt="轻澈派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">轻澈派固体饮料</div><div class="is">肥胖 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="54" data-sys="肾脏" aria-label="查看 元本派固体饮料 详情"><div class="ph"><span class="no">54</span><img src="assets/p54.jpg" alt="元本派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">元本派固体饮料</div><div class="is">肾脏健康支持 · 肾脏</div></div></button>
+<button class="card" type="button" data-no="55" data-sys="神经与睡眠" aria-label="查看 明澈派固体饮料 详情"><div class="ph"><span class="no">55</span><img src="assets/p55.jpg" alt="明澈派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">明澈派固体饮料</div><div class="is">脑健康支持 · 神经与睡眠</div></div></button>
+<button class="card" type="button" data-no="56" data-sys="神经与睡眠" aria-label="查看 忆加派固体饮料 详情"><div class="ph"><span class="no">56</span><img src="assets/p56.jpg" alt="忆加派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">忆加派固体饮料</div><div class="is">记忆力提升 · 神经与睡眠</div></div></button>
+<button class="card" type="button" data-no="57" data-sys="心脑血管" aria-label="查看 智御派固体饮料 详情"><div class="ph"><span class="no">57</span><img src="assets/p57.jpg" alt="智御派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">智御派固体饮料</div><div class="is">脑卒中风险 · 心脑血管</div></div></button>
+<button class="card" type="button" data-no="58" data-sys="血液" aria-label="查看 盈润派固体饮料 详情"><div class="ph"><span class="no">58</span><img src="assets/p58.jpg" alt="盈润派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">盈润派固体饮料</div><div class="is">缺铁性贫血 · 血液</div></div></button>
+<button class="card" type="button" data-no="59" data-sys="骨骼与关节" aria-label="查看 质淳派固体饮料 详情"><div class="ph"><span class="no">59</span><img src="assets/p59.jpg" alt="质淳派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">质淳派固体饮料</div><div class="is">骨质疏松 · 骨骼与关节</div></div></button>
+<button class="card" type="button" data-no="60" data-sys="骨骼与关节" aria-label="查看 顺安派固体饮料 详情"><div class="ph"><span class="no">60</span><img src="assets/p60.jpg" alt="顺安派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">顺安派固体饮料</div><div class="is">骨关节炎 · 骨骼与关节</div></div></button>
+<button class="card" type="button" data-no="61" data-sys="女性健康" aria-label="查看 妍护派固体饮料 详情"><div class="ph"><span class="no">61</span><img src="assets/p61.jpg" alt="妍护派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">妍护派固体饮料</div><div class="is">妇科炎症预防 · 女性健康</div></div></button>
+<button class="card" type="button" data-no="62" data-sys="代谢与内分泌" aria-label="查看 澈轻派固体饮料 详情"><div class="ph"><span class="no">62</span><img src="assets/p62.jpg" alt="澈轻派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">澈轻派固体饮料</div><div class="is">内脏脂肪减少 · 代谢与内分泌</div></div></button>
+<button class="card" type="button" data-no="63" data-sys="呼吸" aria-label="查看 清润派固体饮料 详情"><div class="ph"><span class="no">63</span><img src="assets/p63.jpg" alt="清润派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">清润派固体饮料</div><div class="is">肺功能支持 · 呼吸</div></div></button>
+<button class="card" type="button" data-no="64" data-sys="全身机能" aria-label="查看 基衡派固体饮料 详情"><div class="ph"><span class="no">64</span><img src="assets/p64.jpg" alt="基衡派固体饮料" loading="lazy" width="820" height="820"></div><div class="meta"><div class="nm">基衡派固体饮料</div><div class="is">基础机能支持 · 全身机能</div></div></button>
+    </div>
+    <p class="empty" id="empty" hidden>没有匹配的配方，换个关键词试试。</p>
+    <p class="case-sub" style="margin-top:26px;opacity:.55">产品详情中的剂量、临床数据与完整文献，可在产品库中按权限级别查看。</p>
+  </div>
+</section>
+<!-- ===== 04 健康管理平台 ===== -->
+<section class="sec paper" id="s4">
+  <div class="wrap">
+    <div class="chapter"><span class="num">04</span><span class="rule"></span><span class="label">Health data center</span></div>
+    <h2 class="h2">从一次建档，到专业方案。</h2>
+    <p class="lede">平台把“这个人该吃什么”变成一条可执行的流水线：数据进来，异常通路被定位，配方出来，订单直接落到设备上。用户不需要懂分子生物学，也能获得专业方案。</p>
+
+    <div class="plat-grid">
+      <div>
+        <div class="shot">
+          <img src="assets/dash.jpg" alt="JUSTNATURAL 健康数据中心后台界面：新建用户、用户管理、订单管理" loading="lazy" width="1276" height="901">
+          <p class="cap">机构后台：新建用户 / 用户管理 / 订单管理，一账号管理全部客户档案与订单。</p>
+        </div>
+        <div class="qr-block">
+          <div class="qr-card">
+            <img src="assets/qr-h5.png" alt="健康管理平台二维码" loading="lazy" width="150" height="150">
+            <h4>健康管理平台</h4>
+            <p>手机扫码进入 H5，可完成建档、问卷与报告查看。</p>
+            <a href="https://hetaipack.com/jnh5/#/" target="_blank" rel="noopener">打开平台</a>
+          </div>
+          <div class="qr-card">
+            <img src="assets/qr-video.png" alt="系统操作说明视频二维码" loading="lazy" width="150" height="150">
+            <h4>操作说明视频</h4>
+            <p>6 分钟完整演示：从登录到订单下发。</p>
+            <a href="https://wx.hlcode.vip/?id=NafE1SD" target="_blank" rel="noopener">观看视频</a>
+          </div>
+          <div class="qr-card">
+            <img src="assets/qr-lib.png" alt="产品库成分与底层逻辑二维码" loading="lazy" width="150" height="150">
+            <h4>产品库（授权）</h4>
+            <p>剂量、临床数据与文献原文，按权限分级开放。</p>
+            <a href="https://justnatural-ai.github.io/AI-Precision-Nutrition-tool/" target="_blank" rel="noopener">进入产品库</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><h4>建档 · 线上线下一套档案</h4><p>机构后台新建用户，或生成远程建档二维码让客户自己填——异地客户不用到店。</p></div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><h4>采集 · 45 题问卷 + 体检报告</h4><p>问卷覆盖职业、作息、既往史与主观症状；体检报告支持拍照、相册与 PDF 上传，自动识别 98 项指标。</p></div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><h4>评估 · 3 秒生成健康报告</h4><p>自研阈值规则引擎（参照 WS/T 404 临床参考区间）判定每项指标的位置，异常项按生理系统归集，逐条可展开对应的分子通路与临床文献。</p></div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><h4>配方 · 单次最多 6 个方案</h4><p>按系统主题从 64 款中匹配组合，生成产品清单与饮食、生活方式建议，用量按月计算。</p></div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><h4>交付 · 订单直连设备</h4><p>确认提交后，配方数据自动下发到智能分装终端，现场完成计量、混合与分装。</p></div></div>
+        <div class="step"><div class="dot" aria-hidden="true"></div><div><h4>追踪 · 历年指标对比</h4><p>体检数据纵向留存，干预前后指标曲线可直接呈现，方案按月迭代——这是复购的理由，也是模型迭代的数据。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 设备与交付 ===== -->
+<section class="sec forest" id="s5">
+  <div class="wrap">
+    <div class="chapter"><span class="num">05</span><span class="rule"></span><span class="label">Dispensing & delivery</span></div>
+    <h2 class="h2">一人一方，一天两杯。</h2>
+    <p class="lede">配方如果停在屏幕上，就只是建议。设备把数字配方变成可以拿在手里的产品：每天两杯，一盒半个月，一个月两盒。</p>
+
+    <div class="dev-hero">
+      <figure><img src="assets/scene1.jpg" alt="JUSTNATURAL 门店内的智能分装设备与产品陈列" loading="lazy" width="1500" height="843"></figure>
+      <figure><img src="assets/dev.jpg" alt="AI 定制营养补充剂智能分装终端" loading="lazy" width="1125" height="1500"></figure>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec"><div class="v">30 杯 / 盒</div><div class="k">一盒半个月用量</div></div>
+      <div class="spec"><div class="v">2 杯 / 天</div><div class="k">每日服用节奏</div></div>
+      <div class="spec"><div class="v">PLC + AI</div><div class="k">中控与云端配方同步</div></div>
+    </div>
+
+    <div class="usage">
+      <div class="usage-step"><b>01</b><span>云端解析数字配方，料仓矩阵按配方就位。</span></div>
+      <div class="usage-step"><b>02</b><span>高精度微计量称量。</span></div>
+      <div class="usage-step"><b>03</b><span>多通道动态剪切混合，陶瓷阀定量灌装、独立密封。</span></div>
+      <div class="usage-step"><b>04</b><span>杯身标注服用人与日期，装箱交付；一杯一天两次，喝完即是一个月。</span></div>
+    </div>
+
+    <button class="doc-btn on-dark" type="button" data-doc="manual">查看产品说明书<span class="pg">1 页</span></button>
+
+    <div class="dev-hero" style="margin-top:26px">
+      <figure><img src="assets/pkg.jpg" alt="Bio Decipher 定制营养杯与包装盒" loading="lazy" width="1500" height="875"></figure>
+      <figure><img src="assets/scene2.jpg" alt="门店设备与产品场景" loading="lazy" width="1500" height="842"></figure>
+    </div>
+  </div>
+</section>
+<!-- ===== 06 团队与资质 ===== -->
+<section class="sec cream" id="s6">
+  <div class="wrap">
+    <div class="chapter"><span class="num">06</span><span class="rule"></span><span class="label">Team & credentials</span></div>
+    <h2 class="h2">配方背后，是一间看得见文献的实验室。</h2>
+    <p class="lede">JUSTNATURAL 的配方逻辑来自筑波大学生命科学研究所的分子生物学研究积累，落地主体是上海智沃生物科技有限公司；生产由具备固体饮料与特殊膳食资质的工厂承担。</p>
+
+    <div class="cred-grid">
+      <div>
+        <div class="people">
+          <div class="person"><img class="avatar" src="assets/team1.jpg" alt="张振亚 教授" loading="lazy" width="480" height="600"><div class="ptxt"><span class="nm">张振亚 教授</span><span class="ttl">筑波大学生命科学研究所 · 首席科学家 / 生命科学系主任</span><p>筑波大学首位中国籍 SS 级教授，ICBS 国际学术会议理事长；功能性食品与分子生物学方向，国际期刊论文 400+ 篇、日本专利 9 项、专著 2 部。</p></div></div>
+          <div class="person"><img class="avatar" src="assets/team2.jpg" alt="Renu Wadhwa 教授" loading="lazy" width="480" height="600"><div class="ptxt"><span class="nm">Renu Wadhwa 教授</span><span class="ttl">日本产业技术综合研究所（AIST）· 首席研究员 / DAILAB 负责人</span><p>HSP-70 热免疫蛋白 mortalin 的发现者与命名者之一；SCI 论文 310 篇、日本专利 12 项、专著 2 部。</p></div></div>
+          <div class="person"><img class="avatar" src="assets/team3.jpg" alt="王淋渤 博士" loading="lazy" width="480" height="600"><div class="ptxt"><span class="nm">王淋渤 博士</span><span class="ttl">筑波大学生命科学研究所 · 总裁 / UNIONLAB 发起人</span><p>直接研发与指导研发产品 200 余种，国际 SCI 期刊 12 篇、中国专利 33 项、日本专利 1 项。</p></div></div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="v">4 部</div><div class="k">学术专著</div></div>
+          <div class="metric"><div class="v">400+</div><div class="k">国际期刊论文</div></div>
+          <div class="metric"><div class="v">40+</div><div class="k">专利授权</div></div>
+          <div class="metric"><div class="v">500+</div><div class="k">累计开发产品</div></div>
+        </div>
+        <p class="cert-note">上海智沃 2018 年成立，2022、2023 年评为科技中小企业，2022–2024、2025 年连续评为国家级高新技术企业；2022 年与筑波大学共同发起 ICBS 国际学术会议，12 个国家科研机构参与。</p>
+      </div>
+
+      <div>
+        <table class="cert-table">
+          <colgroup><col style="width:26%"><col style="width:30%"><col style="width:28%"><col style="width:16%"></colgroup>
+          <thead><tr><th>证照</th><th>主体</th><th>编号</th><th>要点</th></tr></thead>
+          <tbody>
+            <tr><td>营业执照</td><td>上海智沃生物科技有限公司</td><td>91310117MA1J3A018N</td><td>2018-12-12 成立</td></tr>
+            <tr><td>食品经营许可证</td><td>上海智沃生物科技有限公司</td><td>YB13101090052864</td><td>仅销售预包装食品</td></tr>
+            <tr><td>营业执照</td><td>山东国和堂制药有限公司</td><td>91370600MA3CENXW4H</td><td>2016-08-04 成立</td></tr>
+            <tr><td>食品生产许可证</td><td>山东国和堂制药有限公司</td><td>SC10637069900096</td><td>固体饮料、糖果制品、代用茶、特殊膳食食品</td></tr>
+          </tbody>
+        </table>
+        <p class="cert-note">以上为首营资料中的主体证照信息；完整证照扫描件、食品生产许可品种明细表、原料 COA 与产品说明书，可按合作流程提供。</p>
+        <button class="doc-btn" type="button" data-doc="cert">查看完整首营资料<span class="pg">33 页</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 合作 / 体验 ===== -->
+<section class="sec deep" id="s7">
+  <div class="wrap">
+    <div class="chapter"><span class="num">07</span><span class="rule"></span><span class="label b2b-only">Partnership</span><span class="label b2c-only" hidden>Your journey</span></div>
+
+    <div class="b2b-only">
+      <h2 class="h2">一套可以直接开进机构的能力。</h2>
+      <p class="lede">不需要自己建实验室、不需要自己配营养师团队。配方库、分析平台、分装设备三件东西接上，机构就能开始做“一人一方”的生意。</p>
+
+      <div class="offer-grid">
+        <div class="offer"><span class="n">01</span><h4>配方与产品库</h4><p>64 款成型配方覆盖十二个系统，每款都有通路分析、维度拆分与文献支撑；按客户的评估结果组合，而不是按 SKU 推销。</p></div>
+        <div class="offer"><span class="n">02</span><h4>平台与数据</h4><p>机构账号、远程建档、报告识别、方案生成、订单与历年指标，全部在一个后台里；AI 承担了原本需要专业人员的解读工作。</p></div>
+        <div class="offer"><span class="n">03</span><h4>设备与现场交付</h4><p>智能分装终端把订单变成实物，现场出杯、当场带走。设备可对接云端配方，也可以先只开平台账号、由我们生产后配送。</p></div>
+      </div>
+
+      <div class="fit">
+        <div class="fit-row"><span>适合谁</span><span>健康管理机构、体检中心、诊所与中医馆、营养师工作室、企业健康福利项目。</span></div>
+        <div class="fit-row"><span>怎么开始</span><span>先用平台给 10–20 位客户做一轮评估，看报告与方案是否符合你的客群，再决定是否上设备。</span></div>
+        <div class="fit-row"><span>我们提供</span><span>产品与配方资料、平台账号、设备部署与培训、首营资料与合规话术、月度方案迭代支持。</span></div>
+        <div class="fit-row"><span>你们得到</span><span>可解释的方案（客户问“为什么吃这个”时有答案）、可追踪的效果（复测指标对比）、可复购的节奏（按月两盒）。</span></div>
+      </div>
+
+      <div class="contact">
+        <p class="big">想先看一份真实报告？<br>我们可以用你的一位客户跑一遍全流程。</p>
+        <p class="line">上海智沃生物科技有限公司 · 上海市虹口区汶水东路 937 号 1 幢 204 室</p>
+        <div class="hero-cta" style="margin-top:6px">
+          <a class="btn" href="https://hetaipack.com/jnh5/#/" target="_blank" rel="noopener">打开健康管理平台</a>
+          <a class="btn btn-ghost" href="#s3">先看配方矩阵</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="b2c-only" hidden>
+      <h2 class="h2">你只需要做三件事，<br>剩下的交给系统。</h2>
+      <p class="lede">不用研究成分表，也不用猜自己缺什么。把身体的真实数据交进来，方案会自己浮出来。</p>
+      <div class="journey">
+        <div class="j-item"><span class="n">01</span><div><h4>扫码建档</h4><p>在机构前台或微信里扫一个码，填完 45 题问卷，大约 8 分钟。</p></div></div>
+        <div class="j-item"><span class="n">02</span><div><h4>上传体检报告</h4><p>拍照、相册或 PDF 都行，系统自动识别 98 项指标，不用手动录。</p></div></div>
+        <div class="j-item"><span class="n">03</span><div><h4>拿到健康报告</h4><p>3 秒生成：哪些指标偏离参考区间，对应哪些生理系统，每个系统里失衡的是哪条通路。</p></div></div>
+        <div class="j-item"><span class="n">04</span><div><h4>确认你的方案</h4><p>最多 6 款配方的组合，附饮食与生活方式建议，按月的用量一次算清。</p></div></div>
+        <div class="j-item"><span class="n">05</span><div><h4>每天两杯，一个月两盒</h4><p>现场分装成 30 杯一盒，杯身印你的名字；一天两杯，一盒半个月。</p></div></div>
+        <div class="j-item"><span class="n">06</span><div><h4>复测，然后调整</h4><p>下次体检数据进来，和上一次并排看。有效就继续，无效就换维度。</p></div></div>
+      </div>
+      <div class="contact">
+        <p class="big">想先看看自己的那份报告长什么样？</p>
+        <p class="line">扫码进入健康管理平台，或在合作机构现场体验一次完整评估。</p>
+        <div class="hero-cta" style="margin-top:6px">
+          <a class="btn" href="https://hetaipack.com/jnh5/#/" target="_blank" rel="noopener">进入平台</a>
+          <a class="btn btn-ghost" href="#s3">看看 64 款配方</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="frow">
+      <img src="assets/logo-light.png" alt="JUSTNATURAL">
+      <span>上海智沃生物科技有限公司 · 2026</span>
+    </div>
+    <p class="disc">本页面所涉产品均为普通食品（固体饮料），不能替代药物，也不能替代特殊医学用途配方食品，不作为疾病诊断或治疗的依据。页面中的通路机制与文献信息用于说明配方设计思路；个体健康方案请以专业评估结果为准。</p>
+  </div>
+</footer>
+
+<!-- ===== 产品详情 ===== -->
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="close"><button type="button" data-close aria-label="关闭">×</button></div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+
+<style>
+.m-ing{border:1px solid rgba(10,27,20,.14);margin-bottom:8px;background:#fff}
+.m-ing .h{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:11px 13px;cursor:pointer;min-height:44px}
+.m-ing .h .t{font-size:13.5px;font-weight:500}
+.m-ing .h .s{font-size:11px;color:rgba(10,27,20,.5);margin-top:2px}
+.m-ing .h .p{font-family:var(--serif);color:var(--gold);font-size:16px;transition:transform .25s}
+.m-ing.open .h .p{transform:rotate(45deg)}
+.m-ing .b{display:none;padding:0 13px 13px;font-size:12.5px;line-height:1.9;color:rgba(10,27,20,.72);border-top:1px solid rgba(10,27,20,.1);padding-top:10px}
+.m-ing.open .b{display:block}
+.m-dim{padding:16px 0;border-bottom:1px solid rgba(10,27,20,.1)}
+.m-dim .t{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.m-dim .t .d{font-family:var(--serif);font-size:16px}
+.m-dim .t .c{font-size:11px;color:rgba(10,27,20,.45);letter-spacing:.08em}
+.m-path{padding:10px 0;border-bottom:1px solid rgba(10,27,20,.07);display:grid;grid-template-columns:26px 1fr;gap:10px}
+.m-path .n{font-family:var(--serif);font-size:11px;color:var(--gold)}
+.m-path p{font-size:12.5px;line-height:1.85;color:rgba(10,27,20,.72)}
+.hidden2{display:none}
+.more{font-size:12px;border-bottom:1px solid rgba(10,27,20,.3);padding-bottom:2px;margin-top:10px;display:inline-block}
+/* 外链强调 */
+.btn[target="_blank"]{background:var(--lime);color:var(--deep);border-color:var(--lime);font-weight:600;
+  box-shadow:0 6px 18px -10px rgba(198,220,110,.9)}
+.btn[target="_blank"]::after{content:"↗";font-size:13px;margin-left:4px;opacity:.85}
+.btn[target="_blank"]:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 10px 22px -12px rgba(198,220,110,.95)}
+.qr-card a{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin-top:10px;
+  padding:8px 13px;border:1px solid rgba(10,27,20,.28);font-size:12px;letter-spacing:.04em;
+  transition:background .2s,color .2s,border-color .2s}
+.qr-card a::after{content:"↗";font-size:11px;opacity:.8}
+.qr-card a:hover{background:var(--deep);color:var(--cream);border-color:var(--deep)}
+.doc-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;margin-top:6px;
+  border:1px solid rgba(10,27,20,.3);font-size:13px;letter-spacing:.04em;background:none;transition:background .2s}
+.doc-btn:hover{background:rgba(10,27,20,.06)}
+.doc-btn.on-dark{border-color:rgba(242,238,227,.34);color:var(--cream);margin-top:22px}
+.doc-btn.on-dark:hover{background:rgba(242,238,227,.08)}
+.doc-btn .pg{font-family:var(--serif);font-size:11px;color:var(--gold);letter-spacing:.06em}
+.viewer{position:fixed;inset:0;z-index:95;background:rgba(4,17,11,.9);display:none}
+.viewer.open{display:block}
+.vbar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:10px 16px;background:rgba(4,17,11,.96);border-bottom:1px solid rgba(242,238,227,.16)}
+.vbar .t{font-size:13px;letter-spacing:.08em;color:var(--cream)}
+.vbar .t b{font-family:var(--serif);font-weight:400;color:var(--lime);margin-left:8px;font-size:11px}
+.vbar button{width:38px;height:38px;border:1px solid rgba(242,238,227,.3);color:var(--cream);display:grid;place-items:center;font-size:18px}
+.vbody{height:calc(100% - 59px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 12px 60px}
+.vbody .dset{max-width:900px;margin:0 auto}
+.vbody figure{margin:0 0 14px;background:var(--paper);border:1px solid rgba(242,238,227,.2);position:relative}
+.vbody img{width:100%;height:auto;display:block}
+.vbody .pn{position:absolute;right:8px;bottom:6px;font-family:var(--serif);font-size:10px;color:rgba(10,27,20,.35);
+  background:rgba(250,247,238,.85);padding:1px 6px}
+</style>
+
+<div class="viewer" id="viewer" aria-hidden="true">
+  <div class="vbar"><span class="t" id="vtitle">首营资料<b></b></span><button type="button" data-vclose aria-label="关闭">×</button></div>
+  <div class="vbody">
+    <div class="dset" id="doc-cert" hidden>
+      <figure><img src="assets/cert01.jpg" alt="首营资料第 1 页" loading="lazy" width="1754" height="1240"><span class="pn">1 / 33</span></figure>
+      <figure><img src="assets/cert02.jpg" alt="首营资料第 2 页" loading="lazy" width="1754" height="1240"><span class="pn">2 / 33</span></figure>
+      <figure><img src="assets/cert03.jpg" alt="首营资料第 3 页" loading="lazy" width="1754" height="1240"><span class="pn">3 / 33</span></figure>
+      <figure><img src="assets/cert04.jpg" alt="首营资料第 4 页" loading="lazy" width="1754" height="1240"><span class="pn">4 / 33</span></figure>
+      <figure><img src="assets/cert05.jpg" alt="首营资料第 5 页" loading="lazy" width="1754" height="1240"><span class="pn">5 / 33</span></figure>
+      <figure><img src="assets/cert06.jpg" alt="首营资料第 6 页" loading="lazy" width="1754" height="1240"><span class="pn">6 / 33</span></figure>
+      <figure><img src="assets/cert07.jpg" alt="首营资料第 7 页" loading="lazy" width="1754" height="1240"><span class="pn">7 / 33</span></figure>
+      <figure><img src="assets/cert08.jpg" alt="首营资料第 8 页" loading="lazy" width="1754" height="1240"><span class="pn">8 / 33</span></figure>
+      <figure><img src="assets/cert09.jpg" alt="首营资料第 9 页" loading="lazy" width="1754" height="1240"><span class="pn">9 / 33</span></figure>
+      <figure><img src="assets/cert10.jpg" alt="首营资料第 10 页" loading="lazy" width="1754" height="1240"><span class="pn">10 / 33</span></figure>
+      <figure><img src="assets/cert11.jpg" alt="首营资料第 11 页" loading="lazy" width="1754" height="1240"><span class="pn">11 / 33</span></figure>
+      <figure><img src="assets/cert12.jpg" alt="首营资料第 12 页" loading="lazy" width="1754" height="1240"><span class="pn">12 / 33</span></figure>
+      <figure><img src="assets/cert13.jpg" alt="首营资料第 13 页" loading="lazy" width="1754" height="1240"><span class="pn">13 / 33</span></figure>
+      <figure><img src="assets/cert14.jpg" alt="首营资料第 14 页" loading="lazy" width="1754" height="1240"><span class="pn">14 / 33</span></figure>
+      <figure><img src="assets/cert15.jpg" alt="首营资料第 15 页" loading="lazy" width="1754" height="1240"><span class="pn">15 / 33</span></figure>
+      <figure><img src="assets/cert16.jpg" alt="首营资料第 16 页" loading="lazy" width="1754" height="1240"><span class="pn">16 / 33</span></figure>
+      <figure><img src="assets/cert17.jpg" alt="首营资料第 17 页" loading="lazy" width="1754" height="1240"><span class="pn">17 / 33</span></figure>
+      <figure><img src="assets/cert18.jpg" alt="首营资料第 18 页" loading="lazy" width="1754" height="1240"><span class="pn">18 / 33</span></figure>
+      <figure><img src="assets/cert19.jpg" alt="首营资料第 19 页" loading="lazy" width="1754" height="1240"><span class="pn">19 / 33</span></figure>
+      <figure><img src="assets/cert20.jpg" alt="首营资料第 20 页" loading="lazy" width="1754" height="1240"><span class="pn">20 / 33</span></figure>
+      <figure><img src="assets/cert21.jpg" alt="首营资料第 21 页" loading="lazy" width="1754" height="1240"><span class="pn">21 / 33</span></figure>
+      <figure><img src="assets/cert22.jpg" alt="首营资料第 22 页" loading="lazy" width="1754" height="1240"><span class="pn">22 / 33</span></figure>
+      <figure><img src="assets/cert23.jpg" alt="首营资料第 23 页" loading="lazy" width="1754" height="1240"><span class="pn">23 / 33</span></figure>
+      <figure><img src="assets/cert24.jpg" alt="首营资料第 24 页" loading="lazy" width="1754" height="1240"><span class="pn">24 / 33</span></figure>
+      <figure><img src="assets/cert25.jpg" alt="首营资料第 25 页" loading="lazy" width="1754" height="1240"><span class="pn">25 / 33</span></figure>
+      <figure><img src="assets/cert26.jpg" alt="首营资料第 26 页" loading="lazy" width="1754" height="1240"><span class="pn">26 / 33</span></figure>
+      <figure><img src="assets/cert27.jpg" alt="首营资料第 27 页" loading="lazy" width="1754" height="1240"><span class="pn">27 / 33</span></figure>
+      <figure><img src="assets/cert28.jpg" alt="首营资料第 28 页" loading="lazy" width="1754" height="1240"><span class="pn">28 / 33</span></figure>
+      <figure><img src="assets/cert29.jpg" alt="首营资料第 29 页" loading="lazy" width="1754" height="1240"><span class="pn">29 / 33</span></figure>
+      <figure><img src="assets/cert30.jpg" alt="首营资料第 30 页" loading="lazy" width="1754" height="1240"><span class="pn">30 / 33</span></figure>
+      <figure><img src="assets/cert31.jpg" alt="首营资料第 31 页" loading="lazy" width="1754" height="1240"><span class="pn">31 / 33</span></figure>
+      <figure><img src="assets/cert32.jpg" alt="首营资料第 32 页" loading="lazy" width="1754" height="1240"><span class="pn">32 / 33</span></figure>
+      <figure><img src="assets/cert33.jpg" alt="首营资料第 33 页" loading="lazy" width="1754" height="1240"><span class="pn">33 / 33</span></figure>
+    </div>
+    <div class="dset" id="doc-manual" hidden>
+      <figure><img src="assets/manual01.jpg" alt="产品说明书" loading="lazy" width="1889" height="1656"><span class="pn">1 / 1</span></figure>
+    </div>
+  </div>
+</div>
+
+<script>
+const PRODUCTS = [{"no":1,"name":"悦飨派固体饮料","issue":"消化不良","sys":"消化与胃肠","sysId":1,"path":["功能性消化不良的发生与胃肠动力障碍、内脏高敏感性及黏膜低度炎症密切相关。其底层分子生物学调控主要涉及三大核心通路：","1. 胃肠动力与神经递质调控通路：肠道嗜铬细胞分泌的5-羟色胺（5-HT）与其受体（如5-HT4R）结合，是调节胃肠蠕动和分泌的核心神经内分泌机制；同时，胃肠多肽（如胃动素 MOT）也直接参与胃排空和小肠推进的调控。","2. 瞬时受体电位（TRP）与钙离子信号通路：胃肠道感觉神经末梢的离子通道（如TRPV1）被激活后，引起胞内钙离子（Ca2+）内流，直接触发平滑肌收缩，是胃肠动力的物理基础。","3. 炎症信号通路（NF-κB轴）：在消化不良伴随的黏膜不适中，核因子κB（NF-κB）作为促炎因子的“总开关”，其过度活化会导致TNF-α、IL-6等炎症因子释放，引发疼痛和黏膜微损伤。","4. 肠道上皮紧密连接通路：肠上皮细胞间的紧密连接蛋白（如ZO-1、Claudins）构成了物理屏障，其完整性受损会导致黏膜通透性增加（“肠漏”），加剧消化不良症状。"],"dims":[{"d":"促进消化","ings":[{"n":"陈皮提取物","m":"橙皮苷","mech":"通过促进肠嗜铬细胞分泌5-HT，并上调5-HT4R受体及胃动素（MOT）的表达，激活胃肠动力神经信号通路，加速胃排空和小肠推进 。"},{"n":"黑胡椒提取物","m":"胡椒碱","mech":"作为天然激动剂激活肠道感觉神经末梢的 TRPV1 受体，引发胞质内 Ca2+ 浓度依赖性升高，直接刺激胃肠平滑肌强烈收缩，增强胃肠蠕动节律 。"}]},{"d":"抗炎舒缓","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"阻断 NF-κB 信号通路的核转位，下调 TNF-α、IL-6 等下游促炎因子的转录表达，清除自由基，减轻胃肠道黏膜的低度炎症反应与氧化应激 。"}]},{"d":"黏膜保护","ings":[{"n":"阿拉伯胶","m":"可溶性膳食纤维（酸性多糖）","mech":"在肠上皮表面形成物理凝胶保护层，上调紧密连接蛋白（如 ZO-1、Claudin-1）的基因表达，修复受损的物理屏障，降低肠道通透性 。"}]}],"syn":"本配方通过多维通路协同重建胃肠消化秩序：1. 激活动力通路：陈皮与黑胡椒提取物协同作用，分别从神经内分泌（5-HT/MOT）和离子通道（TRPV1/Ca2+）层面驱动胃肠平滑肌，加速食物排空，解决动力不足问题；2. 阻断炎症通路：甘草提取物精准抑制NF-κB介导的炎症反应，迅速缓解消化不良伴随的上腹疼痛与灼热感；3. 加固黏膜屏障：阿拉伯胶通过物理覆盖及上调紧密连接蛋白（ZO-1等）修复肠道上皮，防止有害物质渗透。三者构建起“促动力-抑炎症-修屏障”的立体防护网，多快好省地恢复胃肠道舒适状态。"},{"no":2,"name":"安绥派固体饮料","issue":"胃炎","sys":"消化与胃肠","sysId":1,"path":["慢性胃炎与胃黏膜损伤的发生发展主要涉及以下几条核心分子生物学通路：","1. 炎症信号通路（NF-κB 与 MAPK）：这是胃肠道慢性炎症的核心开关。当胃黏膜受到刺激（如幽门螺杆菌、酒精、药物等）时，核因子-κB (NF-κB) 和丝裂原活化蛋白激酶 (MAPK) 通路会被激活，导致下游促炎因子（如 TNF-α, IL-6, IL-1β）的大量释放，引发持续的炎症反应和组织损伤。","2. 表皮生长因子受体通路（EGFR/PI3K/Akt）：这是胃黏膜防御与修复系统的主流通路。激活该通路能促进胃上皮细胞增殖、迁移，并刺激黏液分泌，加速溃疡愈合与屏障重建。","3. 病原体-宿主互作通路：幽门螺杆菌（H. pylori）通过其毒力因子破坏胃黏膜，干扰宿主细胞信号传导，引发局部免疫应答。"],"dims":[{"d":"抗炎抑菌","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抑制 IκBα 激酶活性，阻止 IκBα 降解，从而阻断 NF-κB p65 亚基的核转位；同时抑制 MAPK 通路激活，显著降低 TNF-α、IL-6 等促炎因子表达 。"},{"n":"大蒜提取物","m":"大蒜素","mech":"破坏幽门螺杆菌细胞膜完整性，抑制其脲酶和生物膜形成；在体内外模型中显示干扰细菌与宿主细胞的黏附信号，辅助清除致病菌 。"}]},{"d":"黏膜修复","ings":[{"n":"山药提取物","m":"山药多糖","mech":"激活 EGFR/PI3K/Akt 信号级联反应，促进上皮细胞增殖与迁移；上调紧密连接蛋白（如 ZO-1, Claudin-1）的基因表达，加固物理屏障 。"},{"n":"猴头菇提取物","m":"猴头菇多糖","mech":"清除活性氧（ROS）缓解氧化应激；通过抑制 NF-κB 和 MAPK 通路减少炎症因子分泌，同时促进局部免疫微环境稳态 。"}]},{"d":"调和舒缓","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"竞争性抑制 NF-κB 核转位，下调促炎因子；激活 EGFR/MEK/ERK 通路加速黏液细胞再生，并上调 Nrf2/ARE 通路增强内源性抗氧化能力 。"}]}],"syn":"本配方通过三大路径协同重建胃黏膜稳态：1. 源头抗炎抑菌：姜黄素与大蒜素协同作用，姜黄素阻断NF-κB/MAPK炎症风暴，大蒜素直接干预幽门螺杆菌定植，从源头遏制炎症因子爆发；2. 加速黏膜修复：山药提取物与猴头菇提取物靶向激活EGFR/PI3K/Akt及免疫调节通路，一方面促进上皮细胞快速增殖填补缺损，另一方面通过上调ZO-1等紧密连接蛋白修复受损的物理屏障；3. 深层舒缓维稳：甘草提取物作为“调和剂”，双管齐下抑制残余炎症并激活Nrf2抗氧化通路，减轻氧化应激对新生组织的二次伤害。三者构建起“抗炎清源-促修再生-舒缓维稳”的立体防护网，多维度促进胃部舒适与黏膜自愈。"},{"no":3,"name":"安适派固体饮料","issue":"胃溃疡","sys":"消化与胃肠","sysId":1,"path":["胃溃疡的发生与发展是胃黏膜攻击因子与防御修复因子失衡的结果。其核心受以下底层分子生物学通路调控：","1. 炎症风暴通路（NF-κB & MAPK）：幽门螺杆菌（Hp）感染或胃酸侵蚀会引发强烈的炎症反应。NF-κB和MAPK通路的过度激活会导致下游促炎因子（如TNF-α, IL-1β, IL-6）的大量释放，加剧黏膜细胞凋亡和溃疡面扩大 。","2. 黏膜修复与增殖通路（PI3K/Akt & EGFR）：这是胃黏膜自我愈合的关键。表皮生长因子受体（EGFR）及其下游的PI3K/Akt信号通路被激活后，能促进黏膜上皮细胞增殖、迁移，并刺激黏液分泌，加速溃疡愈合 。","3. 抗氧化防御通路（Nrf2/HO-1）：溃疡微环境中存在大量的氧化应激。激活Nrf2/HO-1通路可以上调超氧化物歧化酶（SOD）等抗氧化酶的表达，清除自由基，减轻氧化损伤 。","4. 物理屏障重构通路（紧密连接蛋白）：胃溃疡会破坏肠上皮/胃上皮的紧密连接（如ZO-1, Occludin, Claudins）。修复这些连接蛋白是重建黏膜物理屏障、降低肠道/胃通透性（防止“肠漏”或胃酸渗透）的关键 。"],"dims":[{"d":"强化黏膜屏障","ings":[{"n":"猴头菇提取物","m":"猴头菇多糖","mech":"激活表皮生长因子受体 (EGFR) 及其下游的 PI3K/Akt 信号轴，促进防御因子（如PGE2、EGF、bFGF）分泌；同时抑制 NF-κB 炎症通路，减轻溃疡面炎症微环境 。"},{"n":"山药提取物","m":"山药多糖","mech":"山药黏液蛋白可直接激活 EGFR/PI3K/Akt 通路促进消化道黏膜上皮细胞增殖；同时山药多糖能上调紧密连接蛋白（如 ZO-1, Claudin-1, Occludin）的基因表达，修复受损的物理屏障 。"}]},{"d":"抗炎抑菌","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"通过抑制 IκBα 的磷酸化降解，阻断 NF-κB p65 亚基的核转位；同时抑制 MAPK（如 p38, JNK, ERK）级联反应，从而显著下调 TNF-α、IL-8 等促炎因子的转录与表达 。"},{"n":"蒲公英根提取物","m":"蒲公英多糖","mech":"激活细胞内的主抗氧化开关 Nrf2/HO-1 通路，增强 SOD 和 GSH-Px 等抗氧化酶活性；同时通过抑制 MAPK/ERK 通路，降低 IL-6、TNF-α 等炎症因子的含量 。"}]},{"d":"收敛生肌","ings":[{"n":"芡实提取物","m":"芡实多糖","mech":"芡实提取物中的活性成分可阻断 NF-κB 和 MAPKs 信号通路的激活，显著降低诱导型一氧化氮合酶（iNOS）和环氧合酶-2（COX-2）的过度表达，从而清除 NO 自由基，缓解急性炎症反应 。"}]}],"syn":"本配方通过三大路径协同重建胃黏膜稳态：1. 源头抗炎清创：姜黄素与蒲公英提取物双管齐下，姜黄素强力阻断NF-κB/MAPK炎症风暴，蒲公英通过Nrf2/HO-1通路清除氧化自由基，二者协同迅速压制炎症，为黏膜再生创造干净的微环境；2. 加速组织再生：猴头菇与山药提取物靶向激活EGFR/PI3K/Akt增殖信号，一方面促进上皮细胞快速迁移填补缺损，另一方面通过上调ZO-1等紧密连接蛋白加固物理防线，实现“生肌”与“屏障重建”同步；3. 辅助收敛舒缓：芡实提取物作为“收敛生肌”的辅助，通过抑制下游炎症介质（iNOS/COX-2）进一步稳固抗炎成果。三者构建起“抗炎清源-促修再生-收敛固本”的立体防护网，多维度促进胃溃疡面的全面愈合与胃部舒适。"},{"no":4,"name":"清幽派固体饮料","issue":"幽门螺旋杆菌感染","sys":"消化与胃肠","sysId":1,"path":["幽门螺旋杆菌（Hp）感染的顽固性主要源于其特殊的生存微环境、对宿主免疫的逃逸以及对胃黏膜物理屏障的破坏。其管理过程主要受三大底层生物学通路调控：","1. 细菌生存微环境与毒力调控通路：Hp依赖高胃酸和尿素酶生存。大蒜素等成分通过破坏其细胞膜或抑制尿素酶活性改变微环境；同时Hp分泌的CagA/VacA等毒力因子会引发宿主细胞骨架重排，益生菌可通过下调这些毒力基因（如VacA）的表达来削弱其致病力。","2. 黏膜免疫与炎症微环境通路：Hp感染会激活宿主的NF-κB及MAPK炎症信号轴，引发持续的免疫攻击导致黏膜损伤。姜黄素等天然多酚能有效阻断这些炎症通路的过度活化，减轻氧化应激。","3. 胃肠黏膜物理屏障与菌群互作通路：Hp通过破坏紧密连接蛋白（如ZO-1、Occludin）定植。猴头菇多糖和山药黏液蛋白可主动修复这些紧密连接；同时，补充特定益生菌能通过竞争性黏附和分泌短链脂肪酸，重建胃部微生态平衡。"],"dims":[{"d":"直接抑制与抗炎","ings":[{"n":"大蒜提取物","m":"大蒜素","mech":"作为强效有机硫化合物，直接穿透Hp细胞壁并与关键酶（如半胱氨酸蛋白酶）的硫醇基团反应，导致细菌死亡；同时能下调Hp毒力因子VacA和CagA的mRNA表达，削弱其致病力 。"},{"n":"姜黄提取物","m":"姜黄素","mech":"进入宿主胃上皮细胞后，通过抑制TLR4/MyD88介导的 NF-κB 和 MAPK（p38/JNK/ERK）信号通路的磷酸化级联反应，显著降低IL-6、TNF-α等促炎因子的转录水平 。"}]},{"d":"黏膜屏障强化","ings":[{"n":"猴头菇提取物","m":"猴头菇多糖","mech":"作为免疫调节剂，激活巨噬细胞表面的模式识别受体（PRRs），促进免疫突触形成；同时作为外源性膳食纤维，能上调胃上皮细胞紧密连接蛋白（ZO-1、Occludin）的表达，物理加固黏膜防线 。"},{"n":"山药提取物","m":"山药多糖","mech":"其富含的黏蛋白（Mucin）和胃黏液 stimulatory 成分，在受损胃黏膜表面形成一层疏水凝胶保护层；同时通过调节Wnt/β-catenin通路促进胃上皮细胞的增殖与迁移，加速溃疡面愈合 。"}]},{"d":"菌群调节","ings":[{"n":"复合益生菌粉（含乳杆菌/双歧杆菌）","m":"复合益生菌粉（含乳杆菌/双歧杆菌）","mech":"定植于胃黏膜后，通过产生乳酸和短链脂肪酸（SCFAs）降低局部pH值，竞争性占据Hp的黏附受体位点；并通过调节Th1/Th2免疫平衡，诱导调节性T细胞（Treg）分化，缓解免疫病理损伤 。"}]}],"syn":"本配方通过多维度通路协同构建抗Hp防御网：1. 直击病原与减毒：大蒜素直接破坏Hp结构并抑制其毒力因子（VacA/CagA）表达，从源头压制感染；2. 阻断炎症风暴：姜黄素深度阻断宿主NF-κB/MAPK炎症信号轴，迅速缓解Hp引发的剧烈胃黏膜炎症；3. 物理加固与微生态重建：猴头菇和山药提取物协同修复受损的紧密连接蛋白（ZO-1等），重建物理屏障，而益生菌复合粉则通过产酸、占位竞争和免疫调节，恢复胃部微生态平衡。三者协同，实现“杀菌减毒-抗炎修护-菌群平衡”的立体化抗Hp管理。"},{"no":5,"name":"顺和派固体饮料","issue":"胃食管返流","sys":"消化与胃肠","sysId":1,"path":["胃食管反流病（GERD）的发生与发展主要受以下三大核心生物学通路调控：","1. 食管下括约肌（LES）压力失衡与平滑肌松弛通路：LES是防止胃酸反流的物理阀门。当受神经肽（如NO/cGMP通路）或特定激动剂（如薄荷醇）影响时，LES平滑肌松弛，导致贲门压力下降，胃内容物极易逆流 。","2. 胃酸分泌与黏膜损伤通路：胃壁细胞上的质子泵（H+/K+-ATP酶）被激活，导致胃酸分泌过多。反流的胃酸及胃蛋白酶进入食管，破坏食管上皮细胞间的紧密连接，激活炎症信号，引发烧心等症状 。","3. 胃肠动力与胃排空延迟通路：胃排空延迟或胃内压增高（如胃动力不足、胃胀气）会增加腹压，迫使胃内容物向上挤压，突破LES防线 。"],"dims":[{"d":"黏膜保护","ings":[{"n":"魔芋粉","m":"葡甘露聚糖","mech":"在食管与胃液中迅速吸水形成高粘度凝胶屏障，物理阻隔胃酸及胃蛋白酶对食管上皮的侵蚀；同时增加胃内容物体积，通过机械张力刺激胃窦收缩，加速胃排空 。"},{"n":"阿拉伯胶","m":"可溶性膳食纤维（酸性多糖）","mech":"作为天然增稠剂，提高胃内容物黏度并延缓胃排空速度，降低胃内压；在食管黏膜表面形成保护膜，促进受损上皮细胞紧密连接蛋白（如Claudins）的修复 。"}]},{"d":"抗炎解痉","ings":[{"n":"薄荷提取物","m":"薄荷脑","mech":"作为TRPM8冷感受体的激动剂，作用于食管及胃平滑肌，引发平滑肌舒张；通过增加细胞内cGMP水平，降低细胞内钙离子浓度，发挥平滑肌钙离子拮抗作用，缓解胃痉挛 。"}]},{"d":"动力重塑","ings":[{"n":"陈皮提取物","m":"橙皮苷","mech":"刺激胃肠黏膜神经末梢释放胃动素和ACh，激活胃肠平滑肌收缩信号通路；调节胃肠激素（如胃泌素）分泌，增强胃排空速率，降低胃内压 。"}]},{"d":"调节胃酸","ings":[{"n":"苹果醋粉","m":"醋酸","mech":"随餐摄入后进入胃部，通过味觉感受器或局部pH值变化，负反馈调节胃窦G细胞释放胃泌素，轻度抑制壁细胞胃酸分泌；促进胃蛋白酶原向胃蛋白酶转化，改善蛋白质初步消化 。"}]}],"syn":"本配方通过四维通路协同重建胃肠稳态：1. 物理屏障与抗反流：魔芋粉与阿拉伯胶协同构建“物理凝胶盾牌”，魔芋粉在食管端快速成膜防腐蚀，阿拉伯胶在胃端增稠减压，双向阻断反流路径；2. 动力重塑与降腹压：陈皮提取物通过神经-体液调节激活胃肠平滑肌收缩，加速胃排空，从源头降低胃内压；3. 解痉舒缓：薄荷提取物靶向食管与胃平滑肌的钙离子通道与冷受体通路，缓解痉挛性疼痛与不适；4. 酸碱平衡微调：苹果醋粉通过局部负反馈机制轻度调节胃酸分泌与消化酶活性。四者协同，构建起“防反流-降腹压-缓痉挛-调分泌”的立体防御网，多维度改善胃食管反流症状。"},{"no":6,"name":"舒畅派固体饮料","issue":"腹泻","sys":"消化与胃肠","sysId":1,"path":["腹泻的本质是肠道水-电解质分泌与吸收失衡，其核心受三大分子生物学通路调控：","1. 肠上皮离子分泌与水转运通路（cAMP/CFTR/CaCC）：致病因素（如霍乱毒素、致病性大肠杆菌等）通过激活腺苷酸环化酶大幅提升细胞内cAMP水平，进而开启顶端膜的囊性纤维化跨膜传导调节子（CFTR）及钙激活氯通道（CaCC），驱动Cl⁻大量分泌并伴随Na⁺、H₂O被动外流，形成水样泻 。","2. 紧密连接屏障重构通路（ZO-1/Occludin/Claudin）：肠道炎症信号（尤其是NF-κB）会驱动闭锁小带蛋白-1（ZO-1）、Occludin、Claudin-1等紧密连接蛋白发生细胞内吞与重组，导致细胞旁路通透性升高，血浆蛋白与水分大量漏入肠腔 。","3. 炎症信号与免疫调节通路（NF-κB/MAPK/TLR4）：致病菌及其毒素通过TLR4等模式识别受体激活NF-κB与MAPK级联，诱发TNF-α、IL-6、IL-1β、COX-2、iNOS等促炎介质爆发性表达，加剧肠黏膜损伤与分泌紊乱；而益生菌及短链脂肪酸（SCFAs）则通过激活芳香烃受体（AHR）/GPR43等通路反向抑制NF-κB，恢复免疫稳态 。"],"dims":[{"d":"吸附毒素","ings":[{"n":"苹果果胶","m":"半乳糖醛酸","mech":"在肠道内形成高粘度凝胶网络，物理吸附水分及致病菌毒素（如霍乱毒素），减少肠腔内游离水；同时作为发酵底物被结肠菌群降解为短链脂肪酸，促进水电解质回吸收 。"}]},{"d":"收敛保护","ings":[{"n":"芡实提取物","m":"芡实多糖","mech":"芡实多糖可抑制RAW 264.7巨噬细胞中IL-6、IL-1β、TNF-α的表达，促进M2型巨噬细胞极化，从负向调控NF-κB介导的炎症风暴；其降解产物丁酸可激活GPR43受体，进一步抑制NF-κB通路 。"},{"n":"白扁豆提取物","m":"白扁豆多糖","mech":"白扁豆多糖可上调Zonula occluden-1（ZO-1）表达，恢复肠屏障完整性；调节氧化还原系统，降低肠道氧化应激；同时被菌群发酵为短链脂肪酸，丰富Blautia、Roseburia等有益菌，营造抗炎微环境 。"}]},{"d":"黏膜修复","ings":[{"n":"山药提取物","m":"山药多糖","mech":"山药来源的6,7-二羟基-2,4-二甲氧基菲（PC4）靶向抑制COX-2，阻断NF-κB的正反馈环路，下调IL-8、TNF-α等促炎因子；山药多糖同步上调Claudin-1、Mucin-1等屏障蛋白，维护肠上皮完整 。"}]},{"d":"菌群调节","ings":[{"n":"复合益生菌粉（含鼠李糖乳杆菌）","m":"复合益生菌粉（含鼠李糖乳杆菌）","mech":"益生菌通过占据肠上皮黏附位点竞争性排斥致病菌；显著上调Caco-2细胞中紧密连接蛋白ZO-1的基因与蛋白表达，抵消IBS-D等病理状态下肠黏膜通透性升高；并通过分泌短链脂肪酸调控免疫平衡 。"}]}],"syn":"本配方通过四维通路协同重建肠道稳态：1. 物理吸附与减渗：苹果果胶在肠腔内形成凝胶矩阵，直接吸附毒素与多余水分，从源头减少水样便；2. 屏障加固与旁细胞封堵：白扁豆多糖与山药提取物双轨并行，前者上调ZO-1修复紧密连接，后者通过NF-κB/COX-2通路抗炎并补充Claudin-1/Mucin-1，共同封堵细胞旁路渗漏；3. 炎症风暴压制：芡实多糖与山药多酚协同抑制NF-κB/MAPK信号轴，降低TNF-α、IL-6、COX-2等促炎介质水平，迅速缓解肠黏膜炎症；4. 微生态重塑：益生菌复合粉通过上调ZO-1、分泌短链脂肪酸、竞争性占位三大机制，重建肠道微生态平衡与免疫稳态。四者构建起\"物理止泻-屏障封堵-抗炎消肿-菌群平衡\"的立体防护网，多维度恢复肠道正常水吸收与动力节律。"},{"no":7,"name":"安舒派固体饮料","issue":"肠易激综合征","sys":"消化与胃肠","sysId":1,"path":["肠易激综合征（IBS）是一种典型的\"脑-肠-微生态\"多维调控紊乱疾病，其核心受以下几条底层分子生物学通路调控：","1. 脑肠轴与内脏高敏感通路（HPA轴 / 5-HT / TRPV1）：心理应激通过下丘脑-垂体-肾上腺（HPA）轴释放CRH，经迷走神经传入肠道；肠嗜铬细胞（EC）分泌的5-羟色胺（5-HT）调控胃肠动力与内脏感觉，而瞬时受体电位香草酸亚型1（TRPV1）等伤害性感受器的致敏，是IBS内脏高敏感的核心机制 。","2. 神经-免疫互作与低度炎症通路（TLR4 / NF-κB / Mast Cell）：IBS患者黏膜中肥大细胞、巨噬细胞、T细胞等免疫细胞被激活，通过TLR4等模式识别受体启动NF-κB信号级联，释放组胺、TNF-α、IL-6等介质，与肠神经形成\"神经-免疫\"正反馈，放大疼痛与不适信号 。","3. 肠道菌群-代谢物通路（SCFAs / GPR41-43）：菌群失调导致短链脂肪酸（SCFAs，尤其是丁酸）产生不足，影响肠上皮细胞能量供应、紧密连接完整性及免疫调节；菌群代谢产物通过G蛋白偶联受体GPR41/43发挥抗炎与屏障保护作用 。","4. 肠上皮紧密连接屏障通路（ZO-1 / Occludin / Claudin）：IBS患者存在\"肠漏\"特征，紧密连接蛋白ZO-1、Occludin、Claudin-1表达异常，导致肠道通透性升高，抗原与毒素渗漏触发黏膜免疫激活 。"],"dims":[{"d":"舒缓解痉","ings":[{"n":"薄荷提取物","m":"薄荷脑","mech":"作为TRPM8冷感受体的特异性激动剂，激活肠道平滑肌冷感受通路，引起电压依赖性钙通道封闭，降低胞内Ca²⁺浓度，从而直接松弛过度痉挛的结肠平滑肌；同时通过迷走神经传入纤维抑制内脏伤害性信号上传，缓解内脏高敏感 。"}]},{"d":"调节菌群","ings":[{"n":"复合益生菌粉（含婴儿双歧杆菌）","m":"复合益生菌粉（含婴儿双歧杆菌）","mech":"该菌株在IBS患者中可显著改善腹痛、腹胀与排便异常；机制上通过调节宿主细胞因子谱（如降低促炎因子比例、提升抗炎因子平衡），抑制TLR4/NF-κB介导的黏膜免疫过度激活，同时产生SCFAs下调肥大细胞活化，修复肠神经-免疫互作失衡 。"},{"n":"菊粉","m":"果聚糖","mech":"作为优质益生元直达结肠，被双歧杆菌等有益菌选择性发酵，产生乙酸、丙酸、丁酸等SCFAs；丁酸通过激活GPR41/43受体，促进肠上皮细胞增殖与紧密连接蛋白（ZO-1、Occludin）表达，同时抑制NF-κB炎症通路，发挥屏障修复与免疫稳态调节双重作用 。"}]},{"d":"抗炎镇痛","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"强效多酚类抗炎分子，可抑制NF-κB核转位及下游MAPK/p38信号级联，显著降低IBS患者结肠组织中TNF-α、IL-6等促炎因子水平；同时通过上调Occludin表达改善肠黏膜紧密连接结构，从\"抗炎+屏障修复\"双路径缓解IBS低度炎症表型 。"}]},{"d":"调节神经","ings":[{"n":"茶叶茶氨酸","m":"L-茶氨酸","mech":"穿越血脑屏障后促进中枢抑制性神经递质GABA的合成与释放，调节HPA轴活性，降低应激状态下皮质醇水平，从\"脑\"端切断应激-肠脑轴恶性循环；同时可通过调节菌群-短链脂肪酸-脑轴，下调TLR9/NLRP3/Caspase-1炎症小体通路，恢复肠屏障完整性 。"}]}],"syn":"本配方通过\"脑-肠-微生态\"三维立体协同，构建IBS全面管理网络：1. 快速对症解痉：薄荷醇靶向TRPM8/Ca²⁺通路，迅速平息结肠平滑肌痉挛，缓解腹痛与急迫感；2. 深层抗炎镇痛：姜黄素强力阻断NF-κB/MAPK炎症风暴，降低黏膜促炎因子水平，消除隐痛与低度炎症；3. 微生态重塑与屏障加固：婴儿双歧杆菌与菊粉双轨并行——前者直接调节宿主细胞因子谱、修复神经-免疫互作失衡，后者通过发酵产生SCFAs上调紧密连接蛋白（ZO-1/Occludin），共同重建肠道物理与免疫屏障；4. 脑肠轴神经调节：L-茶氨酸通过GABA能系统舒缓中枢神经，从根源上切断情绪压力对胃肠道的负面影响，并经由菌群-代谢物-脑轴进一步维稳肠屏障。四者协同，实现\"解痉止痛-抗炎消敏-菌群平衡-神经舒缓\"的全面管理，多维度恢复肠道稳态。"},{"no":8,"name":"畅道派固体饮料","issue":"便秘","sys":"消化与胃肠","sysId":1,"path":["功能性便秘的核心机制主要集中在以下三个层面的失衡：首先是肠道水合作用与物理推进机制失效。大肠的主要功能之一是吸收水分以维持粪便成形，当粪便在肠道内停留时间过长，水分被过度重吸收，粪便变干硬。同时，若缺乏足够的膳食纤维作为“骨架”，粪便体积不足以撑开肠壁触发排便反射，导致慢传输型便秘。其次是肠道微生态与代谢物失衡。有害菌或菌群失调会导致肠道内短链脂肪酸（SCFAs）产量下降，无法有效刺激肠道神经丛或直接作用于肠上皮细胞促进蠕动。最后是肠神经系统与脑肠轴信号传导障碍。肠道动力受5-羟色胺（5-HT）能神经支配，便秘患者常存在肠道内分泌细胞5-HT合成不足或肠嗜铬细胞（EC）数量减少，导致结肠平滑肌收缩乏力，肠动力低下。"],"dims":[{"d":"增加体积","ings":[{"n":"圆苞车前子壳粉","m":"可溶性膳食纤维","mech":"遇水后形成高度膨胀的三维网状凝胶结构，物理性增加粪便体积；同时激活肠道黏膜下的5-HT4受体，促进乙酰胆碱释放，激发肠壁平滑肌产生节律性收缩，推动肠内容物向前传输 。"}]},{"d":"润滑肠道","ings":[{"n":"魔芋粉","m":"葡甘露聚糖","mech":"极强的吸水性形成高黏度胶状物质，包裹并软化坚硬粪便，降低肠道内容物与肠壁的摩擦阻力；其降解产物（魔芋寡糖）能通过激活5-HT4R/cAMP/PKA/p-CREB信号通路，促进平滑肌细胞增殖，显著改善肠道蠕动功能 。"}]},{"d":"促动力","ings":[{"n":"低聚木糖","m":"低聚木糖","mech":"作为优质益生元不被上消化道消化，直达结肠后被双歧杆菌等有益菌选择性发酵，产生大量短链脂肪酸（SCFAs，如丁酸、丙酸）。SCFAs能降低肠道pH值，直接刺激肠壁神经丛，并增加肠道上皮细胞的水合作用，软化粪便并促进蠕动 。"}]},{"d":"菌群调节","ings":[{"n":"复合益生菌粉（含乳杆菌/双歧杆菌）","m":"复合益生菌粉（含乳杆菌/双歧杆菌）","mech":"竞争性占据肠道上皮黏附位点，抑制致病菌定植；通过调节“肠-脑轴”，促进肠道内分泌细胞合成和释放5-HT（5-羟色胺），上调肠道c-Kit/ICC（间质细胞）蛋白表达，修复受损的肠神经信号传导，从根本上恢复结肠动力 。"}]}],"syn":"本配方通过四维通路协同重建肠道动力与微生态平衡：1. 物理扩容与水合：圆苞车前子壳粉凭借其超高吸水膨胀率，为粪便提供物理骨架并增加体积；2.润滑产羔：魔芋粉则利用葡甘露聚糖的强保水性对粪便进行润滑和软化，两者双管齐下，迅速缓解干硬排便困难；3. 代谢激活与促动力：低聚木糖作为益生元，在结肠内发酵产生SCFAs，直接刺激肠道神经并促进水合；4. 神经重塑与动力恢复：菌复合粉通过调节肠脑轴，促进5-HT分泌并修复ICC间质细胞，从神经内分泌层面唤醒肠道自主蠕动能力。四者构建起“物理推挤-化学润滑-代谢激活-神经重塑”的立体通便网，多维度恢复肠道正常的传输节律与排便功能。"},{"no":9,"name":"颐和派固体饮料","issue":"慢性肠炎","sys":"消化与胃肠","sysId":1,"path":["慢性肠炎（如溃疡性结肠炎、克罗恩病）的核心病理特征为肠道黏膜屏障的结构性破坏与持续的免疫激活，其底层生物学通路主要包括：","1. 炎症信号级联风暴（NF-κB/MAPK）：在病原体或内源性危险信号的刺激下，肠道固有层免疫细胞及上皮细胞内的 NF-κB 和 MAPK 信号通路被过度激活。这会导致下游促炎细胞因子（如 TNF-α、IL-6、IL-1β）以及炎症介质（如 COX-2 衍生的前列腺素）的大量释放，引发肠道黏膜的持续低度炎症和溃疡形成 。","2. 氧化应激与抗氧化防御失衡（Nrf2/ARE）：炎症状态下，肠道局部会产生大量的活性氧（ROS），导致线粒体功能障碍和脂质过氧化。此时，细胞内的 Nrf2（核因子E2相关因子2）/ARE（抗氧化反应元件）抗氧化通路会被抑制，无法有效上调超氧化物歧化酶（SOD）、过氧化氢酶（CAT）等内源性抗氧化酶，从而加剧上皮细胞的凋亡 。","3. 肠道物理屏障“紧密连接”解体：氧化应激和促炎因子会攻击肠上皮细胞的细胞骨架，导致跨膜蛋白（如 Occludin、Claudins）及其支架蛋白（如 ZO-1）的表达下调或磷酸化异常。紧密连接（Tight Junctions）的破坏使得肠道通透性显著增加（即“肠漏”），病原体和毒素得以轻易穿过肠壁进入血液循环，形成恶性循环 。","4. 免疫微生态失衡（Th1/Th17 vs Treg）：慢性肠炎患者常伴有肠道菌群多样性下降和有益菌（如短链脂肪酸产生菌）耗竭。这种微生态失衡会打破肠道免疫稳态，导致辅助性T细胞 Th1/Th17 过度活化，而具有免疫抑制功能的调节性T细胞（Treg）功能受损，进一步放大炎症反应 。"],"dims":[{"d":"抗炎修复","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"作为多靶点天然抗炎剂，竞争性抑制 IKK 激酶活性，阻断 IκBα 降解，从而抑制 NF-κB p65 亚基向细胞核转位；同时下调 MAPK 通路磷酸化，显著降低 TNF-α、IL-6 及 COX-2 的表达水平，从源头平息肠道炎症风暴 。"}]},{"d":"黏膜修复","ings":[{"n":"山药提取物","m":"山药多糖","mech":"山药多酚（如PC4组分）能有效抑制 NF-κB/COX-2 信号通路的激活；同时上调肠上皮细胞间紧密连接蛋白（Occludin、Claudin-1、ZO-1）的基因转录与蛋白表达，减少上皮细胞凋亡，加固肠道机械物理屏障 。"},{"n":"鱼胶原蛋白肽","m":"胶原蛋白肽","mech":"富含疏水氨基酸及谷氨酰胺，可被肠上皮细胞高效摄取。通过激活 Nrf2 抗氧化通路，上调抗氧化酶表达；同时抑制 MLCK-p-MLC 通路，阻止肌动球蛋白收缩导致的紧密连接开放，显著提高肠道上皮屏障的完整性 。"}]},{"d":"免疫调节","ings":[{"n":"洋葱提取物","m":"槲皮素","mech":"通过 AMPK 介导的双重调控机制，一方面抑制 NF-κB 介导的促炎因子转录，另一方面强力激活 Nrf2/HO-1（血红素氧合酶-1）抗氧化轴，清除过量 ROS，并诱导 M2 型巨噬细胞极化，促进组织修复 。"},{"n":"复合益生菌粉（含乳杆菌/双歧杆菌）","m":"复合益生菌粉（含乳杆菌/双歧杆菌）","mech":"竞争性占据肠道上皮黏附位点，分泌广谱抑菌物质（如细菌素）抑制致病菌定植；调节 Th17/Treg 免疫平衡，促进抗炎因子 IL-10 分泌；发酵产生 短链脂肪酸（SCFAs）（如丁酸盐），为结肠上皮细胞提供能量并维护弱酸性微环境 。"}]},{"d":"抗氧化","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"强力清除肠道局部过量的活性氧（ROS）；通过激活 Nrf2-GPX4 抗氧化通路，抑制铁死亡（Ferroptosis）过程；同时下调 NF-κB 及 NLRP3 炎症小体 的活化，减轻氧化应激诱导的黏膜损伤 。"}]}],"syn":"本配方通过多维通路协同重建肠道稳态：1. 深层抗炎与免疫驯化：姜黄素强力阻断 NF-κB/MAPK 炎症风暴，迅速压制肠道低度炎症状态；槲皮素与绿茶提取物（EGCG）则通过激活 Nrf2/HO-1 等抗氧化轴清除过量 ROS，并诱导 M2 型巨噬细胞极化，恢复 Th17/Treg 免疫平衡。2. 物理屏障与细胞旁封堵：山药提取物与鱼胶原蛋白肽双轨并行，前者上调 Occludin/Claudin-1/ZO-1 修复紧密连接，后者通过 MLCK 通路抑制肌动球蛋白收缩，共同封堵细胞旁路渗漏。3. 微生态重塑：乳杆菌与双歧杆菌通过“占位竞争+代谢物滋养”重建肠道微生态平衡，分泌 SCFAs 维稳免疫。构建起“抗炎消敏-屏障封堵-免疫重塑-微生态维稳”的立体防护网，多维度促进慢性肠炎黏膜愈合与功能恢复。"},{"no":10,"name":"清蕴派固体饮料","issue":"肠息肉","sys":"消化与胃肠","sysId":1,"path":["肠息肉（尤其是腺瘤性息肉）的发生发展与肠道微生态失衡、慢性低度炎症、氧化应激损伤及上皮细胞异常增殖密切相关。其核心病理通路涉及：","1. Wnt/β-catenin信号通路异常：该通路的持续激活是导致肠道隐窝干细胞过度增殖、形成腺瘤性息肉的关键驱动因子。","2. 慢性炎症微环境（NF-κB/COX-2）：肠道菌群失调引发的代谢性内毒素或胆汁酸代谢异常，会激活肠黏膜的NF-κB通路，促使TNF-α、IL-6及COX-2等促炎介质高表达，长期的炎症刺激是息肉恶变的重要土壤。","3. 氧化应激与DNA损伤（Nrf2/ARE）：活性氧（ROS）自由基的累积会造成肠道上皮细胞DNA突变，若机体抗氧化防御系统（如Nrf2通路）未能及时清除，将加速细胞异常克隆增殖。","4. 胆汁酸-肠道菌群恶性循环：具核梭杆菌等促癌菌群富集，将初级胆汁酸转化为具有细胞毒性的次级胆汁酸，直接损伤黏膜并促进上皮细胞增殖。"],"dims":[{"d":"抗氧化","ings":[{"n":"西兰花种子浓缩粉","m":"萝卜硫素","mech":"强力激活Nrf2/ARE抗氧化防御通路，上调超氧化物歧化酶（SOD）、过氧化氢酶及谷胱甘肽（GSH）水平，高效清除肠道ROS自由基 。"}]},{"d":"抗炎","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抑制NF-κB/MAPK/COX-2炎症信号轴，下调TNF-α、IL-6、IL-1β等促炎因子表达 。"}]},{"d":"免疫调节","ings":[{"n":"复合益生菌粉（含乳杆菌/双歧杆菌）","m":"复合益生菌粉（含乳杆菌/双歧杆菌）","mech":"竞争性排斥具核梭杆菌等致病菌；代谢产生丁酸（Butyrate）等短链脂肪酸，促进Treg细胞分化，抑制Th17介导的炎症 。"},{"n":"茯苓提取物","m":"茯苓多糖","mech":"激活巨噬细胞与T淋巴细胞，调节TLR/NLRP3炎症小体通路，降低IL-6等炎性细胞因子水平 。"}]},{"d":"细胞健康","ings":[{"n":"碳酸钙","m":"碳酸钙","mech":"在肠腔内与游离的次级胆汁酸及游离脂肪酸结合，形成不溶性钙盐排出体外，减少其对结肠上皮细胞的毒性刺激；同时调节细胞周期 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"通过激活Nrf2/GPX4通路抑制铁死亡，并干扰Wnt/β-catenin/β-catenin信号传导，阻断细胞异常增殖 。"}]}],"syn":"本配方聚焦于肠息肉的预防和风险控制，通过“抗氧化-抗炎-免疫调节-细胞健康”多维度协同。抗氧化维度的西兰花种子水提物和抗炎维度的姜黄素是基础，减少导致息肉发生的氧化损伤和慢性炎症。免疫调节维度的益生菌和香菇多糖则通过增强免疫监视功能，及时清除异常细胞。细胞健康维度的钙和EGCG为结肠细胞提供必要的营养支持，维护其正常功能。协同降低息肉发生风险。"},{"no":11,"name":"敏安派固体饮料","issue":"过敏性鼻炎","sys":"免疫与过敏","sysId":2,"path":["过敏性鼻炎（Allergic Rhinitis, AR）的核心病理机制是机体对无害过敏原（如尘螨、花粉）产生的异常免疫应答，主要涉及以下底层通路：","1. Th2型免疫极化与IgE过度合成：过敏原被鼻黏膜树突状细胞捕获并提呈，激活初始T细胞向Th2细胞分化，进而促进B细胞产生大量特异性IgE抗体。这些IgE附着于肥大细胞和嗜碱性粒细胞表面，形成致敏状态。","2. 肥大细胞脱颗粒与速发相反应：当机体再次接触相同过敏原时，过敏原交联表面的IgE，触发肥大细胞剧烈脱颗粒，瞬间释放组胺、白三烯、前列腺素等大量炎症介质，导致血管扩张、通透性增加及腺体分泌亢进，引发鼻痒、喷嚏、流清涕等速发症状。","3. 嗜酸性粒细胞浸润与迟发相炎症：炎症信号进一步招募并活化嗜酸性粒细胞等炎症细胞，释放IL-4、IL-5、IL-13等促炎因子，造成鼻黏膜持续性水肿、组织损伤和高反应性。","4. 氧化应激与黏膜屏障受损：过敏原刺激诱导大量活性氧（ROS）产生，引发氧化应激，破坏鼻黏膜上皮细胞间的紧密连接，削弱物理屏障功能，加剧过敏反应。"],"dims":[{"d":"抗炎、稳定细胞","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抑制MAPK/NF-κB信号通路的激活，下调TNF-α、IL-1β、IL-6、IL-8等下游促炎因子表达；同时降低血清组胺与OVA特异性IgE水平，从源头抑制肥大细胞介导的炎症反应 。"}]},{"d":"抗组胺、调节免疫","ings":[{"n":"荞麦花粉提取物","m":"黄酮","mech":"抑制脾细胞IL-4的分泌，下调Th2型细胞因子产生，纠正Th1/Th2免疫偏移，从而降低机体致敏状态与过敏反应强度 。"}]},{"d":"抗氧化","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"降低血清IgE和组胺浓度，抑制鼻灌洗液中IL-1β、IL-4、IL-6等炎症因子及鼻黏膜COX-2的表达；同时激活Nrf2介导的抗氧化通路，上调谷胱甘肽S-转移酶、谷胱甘肽过氧化物酶等抗氧化酶，清除活性氧（ROS）。"}]},{"d":"修复舒缓","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"抑制NF-κB信号通路活化，降低p-NF-κB p65和p-IκBα表达，从而下调组胺诱导的MUC5AC黏蛋白过度表达、IL-6/IL-8等炎症因子释放，并恢复水通道蛋白AQP5水平，修复鼻黏膜屏障功能 。"}]}],"syn":"本配方通过多维度通路协同，构建\"抗炎-抗敏-修复\"三位一体的防护网：1. 急性期强力压制：姜黄提取物迅速抑制MAPK/NF-κB炎症通路，从源头阻断炎症级联反应，降低组胺与IgE水平；与此同时，荞麦花粉提取物发挥免疫调节作用，抑制Th2型细胞因子产生，纠正免疫失衡，迅速平息鼻痒、喷嚏和流涕等急性过敏症状。2. 缓解期抗氧化与屏障重建：绿茶浓缩粉深度清除氧化自由基，减轻氧化应激对鼻黏膜的持续破坏，并抑制COX-2等炎症介质表达；甘草提取物则致力于受损上皮屏障的修复与舒缓，通过抑制NF-κB通路降低MUC5AC黏蛋白过度分泌、恢复AQP5水通道功能，重建鼻腔生理稳态。多维协同，不仅快速缓解症状，更注重调节免疫失衡与修复受损组织，实现对过敏性鼻炎的长期维稳与体质改善。"},{"no":12,"name":"恒元派固体饮料","issue":"桥本氏甲状腺炎","sys":"代谢与内分泌","sysId":3,"path":["桥本氏甲状腺炎（Hashimoto's Thyroiditis, HT）是最常见的自身免疫性甲状腺疾病，本质是遗传易感个体在环境触发下，免疫系统错误攻击甲状腺滤泡细胞，导致甲状腺组织淋巴细胞浸润、纤维化和功能减退。其核心受以下几条底层分子生物学通路调控：","1. 自身免疫应答与抗体产生通路（Th1/Th2 偏移与 Treg/Th17 失衡）：甲状腺过氧化物酶（TPO）和甲状腺球蛋白（Tg）作为自身抗原被树突状细胞提呈，激活 CD4⁺ T 细胞。在 HT 中，辅助性 T 细胞亚群失衡——Th1 和 Th17 过度活化，而具有免疫抑制功能的调节性 T 细胞（Treg）数量和功能相对不足，导致 B 细胞产生大量抗 TPO 抗体（TPOAb）和抗 Tg 抗体（TgAb），通过抗体依赖的细胞介导的细胞毒作用（ADCC）攻击甲状腺滤泡。","2. 氧化应激与 H₂O₂ 蓄积通路：甲状腺激素合成过程中，甲状腺过氧化物酶（TPO）利用 H₂O₂ 将碘离子氧化为活性碘，这一过程会持续产生 H₂O₂。甲状腺是人体内硒浓度最高的器官，硒依赖的谷胱甘肽过氧化物酶（GPx）等硒蛋白负责清除 H₂O₂。当硒缺乏或硒蛋白活性下降时，H₂O₂ 蓄积引发脂质过氧化，造成滤泡细胞氧化损伤，释放自身抗原进一步放大自身免疫反应。","3. NF-κB 介导的炎症放大通路：氧化应激产生的活性氧（ROS）会激活抑制性 κB 蛋白（IκB）的磷酸化降解，促使 NF-κB 向细胞核转位，作为主控转录因子显著上调 IL-6、TNF-α 等促炎细胞因子表达，招募更多淋巴细胞浸润，形成\"氧化应激-炎症-组织损伤\"的恶性循环。","4. 甲状腺激素代谢通路（脱碘酶功能受损）：碘甲腺原氨酸脱碘酶（DIOs）是一类硒蛋白，负责外周组织 T4 向活性 T3 的转化。硒缺乏会导致 DIOs 活性下降，影响甲状腺激素的活化与代谢稳态，加剧甲状腺功能减退的临床表现。"],"dims":[{"d":"免疫调节","ings":[{"n":"巴西蘑菇提取物","m":"真菌多糖（β-葡聚糖）","mech":"激活巨噬细胞、树突状细胞及自然杀伤（NK）细胞活性，促进Th1型免疫应答，调节失衡的Th1/Th2免疫亚群，从而平息针对甲状腺组织的异常自身免疫攻击 。"}]},{"d":"抗炎调节","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"强力抑制 NF-κB 信号通路的过度活化，下调促炎细胞因子（如 TNF-α, IL-6, IL-1β）的转录与释放，有效压制甲状腺滤泡周围的慢性淋巴细胞性炎症状态 。"}]},{"d":"甲状腺支持","ings":[{"n":"葡萄糖酸锌","m":"葡萄糖酸锌","mech":"1. 激素代谢支持：作为多种脱碘酶的核心辅因子，直接参与并加速无活性的 T4 向具有生物活性的 T3 的转化，维持甲状腺功能稳态 。2. 免疫微调：精细调节 T 细胞分化，抑制过度活跃的 Th1 反应，促进 Th2 和调节性 T 细胞（Tregs）功能，帮助恢复免疫耐受 。3. 抗氧化防御：通过金属硫蛋白（MT）及超氧化物歧化酶（SOD）等途径，减少自由基对甲状腺滤泡细胞的脂质过氧化损伤 。"}]},{"d":"抗氧化","ings":[{"n":"针叶樱桃提取物","m":"维生素C","mech":"作为强效的水溶性抗氧化剂，直接中和自由基；促进胶原蛋白及甲状腺激素合成所需的微量营养底物合成；协同锌元素构成“酶性+非酶性”双重抗氧化屏障，加速受损甲状腺滤泡上皮细胞的修复 。"}]}],"syn":"本配方通过多维度通路协同，构建桥本氏甲状腺炎的立体防护网：1. 免疫重塑与抗炎压制：巴西蘑菇粉从源头调节失衡的 Th1/Th2 免疫应答，平息自身免疫攻击；与此同时，姜黄提取物精准抑制 NF-κB 炎症信号通路，迅速压制甲状腺局部的慢性炎症状态，阻断免疫损伤的恶性循环。2. 腺体保护与功能维稳：葡萄糖酸锌作为甲状腺健康的“功能助推器”，一方面通过激活脱碘酶系保障 T3/T4 激素代谢稳态，缓解甲减相关症状；另一方面微调免疫系统恢复耐受，并协同维生素C发挥抗氧化保护，减少腺体细胞的氧化应激破坏。3. 组织修复与抗氧化支援：针叶樱桃粉提供高浓度天然维生素C，与锌协同构建抗氧化防线，清除漏网的自由基，为受损的甲状腺滤泡组织提供修复原料，促进腺体结构与功能的恢复。多维协同，旨在打破“自身免疫攻击→氧化应激→慢性炎症→腺体纤维化”的恶性循环，实现桥本氏甲状腺炎的长期维稳与免疫重建。"},{"no":13,"name":"沁润派固体饮料","issue":"荨麻疹","sys":"免疫与过敏","sysId":2,"path":["荨麻疹的本质是皮肤肥大细胞（Mast Cell）作为核心效应细胞，在多重免疫与神经信号刺激下发生异常活化与脱颗粒。其核心受以下几条底层分子生物学通路调控：","1. FcεRI交联与酪氨酸激酶信号通路（脱颗粒核心引擎）：自身抗原特异性IgE与肥大细胞表面高亲和力受体FcεRI结合并交联，激活Lyn/Syk酪氨酸激酶，进一步磷酸化磷脂酶Cγ（PLCγ），催化生成第二信使IP₃和DAG，引发胞内Ca²⁺爆发性释放与蛋白激酶C（PKC）激活，最终驱动组胺、类胰蛋白酶等预合成介质的快速释放，并启动白三烯、前列腺素等新合成介质的生成 。","2. 非IgE旁观者激活通路（MRGPRX2与补体-凝血级联）：皮肤肥大细胞高表达的Mas相关G蛋白偶联受体X2（MRGPRX2）可被P物质等神经肽直接激活，绕过FcεRI引发脱颗粒；同时，嗜酸性粒细胞通过组织因子（TF）启动外源性凝血级联，生成的凝血酶裂解C5产生C5a，C5a通过C5aR反向激活肥大细胞，形成\"凝血-补体-肥大细胞\"的放大环路 。","3. 2型炎症细胞因子网络与NF-κB/MAPK转录激活：活化的肥大细胞释放IL-4、IL-13等2型细胞因子，促进B细胞类别转换产生更多IgE，并上调FcεRI表达；同时NF-κB与MAPK信号通路被持续激活，驱动COX-2、iNOS及多种趋化因子的转录，维持迟发相的慢性炎症 。","4. 神经免疫瘙痒通路：组胺、白三烯及P物质等介质直接刺激皮肤感觉神经末梢，通过TRPV1等伤害性感受器上传瘙痒信号；同时神经肽反向激活肥大细胞，形成\"瘙痒-搔抓-炎症\"的恶性循环 。"],"dims":[{"d":"稳定肥大细胞","ings":[{"n":"洋葱提取物","m":"槲皮素","mech":"1. 稳定肥大细胞膜：通过直接嵌入肥大细胞膜脂双层，增加膜稳定性，阻断 IgE/FcεRI 交联引发的 Syk 酪氨酸激酶活化及下游 PLCγ-IP₃/Ca²⁺ 信号级联，从而抑制组胺、类胰蛋白酶等预合成介质的爆发式释放 。2. 抑制非 IgE 通路：有效阻断 P 物质等神经肽对 MRGPRX2 受体的激活，防止肥大细胞的旁观者脱颗粒 。3. 抗炎转录抑制：下调 NF-κB 与 MAPK 信号通路的磷酸化激活，减少 TNF-α、IL-6 等促炎细胞因子的基因转录 。"}]},{"d":"抗炎与免疫调节","ings":[{"n":"鱼油（EPA/DHA）","m":"EPA/DHA","mech":"1. 竞争性抑制促炎介质：作为细胞膜磷脂的重要组成部分，竞争性抑制磷脂酶 A₂ (PLA₂) 对花生四烯酸的释放，从而显著减少促炎介质前列腺素 E2 (PGE2) 和白三烯 B4 (LTB4) 的生成 。2. 促消退介质 (SPMs) 前体：在体内转化为 Resolvins、Protectins 等特异性促炎症消退介质，主动驱动炎症的消退，恢复免疫稳态 。3. 免疫平衡调节：调节树突状细胞功能，促进调节性 T 细胞 (Tregs) 分化，抑制 Th2 型免疫偏移 。"}]},{"d":"舒缓止痒","ings":[{"n":"薄荷提取物","m":"薄荷脑","mech":"激活皮肤感觉神经末梢的 TRPM8 冷觉受体，产生强烈的瞬时清凉感。这种物理冷刺激可有效干扰瘙痒信号的神经传导，降低神经末梢敏感度，迅速缓解抓挠带来的二次损伤与红肿 。"}]}],"syn":"本配方通过多维度通路协同，构建荨麻疹的立体防护网：1. 源头阻敏与免疫调节：洋葱提取物富含的槲皮素深入免疫底层，既通过稳定肥大细胞膜直接减少组胺的初始爆发，又通过抑制 NF-κB/MAPK 通路压制炎症因子的释放；与此同时，鱼油（EPA/DHA）通过重塑细胞膜脂质结构，从源头竞争性抑制促炎因子的生成，并主动平息炎症风暴，双管齐下阻断过敏进程。2. 表层物理舒缓与神经镇静：薄荷提取物作用于皮肤外周神经，利用 TRPM8 冷觉受体机制迅速产生清凉感，有效掩盖并阻断剧烈的瘙痒信号，配合洋葱提取物的抗炎舒缓作用，迅速平复皮肤风团。三者协同，不仅针对荨麻疹的急性症状进行快速干预，更注重通过调节肥大细胞活性和免疫微环境，逐步改善机体的高敏体质，降低未来发作的频率与强度。"},{"no":14,"name":"润障派固体饮料","issue":"湿疹","sys":"免疫与过敏","sysId":2,"path":["湿疹（特应性皮炎，Atopic Dermatitis）的本质是以皮肤物理屏障缺陷为起点，引发的Th2型免疫失衡与系统性炎症级联反应。其核心受以下几条底层分子生物学通路调控：","1. 丝聚蛋白（FLG）突变与皮肤物理屏障崩塌：表皮终末分化过程中，丝聚蛋白（Filaggrin）负责降解为天然保湿因子并维持角质细胞间的紧密连接。FLG基因的先天突变或外部刺激（如金黄色葡萄球菌定植）导致其表达缺失，使得角质层结构松散、经皮水分流失（TEWL）剧增。屏障的物理缺口直接暴露真皮层，导致外界过敏原（尘螨、花粉）和刺激物轻易穿透表皮 。","2. Th2型炎症风暴与ILC2/IL-31 瘙痒轴激活：屏障破损触发角质形成细胞大量释放“警报素”（IL-25, IL-33, TSLP），进而激活Th2细胞与2型固有淋巴细胞（ILC2）。活化的免疫细胞爆发式释放 IL-4、IL-13、IL-31 等细胞因子。IL-4/IL-13 进一步抑制FLG合成，形成“越发炎越没屏障”的恶性循环；而 IL-31 则直接结合感觉神经上的受体，通过激活TRPV1通道引发难以忍受的剧烈瘙痒 。","3. 肠-皮轴（Gut-Skin Axis）微生态失衡：肠道是人体最大的免疫器官。湿疹患者常伴有肠道菌群多样性降低（如双歧杆菌减少，艰难梭菌增多）。有害菌代谢产生的内毒素（LPS）和促炎代谢物穿过受损的肠道屏障（“肠漏”），进入血液循环后激活全身免疫系统，放大皮肤局部的Th2炎症反应 。","4. 花生四烯酸级联与神经-免疫交互：细胞膜磷脂在磷脂酶A2（PLA2）作用下释放花生四烯酸，在促炎环境下转化为白三烯B4（LTB4）和前列腺素E2（PGE2），加剧红肿渗出；同时，IL-31和白三烯激活皮肤感觉神经，形成“瘙痒-搔抓-屏障进一步破坏”的恶性闭环 。"],"dims":[{"d":"抗炎止痒","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"作为天然糖皮质激素样物质，与糖皮质激素受体（GR）高亲和力结合。一方面，抑制 NF-κB 与 AP-1 信号通路的核转位，下调 TNF-α、IL-4、IL-13、IL-31 等关键促炎因子及趋化因子的表达 ；另一方面，显著上调丝聚蛋白（Filaggrin）的基因转录，促进天然保湿因子生成，加速表皮屏障的结构性修复 。"}]},{"d":"屏障修复与保湿","ings":[{"n":"燕麦β-葡聚糖","m":"燕麦β-葡聚糖","mech":"激活表皮角质形成细胞表面的 Dectin-1 受体，触发下游 Syk-Rac1 信号通路，促进角质细胞增殖与迁移 。同时上调紧密连接蛋白（如 Claudin-1、Occludin）的表达，物理性地收紧细胞间隙；并通过抑制 NF-κB 通路减少 IL-6、TNF-α 释放，发挥深层舒缓抗炎作用 。"}]},{"d":"免疫调节","ings":[{"n":"复合益生菌粉（含鼠李糖乳杆菌）","m":"复合益生菌粉（含鼠李糖乳杆菌）","mech":"定植于肠道黏膜，通过竞争性排斥抑制病原菌生长。代谢产生短链脂肪酸（SCFAs，如丁酸盐），增强肠道上皮细胞紧密连接（上调 ZO-1, occludin）；通过树突状细胞诱导 Treg/Th17 平衡偏移，促进抗炎因子 IL-10 分泌，阻断“肠漏”向皮肤Th2炎症的免疫投射 。"}]},{"d":"调节脂质代谢","ings":[{"n":"亚麻籽油微囊粉","m":"α-亚麻酸","mech":"作为必需多不饱和脂肪酸（PUFA），竞争性抑制花生四烯酸代谢通路中的 COX-2 和 5-LOX 酶，减少促炎介质 PGE2 和 LTB4 的生成 。其代谢产物可参与表皮神经酰胺和游离脂肪酸的合成，补充角质层脂质双分子层，从脂质代谢层面重构物理屏障，降低 TEWL 。"}]}],"syn":"本配方通过多维度通路协同，构建湿疹的立体防护网：1. 源头免疫重塑与微生态平衡：鼠李糖乳杆菌深入肠道底层，通过“肠-皮轴”双向调节，从源头平息全身的 Th2 型免疫风暴，降低机体对无害物质的致敏阈值，阻断过敏进程的上游触发器。2. 局部强力抗炎与瘙痒压制：甘草提取物在外周直接抑制 NF-κB 炎症核心通路，迅速削减 IL-31 等致痒因子，为受损皮肤降温，打破“瘙痒-搔抓”的恶性循环。3. 物理屏障脂质重构：燕麦β-葡聚糖与亚麻籽油粉内外夹击，前者激活表皮修复信号（Dectin-1）并促进紧密连接，后者提供必需的脂质原料（α-亚麻酸）参与神经酰胺合成，双管齐下修补皮肤的“砖墙结构”，恢复锁水能力。多维协同，不仅针对湿疹的急性红肿瘙痒进行快速干预，更注重通过调节肠道免疫微环境和角质层脂质代谢，逐步改善机体的高敏体质，降低未来复发的概率。"},{"no":15,"name":"衡元派固体饮料","issue":"其他自身免疫性疾病","sys":"免疫与过敏","sysId":2,"path":["自身免疫性疾病（如系统性红斑狼疮 SLE、类风湿关节炎 RA 等）的核心病理特征是免疫耐受的崩溃，即免疫系统对自身组织发起攻击。其底层的分子免疫学通路极其复杂，主要包括以下几个核心节点：","1. Th17/Treg 免疫失衡与 NF-κB 炎症风暴：在遗传易感背景下，辅助性 T 细胞 17（Th17）被过度激活，释放大量的白细胞介素-17（IL-17）、IL-6 等促炎因子；同时，具有免疫抑制功能的调节性 T 细胞（Treg）功能受损或数量减少。这种失衡导致机体失去对自身抗原的免疫耐受，并持续激活 NF-κB 等经典炎症信号通路，引发全身性的慢性炎症和组织损伤 。","2. NLRP3 炎性小体与氧化应激：受损或死亡的自身细胞释放的核酸、ATP 等“危险信号”激活 NLRP3 炎性小体，促使 Caspase-1 活化并释放成熟的 IL-1β 和 IL-18，加剧炎症反应。同时，线粒体功能障碍导致活性氧（ROS）大量积累，触发严重的氧化应激，进一步破坏免疫细胞的稳态 。","3. 肠道菌群失调（肠漏）与免疫激活：自身免疫性疾病患者常伴有“肠漏”（肠道紧密连接蛋白如 ZO-1、Occludin 破坏）和肠道微生态失衡（有害菌增多，产短链脂肪酸的有益菌减少）。肠道屏障受损导致细菌脂多糖（LPS）等病原体相关分子模式（PAMPs）入血，通过激活 Toll 样受体 4（TLR4）/NF-κB 通路，触发全身性先天免疫过度激活 。"],"dims":[{"d":"免疫调节","ings":[{"n":"灵芝提取物","m":"灵芝多糖","mech":"激活树突状细胞和巨噬细胞，促进具有免疫抑制功能的 调节性 T 细胞 (Treg) 和 调节性 B 细胞 (Breg) 的分化与增殖，恢复免疫耐受；同时抑制 Th17 细胞的过度活化，纠正 Th17/Treg 失衡 。"},{"n":"黄芪提取物","m":"黄芪多糖","mech":"阻断 TLR4/NF-κB 及 PI3K/Akt/mTOR 信号通路的过度磷酸化，显著抑制促炎因子（TNF-α, IL-6, IL-17）的转录；并下调 NLRP3 炎性小体的组装与活化，从源头扑灭系统性炎症风暴 。"}]},{"d":"抗炎抗氧化","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"作为天然的 IKK-α 抑制剂，阻止 NF-κB p65 亚基向细胞核转位，强力抑制下游 BLYS 等 B 细胞刺激因子的表达，减少自身抗体的产生；同时激活 Nrf2 抗氧化防御通路，清除线粒体 ROS，减轻氧化应激对组织的攻击 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"通过 Keap1 依赖性机制激活 Nrf2/ARE 信号轴，上调超氧化物歧化酶（SOD）、过氧化氢酶等内源性抗氧化酶的表达；并通过抑制 NLRP3 炎性小体，保护肾脏等靶器官免受免疫复合物和炎症的损伤 。"}]},{"d":"组织保护","ings":[{"n":"山药提取物","m":"山药多糖","mech":"富含膳食纤维，作为优质的 益生元 滋养肠道有益菌；同时调节巨噬细胞极化，增强肠道黏膜屏障功能，减少 PAMPs 的易位，从而在远端（肠-皮轴/肠-关节轴）抑制系统性免疫过度激活 。"},{"n":"复合益生菌粉（乳杆菌/双歧杆菌）","m":"复合益生菌粉（乳杆菌/双歧杆菌）","mech":"在肠道定植后，通过代谢产生 丁酸盐 等短链脂肪酸（SCFAs），作为 HDAC 抑制剂强力诱导 Treg 细胞 分化，抑制 Th17 分化；同时促进肠道上皮细胞紧密连接蛋白的表达，修复“肠漏”，阻断 LPS 引发的全身性先天免疫激活 。"}]}],"syn":"本配方通过“免疫纠偏-炎症扑灭-屏障修护”三位一体的立体通路协同，构建自身免疫性疾病的长期管理闭环：1. 中枢免疫耐受重建：灵芝多糖与黄芪提取物协同作战，深入免疫中枢。它们不仅能下调 NF-κB 等促炎通路，更重要的是能精准纠正 Th17/Treg 失衡，促进免疫抑制性 Treg/Breg 细胞的生成，帮助免疫系统重新学会“识别自我、容忍自我”，从根源上缓解免疫攻击。2. 外周炎症与氧化镇压：姜黄素与绿茶中的 EGCG 形成强大的抗氧化与抗炎联盟。它们通过激活 Nrf2 抗氧化通路清除自由基，同时强力抑制 NLRP3 炎性小体和 NF-κB 的过度活化，有效扑灭外周组织的炎症风暴，保护易受免疫复合物攻击的肾脏、皮肤、关节等靶器官。3. 肠道微生态与屏障兜底：山药多糖与复合益生菌（乳杆菌/双歧杆菌）从“肠皮轴”角度切入。益生菌定植并代谢产生短链脂肪酸（SCFAs），直接诱导全身 Treg 细胞分化；山药多糖则作为益生元加固肠道物理屏障。两者协同封堵“肠漏”，防止肠道免疫原性物质入血，切断自身免疫反应的持续性触发源。"},{"no":16,"name":"沁颜派固体饮料","issue":"银屑病","sys":"免疫与过敏","sysId":2,"path":["银屑病（俗称牛皮癣）并非单纯的皮肤病变，而是一种由T细胞介导的系统性自身免疫疾病。其核心底层机制在于“IL-23/Th17 免疫轴”的过度激活与角质形成细胞的恶性增殖形成了难以打破的正反馈循环：","1. 免疫底层失控（IL-23/Th17 轴）：树突状细胞异常激活并释放 IL-23，驱动初始 T 细胞向致病性的 Th17 细胞分化。活化的 Th17 细胞大量释放 IL-17A、IL-22 和 TNF-α 等促炎因子，这是引发皮肤剧烈炎症风暴的源头 。","2. 角质形成细胞恶性增殖（表皮更替加速）：上述的 Th17 细胞因子（尤其是 IL-17A）强烈刺激表皮角质形成细胞，导致其绕过正常的细胞周期调控，发生异常且快速的过度增殖与分化不全（表现为红斑和厚厚的银白色鳞屑）。同时，受损的角质形成细胞会释放更多的自身抗原和趋化因子，进一步招募并激活免疫细胞，形成恶性循环 。","3. 核心信号通路持续活化：在这一过程中，角质形成细胞和免疫细胞内多条促炎信号通路处于持续“点火”状态，主要包括 NF-κB 信号通路（驱动促炎因子转录）、MAPK 通路（参与细胞增殖与炎症）、JAK-STAT 通路（介导 IL-23 等细胞因子的细胞内信号转导）以及 PI3K/AKT/mTOR 通路（调控细胞生长与代谢） 。","4. 氧化应激与 NLRP3 炎症小体激活：大量活化的免疫细胞释放活性氧（ROS），引发严重的氧化应激。氧化应激进一步激活 NLRP3 炎症小体，促使 Caspase-1 活化并切割释放成熟的 IL-1β 和 IL-18，极大地放大了局部的炎症反应和组织损伤 。"],"dims":[{"d":"免疫调节","ings":[{"n":"黄芪提取物","m":"黄芪多糖","mech":"通过抑制 NF-κB 信号通路的磷酸化级联反应，显著降低 TNF-α、IL-6、IL-17 等促炎因子的释放；同时调节 T 细胞亚群平衡，抑制 Th1/Th17 的过度活化，并促进调节性 T 细胞（Tregs）分化，恢复免疫稳态 。"},{"n":"灵芝提取物","m":"灵芝多糖","mech":"调节树突状细胞和巨噬细胞功能，抑制 Th17 细胞分化；通过抑制 MAPK 和 NF-κB 通路，减少一氧化氮（NO）和前列腺素 E2（PGE2）的产生，发挥广泛的免疫调节与抗炎作用 。"}]},{"d":"抗炎","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"多靶点阻断促炎信号：强力抑制 NF-κB 和 MAPK 通路；特异性抑制 NLRP3 炎症小体的组装与活化，阻断 Caspase-1 介导的 IL-1β 成熟；同时清除 ROS，减轻氧化应激对表皮细胞的损伤 。"}]},{"d":"抑制角质形成细胞过度增殖","ings":[{"n":"水飞蓟籽油粉","m":"水飞蓟素","mech":"靶向抑制角质形成细胞中 PI3K/AKT/mTOR 信号通路的过度活化（该通路是驱动细胞异常增殖的核心节点）；同时激活 NRF2/ARE 抗氧化通路，上调内源性抗氧化酶（如 HO-1），并下调 NF-κB，从而抑制角质形成细胞的异常增殖与迁移 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"通过抑制 JAK-STAT 和 NF-κB 信号通路，减少 IL-17 等细胞因子的转录；高效清除细胞内 ROS，阻断 NLRP3 炎症小体的激活，从而减轻表皮炎症和角质形成细胞的过度增生 。"}]}],"syn":"本配方通过多维度通路协同，构建银屑病管理的立体防护网：1. 免疫源头重塑与抗炎风暴平息：黄芪提取物与灵芝粉双管齐下，深入免疫底层，通过抑制 NF-κB 和 MAPK 等核心通路，有效压制 Th1/Th17 细胞的过度活化，从源头上减少 IL-17、TNF-α 等致病性炎症因子的释放；同时姜黄素和水飞蓟素的加入，强力阻断 NLRP3 炎症小体并清除氧化应激，迅速平息表皮的慢性炎症风暴。2. 表皮病理特征逆转（控增生）：水飞蓟籽油和绿茶浓缩粉精准靶向角质形成细胞内的 PI3K/AKT/mTOR 增殖通路，有效抑制其异常的过度增殖与迁移，帮助恢复表皮正常的细胞更替节律，改善红斑与鳞屑堆积。整体配方不仅针对银屑病的急性皮损进行干预，更注重通过调节 T 细胞亚群（促进 Treg 分化）和激活细胞自身的抗氧化防御系统（NRF2），逐步改善机体的自身免疫倾向，降低复发频率。"},{"no":17,"name":"利节派固体饮料","issue":"类风湿性关节炎","sys":"免疫与过敏","sysId":2,"path":["类风湿性关节炎（Rheumatoid Arthritis, RA）是一种以关节滑膜炎为特征的慢性系统性自身免疫性疾病。其核心病理过程涉及以下几个关键的底层分子生物学通路：","1. 异常免疫复合物的形成与沉积（关节炎症启动）：RA的关节腔内存在大量由变性IgG和自身抗体（如类风湿因子 RF 和抗瓜氨酸化蛋白抗体 ACPA）结合形成的免疫复合物。这些复合物激活补体系统（特别是经典途径），释放 C5a 等过敏毒素，招募并激活中性粒细胞、巨噬细胞等炎症细胞，释放大量活性氧（ROS）和蛋白酶，直接侵蚀关节软骨 。","2. 促炎细胞因子级联与 NF-κB 信号通路（炎症风暴维持）：活化的免疫细胞（特别是巨噬细胞）大量分泌 TNF-α、IL-1β 和 IL-6 等核心促炎因子。这些因子通过旁分泌/自分泌作用，持续激活滑膜细胞内的 NF-κB（核因子κB） 和 MAPK（丝裂原活化蛋白激酶） 信号通路，形成正反馈循环，导致滑膜细胞异常增殖，形成血管翳，进一步破坏软骨和骨骼 。","3. JAK-STAT 信号通路与 Th1/Th17 免疫失衡（系统性自身免疫）：树突状细胞呈递自身抗原给初始 T 细胞，促使其向 Th1 和 Th17 细胞分化。Th1/Th17 细胞通过分泌 IFN-γ 和 IL-17，进一步激活巨噬细胞和组织驻留细胞。这一过程中，JAK（Janus激酶）- STAT（信号转导与转录激活因子） 通路被过度激活，驱动下游炎症基因的持续表达 。","4. 破骨细胞过度活化与 RANKL/OPG 失衡（骨与软骨破坏）：在炎症微环境下，滑膜成纤维样细胞（FLS）和 T 细胞大量表达 RANKL（核因子κB受体活化因子配体），同时抑制其诱饵受体 OPG（骨保护素） 的表达。RANKL 与破骨细胞前体表面的 RANK 受体结合，通过 NF-κB 和 MAPK 通路 促进破骨细胞的分化、融合与活化，导致病理性骨侵蚀 。"],"dims":[{"d":"抗炎镇痛","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"通过抑制 mTOR 信号通路，减少促炎因子（IL-1β, TNF-α）和基质金属蛋白酶（MMPs）的产生，有效抑制滑膜成纤维细胞的异常增殖与侵袭 。同时激活 Nrf2 抗氧化通路，中和自由基，减轻氧化应激损伤 。"},{"n":"当归提取物","m":"阿魏酸","mech":"调节全身铁代谢，下调铁调素（Hepcidin）表达，恢复巨噬细胞（M1/M2）极化平衡，减少促炎因子释放 。其阿魏酸成分可抑制 NF-κB 和 MAPK 通路活化，减轻关节滑膜炎症 。"}]},{"d":"强筋健骨","ings":[{"n":"杜仲叶提取物","m":"绿原酸","mech":"抑制 TLR2/NF-κB/TNF 信号通路，降低 Th17 细胞比例及下游 IL-17 水平 。同时提高骨保护素 OPG 表达，降低 RANKL 表达，抑制破骨细胞活化，减少骨与关节的破坏 。"},{"n":"胶原蛋白肽（II型）","m":"胶原蛋白肽（II型）","mech":"作为类风湿性关节炎的常见自身抗原，口服特定序列的 II 型胶原肽（如 CII250-270）可诱导机体产生 免疫耐受。通过激活调节性树突状细胞（tolDC）和调节性 T 细胞（Treg），纠正 Th1/Th17 与 Treg 的失衡，减少致病性抗体和细胞因子的分泌 。"}]},{"d":"免疫调节","ings":[{"n":"茯苓提取物","m":"茯苓多糖","mech":"具有显著的免疫调节作用，能够调节 T 细胞亚群分布，平衡 Th1/Th2 免疫反应。同时抑制关节滑膜组织的炎症反应，减轻免疫复合物沉积引发的病理损伤 。"},{"n":"薏苡仁提取物","m":"薏苡仁多糖","mech":"通过抑制 NF-κB 通路，显著下调 IL-1、IL-6 和 TNF-α 等促炎因子的表达，对类风湿关节炎引起的关节肿胀和疼痛具有明显的改善作用 。"}]},{"d":"协同调和","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"打断 COX-2/TxA2 自反馈调节通路，并抑制 PI3K/AKT/NF-κB 及 JAK/STAT 信号通路的磷酸化，减少 IL-6、IL-1β 等炎症介质的释放，发挥广谱抗炎及免疫调节作用 。"}]}],"syn":"本配方针对类风湿性关节炎复杂的病理机制，构建了多维度的立体干预网络：\n1. 源头阻敏与免疫耐受重建：II型胶原蛋白肽作为核心抗原，致力于诱导机体对关节自身抗原的免疫耐受，从源头上阻断异常免疫攻击；配合茯苓、薏苡仁的免疫调节作用，逐步纠正失衡的 Th1/Th17 免疫偏移，恢复免疫稳态。2. 深层抗炎与氧化应激清除：姜黄素与当归多糖双管齐下，一方面强力抑制 NF-κB 等炎症核心通路，阻断炎症风暴；另一方面通过 Nrf2 通路增强细胞的抗氧化能力，保护关节组织免受自由基的持续破坏。3. 遏制骨侵蚀与组织修复：杜仲提取物不仅能通过调节 RANKL/OPG 轴抑制破骨细胞过度活化，保护骨骼结构，还能改善关节滑液成分，促进软骨基质合成，实现真正的“强筋健骨”。4. 长效体质改善：甘草酸发挥“调和诸药”的作用，全面抑制多条促炎通路的过度激活，与上述成分协同，不仅缓解当下的关节疼痛与肿胀，更注重改善机体高敏的免疫体质，延缓病情进展。"},{"no":18,"name":"宁馨派固体饮料","issue":"抗炎","sys":"免疫与过敏","sysId":2,"path":["其他过敏性疾病（哮喘、特应性皮炎、食物过敏等）的共同本质是机体对无害抗原的免疫耐受崩溃，其核心受以下几条底层分子生物学通路调控：","1. IgE-FcεRI交联与肥大细胞脱颗粒通路（Ⅰ型超敏反应核心引擎）：过敏原被树突状细胞提呈后，在IL-4/IL-13驱动下促使B细胞发生类别转换，产生大量过敏原特异性IgE；IgE与肥大细胞/嗜碱性粒细胞表面高亲和力受体FcεRI结合使机体致敏。再次接触过敏原时，过敏原交联FcεRI，通过Lyn→Syk→PLCγ-IP₃/DAG→Ca²⁺释放信号级联，驱动组胺、类胰蛋白酶等预存介质快速释放，并激活MAPK/NF-κB通路促进白三烯、前列腺素、TNF-α、IL-6等新合成介质生成 。","2. Th2型免疫偏移与2型炎症放大通路：上皮警报素（TSLP、IL-25、IL-33）激活Th2细胞与ILC2，大量释放IL-4、IL-5、IL-13等2型细胞因子。IL-4/IL-13促进B细胞IgE类别转换，IL-5维持嗜酸性粒细胞生存，形成\"2型炎症\"自我放大环路，是过敏性疾病慢性炎症与组织重塑的核心驱动 。","3. 非IgE介导与混合介导通路：部分过敏性疾病存在非IgE机制——包括MRGPRX2介导的肥大细胞直接激活（药物诱导等）、补体C3a/C5a介导的效应细胞活化、IgG-FcγR免疫复合物途径，以及T细胞介导的迟发反应；食物蛋白诱导的小肠结肠炎、嗜酸性粒细胞性胃肠炎等疾病则表现为IgE与非IgE混合机制 。"],"dims":[{"d":"稳定细胞","ings":[{"n":"乌梅提取物","m":"柠檬酸","mech":"抑制IgE介导的肥大细胞脱颗粒；在体外可抑制肥大细胞组胺、IL-4的分泌，并抑制相关信号通路蛋白Akt、ERK的表达，从上游阻断\"抗原交联 → FcεRI → Syk → PLCγ → Ca²⁺释放 → 脱颗粒\"的核心引擎 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"在人肥大细胞HMC-1中，EGCG通过抑制胞内Ca²⁺水平上升，并衰减ERK1/2和NF-κB的激活（不影响JNK或p38 MAPK），从而抑制TNF-α、IL-6、IL-8等炎症因子的生成与释放，调节肥大细胞介导的过敏性炎症反应 。"}]},{"d":"抗炎","ings":[{"n":"紫苏提取物","m":"迷迭香酸","mech":"紫苏叶乙醇提取物可显著抑制过敏原特异性的Th2反应，降低OVA特异性IgE、IL-5、IL-13的分泌及组胺水平；其中迷迭香酸可靶向β2-肾上腺素受体，并通过抑制NF-κB信号通路降低肺部炎症细胞浸润与黏液高分泌，改善气道高反应性 。"}]},{"d":"调和修复","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"抑制抗原引起的胞内Ca²⁺上升，降低Ca²⁺通道调控蛋白STIM1和TRPC1的表达，从而抑制肥大细胞脱颗粒；同时抑制组胺释放，并通过调控NF-κB、Nrf2/HO-1等关键信号通路发挥抗炎和抗氧化作用，平衡Th1/Th2免疫反应 。"}]}],"syn":"本方案遵循传统“解表散邪、调和营卫”的思路进行协同干预：1. **稳定细胞**（乌梅、EGCG）：抑制肥大细胞等效应细胞脱颗粒，减少组胺等介质释放，从源头控制过敏；2. **解表散邪，宣通肺气**（紫苏）：缓解表证，改善因外邪侵袭引发的过敏症状；3. **调和修复**（甘草）：缓解黏膜刺激，修复组织。统。**"},{"no":19,"name":"元卫派固体饮料","issue":"免疫力提升","sys":"免疫与过敏","sysId":2,"path":["元卫派固体饮料免疫力低下（免疫失衡）的本质是免疫防御、监视与自稳功能的“多米诺骨牌”效应失效。其核心底层通路主要集中在：","1. 固有免疫启动受阻：面对病原体入侵，巨噬细胞、树突状细胞（DC）等免疫哨兵的吞噬与抗原呈递功能低下，导致机体缺乏早期的炎症预警与清除能力。","2. 适应性免疫应答乏力：T淋巴细胞（尤其是Th1型）的增殖与分化受限，导致抗病毒、抗胞内菌的细胞免疫不足；同时B细胞产生特异性抗体的体液免疫应答减弱。","3. 免疫代谢与信号转导障碍：微量元素（如锌）缺乏导致免疫细胞内的酶活性下降，影响DNA合成与能量代谢，进而阻碍免疫细胞的正常分化与功能维持。"],"dims":[{"d":"免疫激活","ings":[{"n":"酵母β-葡聚糖","m":"酵母β-葡聚糖","mech":"结合并激活巨噬细胞、树突状细胞表面的 Dectin-1/Syk/NF-κB 信号级联通路。"},{"n":"香菇提取物","m":"香菇多糖","mech":"协同作用于 TLR2/TLR4 及 Dectin-1 受体，启动下游 MAPK/NF-κB 信号通路，促进巨噬细胞极化和细胞因子分泌。"}]},{"d":"免疫调节","ings":[{"n":"黄芪提取物","m":"黄芪多糖","mech":"调控 NF-κB/MAPK 及 PI3K/Akt 信号通路，促进巨噬细胞吞噬及 T/B 淋巴细胞增殖。"}]},{"d":"免疫基础","ings":[{"n":"葡萄糖酸锌","m":"葡萄糖酸锌","mech":"作为 >200种酶的辅因子，参与免疫细胞 DNA/RNA 合成，通过维持 胸腺素 活性及调节 锌指蛋白 基因表达发挥核心作用。"}]}],"syn":"本配方构建了一个“激活-调节-筑基”三维立体的免疫提升网络。在快速激活层面，酵母β-葡聚糖与香菇提取物作为先锋部队，通过识别 Dectin-1 和 TLR4 等模式识别受体，迅速唤醒沉睡的巨噬细胞与 NK 细胞，打破免疫抑制状态，建立第一道抗感染防线。在深层调节层面，黄芪提取物发挥中医“补气固表”的现代药理作用，通过 TLR4/NF-κB 通路精细调控巨噬细胞极化方向，纠正免疫失衡，确保免疫应答既不过激（防过敏/自身免疫）也不过弱（防感染）。在基础夯实层面，葡萄糖酸锌从代谢根源入手，为免疫细胞的增殖、分化及免疫分子（如抗体、细胞因子）的合成提供必要的微量元素支持。四者协同，不仅针对当下的免疫低下进行强力干预，更致力于构建长远、稳固的健康免疫屏障。"},{"no":20,"name":"清醇派固体饮料","issue":"高血脂","sys":"心脑血管","sysId":4,"path":["高血脂的本质是脂质代谢稳态失衡，核心受以下几条底层分子生物学通路调控：","1. 胆固醇内源性合成通路（SREBP2-HMGCR-AMPK）：以SREBP2为转录中枢，在低胆固醇状态下激活HMGCR（胆固醇合成限速酶）及LDLR的基因转录；AMPK通过磷酸化HMGCR使其失活，减少胆固醇合成 。","2. 脂蛋白摄取与降解通路（LDLR-PCSK9）：LDL与肝细胞表面LDLR结合后经网格蛋白内吞进入溶酶体，胆固醇被释放而LDLR循环至细胞膜 reuse；PCSK9与LDLR结合后促进其溶酶体降解，降低肝细胞LDLR密度，减少LDL-C清除，是LDL代谢的关键负调控节点 。","3. 肠道胆固醇吸收通路（NPC1L1-ABCG5/G8）：肠上皮细胞顶端膜的NPC1L1介导胆固醇内流吸收，而ABCG5/G8负责将过量胆固醇反向运回肠腔，两者动态平衡决定肠道胆固醇净吸收量 。","4. 胆固醇逆向转运与胆汁酸转化通路（CYP7A1-FXR）：胆固醇在肝细胞内经CYP7A1（限速酶）转化为胆汁酸排泄；胆汁酸通过激活FXR反馈抑制CYP7A1转录，精细调控胆固醇的胆汁酸转化节奏 。","5. 脂肪酸氧化与甘油三酯代谢通路（PPARα）：PPARα作为营养传感器，调控脂肪酸β-氧化及脂蛋白代谢相关基因，其表达异常会导致肝脏甘油三酯合成大于氧化消耗，形成高甘油三酯血症 。"],"dims":[{"d":"抑制内源合成与促代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"抑制肝脏 HMGCR 活性，减少内源性胆固醇合成；上调肝细胞 LDLR 表达，加速血液中LDL-C的清除 。"}]},{"d":"减少外源吸收","ings":[{"n":"燕麦β-葡聚糖","m":"燕麦β-葡聚糖","mech":"在肠道内形成粘性凝胶，物理性结合胆汁酸与游离胆固醇，阻断其重吸收；通过AMPK通路下调 FAS和SREBP-1、上调 PPARα，抑制肝脏脂质合成并激活脂肪酸氧化 。"},{"n":"决明子提取物","m":"总蒽醌","mech":"激活 AMPK 信号通路，抑制脂肪酸合成酶（FASN），减少肝脏脂质蓄积；调节 PPARα 表达促进脂肪酸β-氧化 。"}]},{"d":"促进代谢与转运","ings":[{"n":"鱼油（EPA/DHA）","m":"EPA/DHA","mech":"作为 PPARα 天然配体，上调脂蛋白脂肪酶（LPL）活性，加速甘油三酯水解与清除；抑制肝脏 SREBP-1c 转录，减少甘油三酯合成 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"上调肝细胞 LDLR 表达并抑制 PCSK9 蛋白活性，增强肝脏对LDL-C的摄取；激活 Nrf2/ARE 抗氧化通路，抑制LDL氧化 。"}]},{"d":"减少脂质","ings":[{"n":"桑叶提取物","m":"DNJ","mech":"竞争性抑制肠道 α-葡萄糖苷酶 活性，延缓碳水转化为单糖，间接减少脂肪从头合成；激活 AMPK 通路改善胰岛素敏感性 。"}]}],"syn":"本配方采用“抑制内源合成-阻断外源吸收-促进脂质代谢-清热降脂”的多维协同路径。1. **抑制与促代谢**（山楂）：调节肝脏脂肪代谢关键酶；2. **减少吸收**（燕麦β-葡聚糖、决明子）：在肠道吸附脂质；3. **促进代谢与转运**（深海鱼油、绿茶EGCG）：促进能量消耗；4. **清热降脂**（桑叶）：辅助调节脂质代谢。四重路径协同，构成从根源到症状的全面血脂管理方案。"},{"no":21,"name":"畅然派固体饮料","issue":"动脉粥样硬化风险","sys":"心脑血管","sysId":4,"path":["动脉粥样硬化的核心在于血管内皮功能障碍与慢性低度炎症驱动的脂质沉积。其底层分子通路主要涉及：","LDL氧化与炎症级联（LOX-1/NF-κB）：过量LDL渗入血管内皮后被氧化为ox-LDL，ox-LDL通过其特异性受体 LOX-1 激活下游 NF-κB 通路，引发血管内皮细胞表达粘附分子（如VCAM-1、ICAM-1），促使单核细胞粘附并迁入内膜分化为巨噬细胞，吞噬ox-LDL形成泡沫细胞，构成斑块核心 。","内皮功能与NO/cGMP通路：内皮源性一氧化氮（NO）是维持血管舒张和抑制血小板聚集的关键。内皮损伤会导致 eNOS 活性下降及 ET-1（内皮素-1）等缩血管因子失衡，破坏血管稳态 。","能量代谢与脂质蓄积（AMPK/SREBP-1/ACC1）：在代谢综合征背景下，AMPK 失活会导致脂质合成关键酶（如ACC1）上调及分解酶（如CPT-1）下调，促使肝脏和血管周围脂肪组织异常蓄积，加剧局部炎症微环境 。"],"dims":[{"d":"抑制LDL氧化","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"激活 Nrf2/ARE 抗氧化通路，上调SOD、GSH-Px等抗氧化酶表达，直接清除ROS并阻断ox-LDL诱导的 NF-κB 核转位与炎症因子（TNF-α, IL-6）释放 。"}]},{"d":"抗炎","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"竞争性抑制 TLR4 受体及其下游 MAPK/NF-κB 信号级联磷酸化，减少巨噬细胞炎症小体激活与泡沫细胞形成，发挥强效抗炎作用 。"}]},{"d":"改善内皮功能","ings":[{"n":"葛根提取物","m":"葛根黄酮","mech":"激活 PI3K/Akt/eNOS 信号轴，促进eNOS第1177位丝氨酸磷酸化，增加内皮NO生物利用度，拮抗ET-1，恢复血管舒张功能 。"}]},{"d":"促进循环与能量支持","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"通过调控 AMPK/SREBP-1/ACC1 通路抑制肝脏及血管周围脂质合成，上调 PPARα 促进脂肪酸β-氧化，减少脂质异位沉积 。"},{"n":"荷叶提取物","m":"荷叶碱","mech":"直接激活 AMPK 通路，促进线粒体脂肪酸氧化，抑制前脂肪细胞分化及脂质蓄积，从源头减轻代谢负荷 。"}]}],"syn":"本配方构建了一个针对动脉粥样硬化“抗炎-抗氧化-稳内皮-促代谢”的多维干预网络：\n1. 抗炎与抗氧化双屏障：姜黄提取物在炎症信号源头（TLR4/NF-κB）强力阻断炎症风暴，而绿茶浓缩粉则在下游通过Nrf2通路系统性清除氧化应激产物，两者协同保护血管内皮免受ox-LDL的毒性损伤，防止斑块不稳定。\n2. 内皮功能重建：葛根提取物通过PI3K/Akt/eNOS通路恢复NO的内源性生成，有效对抗血管收缩因子，改善微循环灌注，阻断血小板异常聚集，防止血栓事件。\n3. 脂质代谢干预：山楂与荷叶提取物双管齐下，共同激活AMPK这一代谢总开关，一方面抑制脂肪合成酶（ACC1/SREBP-1），另一方面加速脂肪酸氧化，减少脂质在内皮下的异常沉积，从根本上遏制斑块的“脂质核心”扩大。"},{"no":22,"name":"稳衡派固体饮料","issue":"高血压","sys":"心脑血管","sysId":4,"path":["高血压的核心病理生理通路主要集中在：","1. 肾素-血管紧张素-醛固酮系统（RAAS）过度激活：血管紧张素II生成增加，导致全身小动脉强烈收缩及水钠潴留；","2. 血管内皮功能障碍：内皮依赖性舒张因子（NO）生成减少，而收缩因子（如ET-1）相对占优，导致血管张力失衡；","3. 交感神经过度兴奋：引发心率加快和外周血管阻力增加；","4. 水盐代谢失衡：肾脏排钠排水能力下降，血容量扩张。"],"dims":[{"d":"促进血管舒张","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"抑制血管平滑肌细胞 L型钙通道，减少钙离子内流；同时促进血管内皮细胞释放 NO，激活 cGMP/PKG 通路，介导血管舒张 。"}]},{"d":"平肝潜阳保护内皮","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"竞争性抑制 血管紧张素转换酶（ACE） 活性，减少血管紧张素II生成；通过激活钾离子通道促使血管平滑肌超极化舒张，降低外周阻力 。"}]},{"d":"调节水盐平衡","ings":[{"n":"芹菜籽提取物","m":"芹菜素","mech":"抑制 ACE 活性及肾小管钠钾泵，促进 Na⁺ 排泄；促进血管内皮 eNOS 磷酸化，增加 NO 生物利用度以舒张血管 。"},{"n":"燕麦β-葡聚糖","m":"燕麦β-葡聚糖","mech":"在肠道形成凝胶基质吸附钠离子，阻碍其重吸收，促进尿钠排泄以降低血容量；改善胰岛素敏感性，间接抑制交感神经过度兴奋 。"}]},{"d":"活血润燥改善微循环","ings":[{"n":"桃仁提取物","m":"苦杏仁苷","mech":"在肠道形成凝胶基质吸附钠离子，阻碍其重吸收，促进尿钠排泄以降低血容量；改善胰岛素敏感性，间接抑制交感神经过度兴奋 。"}]}],"syn":"本配方构建了多靶点协同的“降压护血管”网络：\n1. 舒缓血管张力与抑制RAAS：山楂、菊花双管齐下，分别从阻断钙离子内流、激活钾离子外流通道两个维度，强力扩张外周血管，降低血管阻力。\n2. 修复血管内皮屏障：菊花与山楂的黄酮类成分协同作用，持续激活eNOS通路供应NO，恢复血管天然的舒张能力，同时抑制内皮炎症，保护血管内皮免受进一步损伤。\n3. 系统性减负（水盐平衡）：燕麦β-葡聚糖在肠道拦截钠离子，芹菜籽促进肾脏排钠，两者协同减少血容量，从源头减轻心脏泵血压力和血管壁侧压力。\n4. 改善末梢灌注：桃仁提取物解决“最后一公里”问题，通过抗凝和改善微循环，防止微小血栓堵塞毛细血管，确保心、脑、肾等重要靶器官的血液供应。"},{"no":23,"name":"源本派固体饮料","issue":"心血管健康支持","sys":"心脑血管","sysId":4,"path":["心血管退行性病变的核心在于细胞氧化还原稳态的破坏及离子/神经信号的失调，主要涉及以下四条关键分子通路：","1. 氧化应激与 Nrf2/ARE 通路：血管内皮细胞受血管紧张素II或血流剪切力异常刺激，激活 NADPH 氧化酶（NOX）爆发式产生 ROS。ROS 通过降解 Sirtuin-1 及导致 eNOS 解偶联，造成 NO 生物利用度骤降。外源性抗氧化剂需通过激活 Nrf2/ARE 转录因子，上调超氧化物歧化酶（SOD）和血红素加氧酶-1（HO-1）来重建氧化稳态 。","2. 肾素-血管紧张素-醛固酮系统（RAAS）：Ang II 与其 AT1 受体结合，激活 PLC-IP3/PKC 级联反应，引发血管平滑肌细胞内 Ca²⁺ 超载，导致持续性血管收缩；同时 Ang II 作为促炎因子激活 NF-κB，加速心肌纤维化和血管内皮损伤 。","3. 内皮依赖性舒张与 PI3K/Akt/eNOS 通路：心肌和血管平滑肌细胞的存活与舒张高度依赖于 PI3K/Akt 信号轴的激活。该通路磷酸化 eNOS（Ser1177）以促进 NO 释放，并抑制促凋亡蛋白（如 Bad、Caspase-9），是维持心脏节律和血管张力逆转的核心节点 。","4. 中枢神经-心脏反射（GABA/谷氨酸平衡）：延髓头端腹外侧区（RVLM）的交感神经输出受中枢神经递质严格调控。GABA 能抑制性神经传递减弱会导致交感神经过度兴奋，引起心率加快和冠状动脉痉挛，打破心肌细胞的钙稳态 。"],"dims":[{"d":"抗氧化保护","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"触发 Fyn 蛋白 激活 PI3K/Akt/eNOS 通路，增加 NO 生成；同时激活 Nrf2/HO-1 抗氧化通路，上调 SOD、GSH-Px 等抗氧化酶，清除 ROS、抑制 eNOS 解偶联 。"},{"n":"番茄红素","m":"番茄红素","mech":"调控内皮细胞 TGF-β1/bFGF 表达，抑制 TGF-β1/Smad 促纤维化信号；通过 VEGF/PI3K/Akt 通路促进血管新生，改善缺血组织灌注 。"}]},{"d":"益气活血改善循环","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"调控 TGF-β1/Smad 通路减轻心肌纤维化；通过 VEGF/PI3K/Akt 级联反应促进缺血区血管新生，改善微循环灌注 。"},{"n":"黄芪提取物","m":"黄芪多糖","mech":"激活心肌细胞 PI3K/Akt/eNOS 通路，增强 NO 生物利用度并抑制线粒体凋亡途径；抑制 Ang II 诱导的氧化应激和炎症反应 。"}]},{"d":"养心安神稳定内环境","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"作用于中枢神经系统，增强 GABA_A 受体介导的抑制性突触传递，降低交感神经兴奋性；抑制心肌细胞 L-型钙通道（ICa-L）异常开放，发挥抗心律失常作用 。"}]}],"syn":"本配方构建了“外周抗氧化-血管再生-中枢镇静”的多靶点协同网络：\n1. 双核抗氧化防御：EGCG 与番茄红素形成互补。EGCG 侧重清除胞质和线粒体 ROS 并促进 NO 释放；番茄红素则凭借脂溶性深入细胞膜和脂蛋白核心，阻断脂质过氧化链式反应，两者协同强力阻断氧化应激源头 。\n2. 缺血心肌的修复与保护：当归提取物促进缺血组织新生血管形成，黄芪提取物通过 PI3K/Akt 通路保护现存心肌细胞免于凋亡和纤维化。一攻一守，共同提升心脏的泵血效率 。\n3. 神经-心肌耦合稳定：针对现代人压力大、睡眠差导致的交感神经过度兴奋，酸枣仁提取物从中枢神经层面切断“焦虑-心动过速-心肌耗氧增加”的恶性循环，为心脏提供内源性“镇静剂” 。"},{"no":24,"name":"谐律派固体饮料","issue":"缓慢型心律失常","sys":"心脑血管","sysId":4,"path":["缓慢型心律失常的本质是心脏电生理系统的“起搏衰竭”与“传导阻滞”，核心分子机制如下：","1. 窦房结起搏电流（If）衰竭：窦房结细胞自发去极化依赖超极化激活的环核苷酸门控阳离子通道（HCN4，即If通道）。衰老或缺血导致 If 通道表达下调及功能受抑，起搏频率显著降低 。","2. L型钙通道（ICa-L）介导的传导阻滞：心脏传导系统（如房室结）高度依赖 ICa-L。细胞内钙超载或氧化应激会抑制 ICa-L 激活，导致动作电位传导速度减慢甚至阻滞 。","3. 自主神经（交感/迷走）失衡：迷走神经过度兴奋通过毒蕈碱受体（M2）抑制 If 通道并激活乙酰胆碱敏感钾通道（IK,ACh），导致心率显著下降 。","4. 线粒体能量-离子泵失衡：心肌缺血导致 ATP 耗竭，Na⁺/K⁺-ATP 酶和 SERCA 活性受抑，引发细胞内 Na⁺、Ca²⁺ 超载和膜电位不稳定，恶化电传导 。"],"dims":[{"d":"改善心脏传导","ings":[{"n":"人参提取物","m":"人参总皂甙","mech":"激活 If 通道与 β1 受体：通过调节细胞内 cAMP/cGMP 水平，稳定并上调窦房结 HCN4 通道（If 电流）的表达与开放；同时增加心肌细胞 β1 受体数目，提升交感神经张力，增加心率 。"},{"n":"黄精提取物","m":"黄精多糖","mech":"调节钙通道与能量代谢：黄精多糖可调节心肌细胞膜上的 L 型钙通道（ICa-L），优化动作电位时程；同时通过改善心肌线粒体能量代谢，增强心肌细胞在低频刺激下的自律性与传导性 。"}]},{"d":"增强心肌功能","ings":[{"n":"黄芪提取物","m":"黄芪多糖","mech":"激活线粒体 ATP 敏感钾通道 (mitoKATP)：通过开放 mitoKATP 通道，调节线粒体膜电位，改善缺血心肌的能量代谢；并抑制 Na⁺-K⁺-ATP 酶活性，提高细胞内 cAMP 含量，促进糖原分解，提升窦房结自律性 。"},{"n":"丁香提取物","m":"丁香油酚","mech":"调节 ICa-L 与 Na⁺ 通道：丁香酚以浓度依赖性方式适度抑制心肌细胞 L 型钙电流（ICa-L）和电压门控钠电流（INa），降低心肌异常兴奋性，优化动作电位时程，改善房室结传导特性 。"}]},{"d":"支持心脏微循环","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"增强 If 通道活性与冠脉灌注：山楂黄酮可通过上调窦房结 HCN4 通道表达，增强 If 起搏电流，直接对抗窦房结功能减退；同时扩张冠状动脉，增加冠脉血流量，改善心肌微循环 。"}]}],"syn":"本配方构建了“提升起搏频率-优化传导速度-改善能量代谢”的协同干预网络：\n1. 双核驱动提升起搏频率（If通道激活）：人参提取物与山楂提取物协同作用于窦房结的 If 通道。人参通过调节细胞内信号分子（cAMP/cGMP）稳定通道动力学，山楂则直接上调 HCN4 通道表达，两者合力对抗 If 通道衰竭，提升心脏固有起搏频率 。\n2. 精准调控传导系统（ICa-L 与 Na⁺ 通道优化）：丁香酚与黄精提取物作用于心肌传导通路。丁香酚适度抑制过度的 ICa-L 和 INa 电流，防止钙超载引发的传导阻滞；黄精提取物进一步优化钙通道特性与动作电位时程，共同保障电信号在心脏内的顺畅传导 。\n3. 能量代谢重塑与神经调节：黄芪提取物通过 mitoKATP 通道和调节 β1 受体，从根本上改善心肌缺血状态下的能量匮乏，并提升交感神经兴奋性以对抗迷走神经过度抑制；黄精多糖辅助增强心肌耐缺氧能力。两者共同为缓慢的心肌电活动提供充足的能量支持与神经动力 。"},{"no":25,"name":"宁谧派固体饮料","issue":"快速型心律失常","sys":"心脑血管","sysId":4,"path":["速型心律失常的核心是心肌细胞电生理稳态崩溃，导致异位起搏和折返激动。其底层分子机制聚焦于：","1. 离子通道功能亢进与钙超载：交感神经过度激活或病理刺激下，心肌细胞膜上的电压门控钠通道（INa）和 L 型钙通道（ICa-L）过度开放，导致细胞内 Ca²⁺ 超载。这不仅引发动作电位时程缩短和不应期异常，还诱发延迟后除极（DAD）和触发性心律失常 。","2. 钾通道介导的复极紊乱：心肌快速复极过度依赖瞬时外向钾电流（Ito）和快速延迟整流钾电流（IKr）。IKr 的功能获得性突变或 ICa-L/Na⁺ 通道阻滞剂的缺乏，会导致短 QT 综合征或多形性室性心动过速 。","3. 自主神经交感-迷走失衡：交感神经过度兴奋通过 β1 受体增强 If 起搏电流和 ICa-L，直接推高速率；同时抑制迷走神经（乙酰胆碱敏感钾通道 IK,ACh 关闭），打破心率变异性（HRV）的动态平衡，使心脏失去“自动调速”能力 。"],"dims":[{"d":"稳定心肌电生理","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"阻滞 INa 与 ICa-L 通道：酸枣仁皂苷 B 呈浓度依赖性抑制心肌细胞电压门控钠电流（INa），延缓通道恢复；酸枣仁皂苷 A 则阻滞 L 型钙通道（ICa-L），减少 Ca²⁺ 内流，降低心肌自律性和兴奋性 。"},{"n":"莲子提取物","m":"莲子多糖","mech":"多靶点阻滞 Na⁺/Ca²⁺/K⁺ 通道：不仅抑制 INa 和 ICa-L，更通过阻滞延迟整流钾电流（IKr），延长动作电位时程（APD）和有效不应期（ERP），防止折返激动"}]},{"d":"调节自主神经","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"钙通道阻滞与非竞争性 INa 抑制：当归提取物可剂量依赖性阻滞 ICa-L，降低胞质内 Ca²⁺ 浓度，抑制心肌细胞肥大；同时对 INa 具有非竞争性阻滞作用，减慢传导，消除折返 。"}]},{"d":"营养与能量支持","ings":[{"n":"黄芪提取物","m":"黄芪多糖","mech":"调节交感-迷走平衡与线粒体能量代谢：黄芪通过调节 β1 受体和毒蕈碱受体（M2），恢复自主神经对心率的动态控制；同时通过线粒体 ATP 敏感钾通道（mitoKATP）改善能量匮乏，稳定心肌细胞膜电位 。"}]}],"syn":"本方案针对心率过快、异位搏动，从三个层面协同干预：1. 稳定心肌电生理维度通过影响离子通道，延长不规则，降低心肌细胞异常自律性，从根本上稳定心律；2. 调节自主神经维度抑制交感神经过度兴奋，降低心脏应激反应，控制心率过快；3. 营养与抗氧化支持维度通过镁离子和抗氧化剂维持心肌细胞膜电位稳定，减少氧化应激诱发的心律失常。三者协同，旨在恢复心脏正常节律。"},{"no":26,"name":"源力派固体饮料","issue":"缺血性心肌病风险","sys":"心脑血管","sysId":4,"path":["缺血性心肌病（Ischemic Cardiomyopathy, ICM）的核心病理在于冠状动脉供血不足导致的慢性心肌缺血、心肌细胞能量危机及微血管功能障碍，主要涉及以下底层分子机制：","1. 线粒体能量代谢衰竭（底物匮乏）：冠状动脉狭窄导致心肌细胞长期处于低灌注状态，氧气及葡萄糖供应受限。线粒体氧化磷酸化受阻，ATP 合成锐减，同时伴随乳酸堆积和细胞内酸中毒，导致心肌收缩力下降 。","2. 冠状动脉微血管功能障碍（微循环闭塞）：缺血缺氧诱发血管内皮细胞功能障碍，导致一氧化氮（NO）生物利用度降低，微血管收缩、基底膜增厚及微血管稀疏，进一步加剧心肌缺血的恶性循环 。","3. 氧化应激与炎症级联反应（细胞凋亡与坏死）：缺血再灌注过程中产生的大量活性氧（ROS）引发脂质过氧化，激活 NLRP3 炎症小体和 NF-κB 通路，促使心肌细胞发生程序性凋亡或坏死，导致不可逆的心肌重构与纤维化 。"],"dims":[{"d":"改善心肌能量代谢","ings":[{"n":"黄精提取物","m":"黄精多糖","mech":"激活线粒体生物合成与能量代谢：通过激活 SIRT1/AMPK/PGC-1α 信号通路，改善线粒体呼吸链复合体活性，显著提升 ATP 生成效率，从源头解决心肌细胞的“能量饥饿”问题 。"}]},{"d":"优化冠脉循环","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"促进微血管新生与血管舒张：上调缺氧诱导因子-1α（HIF-1α）和血管内皮生长因子（VEGF）表达，诱导缺血区毛细血管新生；同时作为经典的血管扩张剂，改善冠脉血流储备 。"},{"n":"葛根提取物","m":"葛根黄酮","mech":"激活 PI3K/Akt/eNOS 通路：通过 PI3K/Akt 信号轴促进内皮型一氧化氮合酶（eNOS）磷酸化，增加 NO 释放，实现血管舒张并抑制缺血诱导的心肌细胞凋亡 。"}]},{"d":"保护心肌细胞","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抗氧化与抗凋亡保护：激活 Nrf2/HO-1 防御通路，强力清除 ROS；同时通过调节 Bcl-2/Bax 比例稳定线粒体膜电位，抑制线粒体通透性转换孔（MPTP）开放，阻断心肌细胞凋亡信号 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"抑制氧化应激与自噬流阻断：通过 PI3K/Akt 通路抑制缺氧/复氧诱导的心肌细胞凋亡；同时调节线粒体自噬（Mitophagy），清除受损细胞器，维持心肌细胞内部环境稳态 。"}]}],"syn":"本方案针对心肌缺血缺氧的核心问题，从三个层面协同干预：1. 改善心肌能量代谢维度直接优化心肌细胞对有限氧分的利用效率，提升心肌做功能力，是本方案的基石；2. 优化冠脉循环与减轻负荷维度通过扩张冠脉增加供血，同时轻微减轻心脏后负荷，降低整体耗氧量；3. 保护心肌细胞与抗重塑维度通过抗氧化和抗炎作用，减轻缺血再灌注损伤，抑制心肌纤维化，延缓心室重构进程。三者协同，旨在改善心肌代谢、平衡氧供需、保护心脏结构。"},{"no":27,"name":"衡妍派固体饮料","issue":"女性荷尔蒙失衡","sys":"女性健康","sysId":5,"path":["女性荷尔蒙失衡的本质是\"下丘脑-垂体-性腺轴（HPG Axis）\"调控异常及肝脏激素代谢障碍，核心受以下几条底层分子生物学通路调控：","1. HPG 轴反馈调控通路（GnRH-垂体-卵巢）：下丘脑脉冲式分泌 GnRH 刺激垂体释放 LH 和 FSH，进而调控卵巢雌激素与孕激素的合成。慢性压力、肥胖或胰岛素抵抗会扰乱 GnRH 脉冲发生器，导致 LH/FSH 比例失调（如 PCOS 典型的 LH 升高），引发排卵障碍与雄激素相对过剩 。","2. 类固醇激素合成与代谢通路（CYP19/CYP1A1/CYP1B1）：雌激素的合成依赖 CYP19（芳香化酶）将雄激素转化为雌酮/雌二醇；而其灭活则通过肝脏 CYP1A1 介导的 2-羟基化（生成弱活性的 2-OH 代谢物）和 CYP1B1 介导的 16α-羟基化（生成强增殖活性的 16α-OH 代谢物）。CYP1B1 通路过度活跃导致\"雌激素优势\"，与乳腺增生、子宫肌瘤密切相关 。","3. 肝脏 Phase I/II 解毒与排泄通路（Nrf2/ARE）：肝脏通过 Phase II 解毒酶（UGT、GST、NQO1 等）将雌激素代谢物结合转化为水溶性产物经胆汁/尿液排出。当 Nrf2/ARE 抗氧化通路受抑时，Phase II 酶表达不足，雌激素及其活性代谢物在体内蓄积，形成毒性雌激素代谢池 。"],"dims":[{"d":"调节雌激素代谢","ings":[{"n":"西兰花提取物","m":"萝卜硫素","mech":"不可逆地修饰 Keap1 蛋白的半胱氨酸残基，激活 Nrf2/ARE 信号通路。入核后大量上调 Phase II 解毒酶（如 UGT1A1、GST、NQO1），加速活性雌激素（如4-羟基雌二醇）的 II 相代谢与硫酸化/葡萄糖醛酸化结合，促进其安全排泄 。"},{"n":"葛根提取物","m":"葛根黄酮","mech":"具有选择性雌激素受体调节剂 (SERM) 特性。通过与 ERα 和 ERβ 的配体结合域竞争性结合，在不同组织中发挥双向调节：在骨骼和心血管系统激活受体促进转录，同时在乳腺和子宫内膜细胞中阻碍共激活子募集，抑制下游增殖基因表达 。"}]},{"d":"清肝支持","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"通过修饰 Keap1 蛋白的半胱氨酸残基释放 Nrf2，使其转位入核并结合 ARE，上调 HO-1、NQO1、GCLC 等 Phase II 解毒酶与抗氧化酶的基因表达，增强肝脏对雌激素活性代谢物的结合转化与排泄能力；同时抑制 NLRP3 炎性小体活化及 NF-κB 通路，减轻肝脏炎症损伤 。"},{"n":"姜黄提取物","m":"姜黄素","mech":"抑制 CYP19A1 (芳香化酶) 活性，减少外周雄激素向雌激素的转化；同时通过 NF-κB 和 MAPK 信号通路发挥强效抗炎与抗氧化作用，减轻慢性低度炎症对内分泌系统的干扰 。"}]},{"d":"缓解焦虑","ings":[{"n":"佛手提取物","m":"佛手多糖","mech":"调节中枢神经系统 GABA_A 受体 及 5-HT1A 受体 的表达与敏感性；同时抑制下丘脑-垂体-肾上腺轴 (HPA 轴) 过度激活，降低应激状态下皮质醇的异常分泌 。"}]},{"d":"稳定神经","ings":[{"n":"葡萄糖酸镁","m":"葡萄糖酸镁","mech":"作为 GABA_A 受体 的天然别构调节剂，增强抑制性神经递质传导；竞争性拮抗 NMDA 受体，抑制神经元过度兴奋；并参与 PI3K/Akt/mTOR 通路，改善 HPA 轴功能 。"}]}],"syn":"本配方构建了“肝脏深度排毒-类固醇合成平衡-神经内分泌稳态”的三维荷尔蒙调节网络：\n1. 肝脏解毒轴的双核驱动：菊花提取物（绿原酸）与姜黄提取物（姜黄素）协同激活 Nrf2/ARE 及 NF-κB/MAPK 通路，加速雌激素活性代谢物的结合转化与排泄，并通过抗炎通路保护肝细胞免受氧化损伤，确保肝脏高效处理荷尔蒙代谢产物 。\n2. 类固醇合成与代谢的精准调节：西蓝花提取物与葛根提取物发挥植物雌激素的双向调节作用。\n3. 神经-内分泌的闭环舒缓：针对现代女性普遍存在的“压力型荷尔蒙失调”，佛手提取物与葡萄糖酸镁从中医“肝主疏泄”的角度平抑肝火、舒缓情绪；葡萄糖酸镁则从现代神经药理学角度，直接作用于大脑 GABA 受体，切断“压力-皮质醇升高-卵巢罢工”的恶性循环，为荷尔蒙的自我调节创造平静的内环境 。"},{"no":28,"name":"姿韵派固体饮料","issue":"女性荷尔蒙平衡支持","sys":"女性健康","sysId":5,"path":["女性荷尔蒙（雌激素）的平衡是一个涉及外周腺体分泌、肝脏代谢清除以及靶器官受体响应的复杂系统。针对女性荷尔蒙失衡（如雌激素优势、围绝经期波动或卵巢储备下降），其核心通路干预逻辑如下：","1. 外周靶器官的温和调节（SERM机制）：在卵巢或肾上腺分泌雌激素后，活性激素需与靶器官（如骨骼、心血管、神经系统）上的雌激素受体（ER）结合才能发挥作用。通过激活特定的受体亚型（如ERβ），可以在不对子宫和乳腺造成过度刺激的前提下，维持骨骼密度和神经保护。","2. 肝脏的II相解毒代谢（Phase II Detox）：雌激素在完成生理使命后，必须通过肝脏的II相解毒酶（如葡萄糖醛酸转移酶 UGT、谷胱甘肽-S-转移酶 GST）进行结合反应，转化为无活性的水溶性代谢物，最终经胆汁和尿液排出。这一过程极易受氧化应激和炎症因子干扰。","3. 抗氧化防御与细胞保护：高水平的活性氧（ROS）不仅损伤肝脏细胞，还会导致雌激素代谢途径偏向产生具有促炎和致癌风险的代谢物（如16α-羟雌酮）。激活细胞内的抗氧化总开关（如Nrf2/ARE通路）是维持荷尔蒙代谢稳态的基础。"],"dims":[{"d":"双向调节","ings":[{"n":"葛根提取物","m":"葛根黄酮","mech":"作为天然选择性雌激素受体调节剂（SERM），对 ERβ 具有高度选择性亲和力，与 ERβ 结合后诱导受体构象改变并入核调节靶基因转录，表现出类似雌激素的弱激动效应，同时避免对乳腺和子宫内膜的过度刺激 。"},{"n":"亚麻籽提取物","m":"亚麻木酚素","mech":"SDG 本身无活性，需在肠道特定菌群作用下水解转化为具有弱雌激素活性的肠内酯 (Enterolactone)，这些活性代谢物可与 ERβ 结合，发挥双向调节雌激素水平的作用 。"}]},{"d":"清肝支持","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"通过修饰 Keap1 蛋白的半胱氨酸残基释放 Nrf2，使其转位入核并结合 ARE，上调 HO-1、NQO1、GCLC 等 Phase II 解毒酶与抗氧化酶的基因表达，增强肝脏对雌激素活性代谢物的结合转化与排泄能力；同时抑制 NLRP3 炎性小体活化及 NF-κB 通路，减轻肝脏炎症损伤 。"}]},{"d":"抗氧化支持","ings":[{"n":"桑葚提取物","m":"花青素","mech":"富含多酚类物质，激活 Nrf2/ARE 信号通路，上调 SOD、CAT 等抗氧化酶的表达，有效清除自由基，减轻卵巢和肝脏的氧化应激，为荷尔蒙代谢提供洁净的细胞内环境 。"}]}],"syn":"本配方构建了\"靶器官双向微调-肝脏解毒减负-全身抗氧化维稳\"的女性荷尔蒙平衡三维网络：\n1. 靶器官的 ERβ 选择性保护：葛根素与亚麻籽木酚素形成\"植物雌激素矩阵\"，均对 ERβ 具有高度选择性。在低雌激素状态（如围绝经期）下发挥微弱拟雌激素作用，保护骨骼与心血管；在高雌激素状态下竞争性占据受体位点，表现出抗雌激素效应。两者协同实现真正意义上的\"双向温和调节\"，规避对乳腺和子宫内膜的过度刺激 。\n2. 肝脏代谢轴的精准赋能（菊花绿原酸核心作用）：菊花提取物中的绿原酸作为强效 Nrf2 激活剂，是肝脏 Phase II 解毒通路的\"总开关\"。它通过 Keap1/Nrf2/ARE 轴大幅上调 UGT、GST、NQO1 等解毒酶，加速活性雌激素及其有害代谢物的结合转化与排泄，从源头解除\"雌激素优势\"；同时抑制 NLRP3 炎性小体与 NF-κB 炎症通路，保护肝细胞免受代谢过程中的氧化损伤，确保解毒工厂高效运转 。\n3. 全身抗氧化维稳：桑葚花青素通过 Nrf2 通路提供系统性的抗氧化支持，与菊花绿原酸形成\"肝脏-全身\"双层抗氧化防线。两者协同清除自由基，减轻氧化应激对卵巢功能的干扰，为荷尔蒙的自我调节创造洁净的内环境 。"},{"no":29,"name":"悦蕴派固体饮料","issue":"女性备孕","sys":"女性健康","sysId":5,"path":["女性备孕是一个涉及“下丘脑-垂体-卵巢轴（HPO轴）”调控、代谢稳态及子宫容受性的复杂生理过程。现代女性常面临卵巢储备功能下降（DOR）、卵子质量不佳（如高龄导致的纺锤体异常）以及子宫内膜容受性低（薄型内膜或血流差）等挑战。","能量代谢与氧化应激通路：卵母细胞成熟和受精过程高度依赖线粒体提供的ATP能量。随着年龄增长，卵泡内活性氧簇（ROS）积累，导致氧化应激损伤，加速卵泡闭锁。这主要涉及 Nrf2/ARE 抗氧化通路的失活与 PI3K/Akt 能量感知通路的衰减 。","内分泌与糖脂代谢通路：高胰岛素血症和胰岛素抵抗（IR）会干扰HPO轴，导致高雄激素血症和排卵障碍（如多囊卵巢综合征倾向）。改善代谢稳态需要激活 PI3K/Akt 信号轴，增强胰岛素受体底物的磷酸化敏感性 。","子宫血流与内膜容受性通路：成功的胚胎着床需要肥沃且血供丰富的子宫内膜。这依赖于血管内皮生长因子（VEGF）介导的血管生成以及一氧化氮（NO）介导的血管舒张，核心通路为 PI3K/Akt/eNOS 。"],"dims":[{"d":"优化卵子质量","ings":[{"n":"覆盆子提取物","m":"覆盆子多糖","mech":"通过调节下丘脑-垂体-卵巢轴，双向微调雌激素受体表达；其强效抗氧化成分可穿透卵泡屏障，清除自由基，抑制氧化应激对卵母细胞DNA的损伤 。"},{"n":"黑米提取物","m":"黑米花青素","mech":"激活 Nrf2/ARE 抗氧化通路，上调超氧化物歧化酶（SOD）和谷胱甘肽（GSH）水平，保护颗粒细胞免受脂质过氧化，维持卵泡微环境的稳态 。"}]},{"d":"改善代谢环境","ings":[{"n":"肉桂提取物","m":"肉桂醛","mech":"模拟胰岛素作用，激活胰岛素受体底物（IRS）-PI3K/Akt 级联反应，提高外周组织对葡萄糖的摄取，降低空腹血糖和胰岛素抵抗指数 。"}]},{"d":"营造着床环境","ings":[{"n":"黑芝麻提取物","m":"黑芝麻多糖","mech":"直接参与线粒体电子传递链（ETC），提升线粒体膜电位（MMP），增加卵母细胞ATP产出；同时作为脂溶性抗氧化剂，阻断氧化链式反应 。"},{"n":"石榴提取物","m":"石榴多酚","mech":"刺激血管内皮细胞释放一氧化氮（NO），激活 PI3K/Akt/eNOS 信号轴，显著扩张子宫螺旋动脉，改善盆腔及子宫内膜微循环血流灌注 。"}]}],"syn":"本方案针对备孕核心环节协同作用：1. 促进卵泡发育与排卵维度直接优化卵泡募集和成熟过程，提高排卵率；2. 改善胰岛素敏感性维度纠正高胰岛素血症对卵泡发育的负面影响；3. 子宫内膜容受性与抗氧化维度为胚胎着床准备良好的子宫环境。三者协同，优化受孕前生理条件。"},{"no":30,"name":"柔嘉派固体饮料","issue":"乳腺增生","sys":"女性健康","sysId":5,"path":["乳腺增生（Fibrocystic Breast Changes）现代医学认为其核心病理机制是内分泌激素微失衡、局部慢性炎症反应与异常血管生成三者的恶性循环：","1. 雌激素代谢失衡通路：肝脏是雌激素代谢（尤其是将活性强的雌酮转化为活性弱、易排泄的雌三醇）的核心器官。肝功能下降或雌激素代谢酶活性异常，会导致体内“雌激素优势”（Estrogen Dominance），刺激乳腺导管上皮细胞异常增殖 。","2. 炎症-氧化应激环路：乳腺导管周围的间质微环境若出现慢性炎症，会激活 NF-κB 等炎症信号通路，导致 COX-2 酶高表达。这不仅引发乳房胀痛，还会通过炎症介质促进局部毛细血管通透性增加和异常增生，形成结节或肿块 。","3. PI3K/Akt 信号通路异常：该通路过度激活会促进细胞异常增殖并抑制其凋亡，是乳腺增生向不典型增生发展的关键分子开关。"],"dims":[{"d":"调节雌激素代谢","ings":[{"n":"西兰花提取物","m":"萝卜硫素","mech":"在胃肠道菌群作用下转化为 DIM，竞争性结合雌激素受体（ERα），加速内源性雌激素的代谢清除；同时诱导雌激素依赖性细胞周期停滞 。"},{"n":"葛根提取物","m":"葛根黄酮","mech":"作为植物雌激素和 SERM（选择性雌激素受体调节剂），在体内双向调节雌激素水平；通过抑制 PI3K/Akt/mTOR 通路，阻断异常细胞增殖信号 。"}]},{"d":"活血散结通络止痛","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"阿魏酸通过抑制 NF-κB 核转位及下游 COX-2 表达，发挥强效抗炎作用；当归多糖通过下调 VEGF 表达，抑制病理性血管生成，改善乳腺局部微循环 。"}]},{"d":"抗炎舒缓","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"通过 ROS-线粒体途径诱导异常细胞凋亡，并抑制 PI3K/Akt 通路；甘草酸通过调节 Th1/Th2 免疫平衡，减轻乳腺组织的免疫性炎症与水肿 。"}]}],"syn":"本配方构建了“代谢减负-抗炎散结-免疫舒缓”的立体干预网络：\n1. 上游减负（激素平衡）：西兰花提取物（I3C/DIM）与葛根提取物（异黄酮）协同作用，前者加速雌激素的肝脏灭活与排泄，后者通过 SERM 机制双向微调乳腺局部的雌激素敏感性，从源头切断“激素刺激-腺体增生”的恶性循环 。\n2. 中游抗炎（散结通路）：当归提取物（阿魏酸/多糖）与甘草提取物（查尔酮 A）联手压制微环境中的炎症风暴。它们通过抑制 COX-2 和 PI3K/Akt 通路，减少导管周围的炎性渗出与异常血管增生，促使已形成的结节软化、消散 。\n3. 下游舒缓（症状缓解）：甘草的抗炎舒缓特性与当归的活血通络作用相结合，能迅速降低局部神经末梢的敏感性，有效缓解经前期乳房的胀痛、触痛等不适感，恢复组织的生理弹性 。"},{"no":31,"name":"舒和派固体饮料","issue":"乳腺纤维瘤","sys":"女性健康","sysId":5,"path":["乳腺纤维腺瘤的核心分子机制主要集中在以下三点：","1. 激素应答与细胞周期失控：肿瘤组织对雌激素高度敏感，雌激素与 ER（雌激素受体） 结合后激活 CCND1（Cyclin D1） 等基因，驱动细胞异常增殖。","2. MED12 突变驱动的间质纤维化：约 60%-70% 病例存在 MED12 基因突变，导致间质成纤维细胞转录重编程，过度分泌胶原蛋白。","3. TGF-β/Smad 纤维化通路：肿瘤微环境中的 TGF-β 通过 Smad 蛋白磷酸化，激活 α-SMA（平滑肌肌动蛋白），促使肌成纤维细胞分化，形成致密的纤维包膜 。"],"dims":[{"d":"调节雌激素代谢与抗增殖","ings":[{"n":"西兰花提取物","m":"萝卜硫素","mech":"激活肝脏 II 相解毒酶（如 CYP1A1/NQO1），加速致瘤性雌激素代谢产物的羟基化与排出，降低全身雌激素负荷 。"}]},{"d":"改善微循环抗纤维化","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"下调 NF-κB 炎症通路，抑制 TNF-α 诱导的促炎因子释放；改善局部缺氧微环境，纠正缺氧诱导因子 HIF-1α 介导的病理性血管增生 。"},{"n":"桃仁提取物","m":"苦杏仁苷","mech":"抑制 TGF-β1/Smad3 磷酸化级联反应，下调 α-SMA 与 I 型胶原表达，阻断肌成纤维细胞转化与胶原沉积 。"}]},{"d":"抗氧化解毒","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"清除活性氧（ROS），抑制 HMGB1/TLR4/NF-κB 炎症小体通路；靶向抑制 PI3K/Akt 和 Wnt/β-catenin 信号轴，阻断雌激素受体下游促增殖信号 。"}]}],"syn":"本配方构建了“清-调-疏-护”四维干预体系：西兰花与菊花联手净化肝脏代谢通道并抑制下游增殖信号；当归打破局部缺氧与炎症的恶性循环；桃仁则直接瓦解导致纤维瘤质硬的纤维化基质。四者协同实现了对纤维腺瘤生态位的深层重构。"},{"no":32,"name":"清衡派固体饮料","issue":"子宫肌瘤","sys":"女性健康","sysId":5,"path":["子宫肌瘤（Uterine Leiomyoma）是典型的雌激素与孕激素双重依赖性良性肿瘤，其核心发病机制高度依赖于以下分子生物学底层通路：","1. 激素受体介导的信号通路（ER/PR-driven proliferation）：雌激素通过激活子宫平滑肌细胞内的雌激素受体（ERα/β）及孕激素受体（PR），启动下游的 PI3K/Akt 和 MAPK/ERK 信号级联反应，导致细胞周期蛋白（如 Cyclin D1）过度表达，驱动平滑肌细胞的异常单克隆增殖与抗凋亡 。","2. 生长因子与促血管生成通路（VEGF/TGF-β mediated angiogenesis & fibrosis）：肌瘤局部微环境中，转化生长因子-β（TGF-β）和血管内皮生长因子（VEGF）呈现高表达。TGF-β 激活 Smad2/3 通路，促进细胞外基质（ECM）大量沉积，导致肌瘤组织致密纤维化；VEGF 则协同 HIF-1α 诱导异常的新生血管生成，为肌瘤的持续生长提供充足的血液和营养支持 。","3. 慢性炎症与氧化应激微环境（Chronic Inflammation & Oxidative Stress）：肌瘤组织长期处于慢性炎症浸润状态，核因子κB（NF-κB）被持续激活，释放大量的促炎因子（如 TNF-α, IL-6）。这些炎症介质不仅进一步放大激素的促增殖效应，还通过诱导线粒体功能障碍产生活性氧（ROS），造成DNA损伤，加速平滑肌细胞的恶性转化与纤维化进程 。"],"dims":[{"d":"调节雌激素代谢","ings":[{"n":"西兰花提取物","m":"萝卜硫素","mech":"激活肝脏 II 相解毒酶（如 CYP1A1, NQO1），加速雌激素代谢产物的羟基化与葡萄糖醛酸化排出，降低全身雌激素负荷及局部组织氧化应激水平 。"}]},{"d":"抗氧化与维持细胞健康平衡","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抑制 NF-κB 和 MAPK 炎症通路的磷酸化，减少 TNF-α 和 IL-6 释放；同时抑制 TGF-β1/Smad3 通路，阻断成纤维细胞的肌成纤维细胞转化与胶原沉积 。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"下调 VEGF 及其下游 PI3K/Akt 信号表达，抑制肌瘤微血管异常增生；并作为强效抗氧化剂直接清除自由基，保护细胞免受氧化损伤 。"}]},{"d":"清肝支持","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"清除活性氧（ROS），抑制 HMGB1/TLR4/NF-κB 炎症小体通路；支持肝脏谷胱甘肽（GSH）合成，加速激素-结合物的解毒排泄 。"}]}],"syn":"本配方构建了针对子宫肌瘤微环境的“清-抗-护”多维干预体系：西兰花提取物与菊花提取物联手净化肝脏代谢通道，加速雌激素及毒素排出，减轻高雌激素毒性；姜黄素直击病灶核心，强力阻断促炎因子释放并瓦解导致肌瘤质硬的纤维化基质；绿茶浓缩粉则从血管层面入手，抑制异常血供并清除氧化自由基。四者协同从源头切断肌瘤生长燃料、破坏其微生态环境，实现对子宫健康的深层生态重构。"},{"no":33,"name":"巢律派固体饮料","issue":"多囊卵巢综合征","sys":"女性健康","sysId":5,"path":["多囊卵巢综合征（PCOS）的核心病理特征为胰岛素抵抗、高雄激素血症及慢性低度炎症。其分子生物学底层通路主要集中在以下三个层面：","1. 胰岛素抵抗与高胰岛素血症通路（PI3K/Akt 抑制）：PCOS患者普遍存在胰岛素抵抗。升高的游离胰岛素及黄体生成素（LH）会干扰卵巢胰岛素受体底物（IRS）/PI3K/Akt 信号级联反应，导致下游糖原合成受阻及葡萄糖转运蛋白 GLUT4 转位减少 。同时，高胰岛素血症会刺激卵巢和肾上腺过度合成雄激素，并抑制肝脏合成性激素结合球蛋白（SHBG），加剧高雄激素血症 。","2. 类固醇合成与芳香化酶调节通路（CYP19A1 抑制）：PCOS常伴随芳香化酶活性降低，导致雄激素向雌激素转化受阻。高浓度的 LH 通过激活 MAPK/ERK 和 JAK/STAT3 通路，促进卵巢间质细胞和卵泡膜细胞过度分泌睾酮，破坏下丘脑-垂体-卵巢轴的负反馈平衡 。","3. 慢性低度炎症与氧化应激通路（NF-κB 激活）：内脏脂肪堆积引发脂肪组织巨噬细胞浸润，激活 NF-κB 信号通路，促使促炎因子（如 IL-6、TNF-α）释放。氧化应激产生的过量 ROS 进一步损伤线粒体功能，加剧胰岛素抵抗及卵泡闭锁 。"],"dims":[{"d":"改善胰岛素抵抗","ings":[{"n":"白果提取物","m":"银杏黄酮","mech":"抑制 JAK/STAT3 磷酸化级联反应，下调促炎因子表达，降低体内 ROS 蓄积，改善胰岛素抵抗 。"},{"n":"肉桂提取物","m":"肉桂醛","mech":"激活 PI3K/Akt 及 AMPK 能量感应通路，促进 GLUT4 转位以增加葡萄糖摄取，抑制糖异生关键酶 。"}]},{"d":"调节激素平衡","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"激活 Keap1/Nrf2/HO-1 抗氧化信号通路，调节 IRS-1/PI3K/Akt 通路活性，改善卵巢微循环及激素紊乱 。"},{"n":"葡萄糖酸锌","m":"葡萄糖酸锌","mech":"作为胰岛素颗粒核心辅因子，增强胰岛素受体酪氨酸磷酸化；参与 IRS/PI3K 通路，减轻肝脏及卵巢的氧化应激 。"}]},{"d":"抗炎与代谢支持","ings":[{"n":"DHA藻油","m":"二十二碳六烯酸 (DHA)","mech":"竞争性抑制 NF-κB 通路，减少促炎介质生成；调节肠道菌群-性腺轴，降低系统性炎症反应 。"}]}],"syn":"本配方构建了针对多囊卵巢综合征病理特征的“控糖-调脂-抗炎-促排”四维干预体系。肉桂提取物与葡萄糖酸锌双管齐下，强力激活 PI3K/Akt 通路以改善胰岛素抵抗，从源头切断高雄激素的合成燃料；白果提取物深入抑制 JAK/STAT3 通路，阻断慢性炎症状态；Omega-3 脂肪酸辅助平息全身低度炎症风暴；当归提取物则通过 Nrf2 通路保护卵巢功能并双向调节内分泌。多维协同旨在改善患者的代谢微环境与卵巢生态。"},{"no":34,"name":"坤泰派固体饮料","issue":"卵巢囊肿","sys":"女性健康","sysId":5,"path":["卵巢囊肿（尤其是子宫内膜异位囊肿及慢性炎症性囊肿）的核心病理机制集中于以下四个层面：","1. 慢性炎症与氧化应激（NF-κB & ROS 通路）：囊肿内的反复出血或组织异常增殖会引发持续性免疫应答，激活 NF-κB 通路，释放大量 TNF-α、IL-6 等促炎因子。同时，局部高浓度活性氧（ROS）引发脂质过氧化，导致颗粒细胞凋亡和卵泡闭锁 。","2. 组织纤维化（TGF-β/Smad 通路）：长期的炎症刺激激活 TGF-β/Smad 信号通路，促使卵巢成纤维细胞向肌成纤维细胞转化，过度分泌 I 型/III 型胶原，形成致密的纤维粘连包裹，破坏卵巢皮质结构并导致卵巢储备功能下降 。","3. 代谢微环境紊乱（HIF-1α & PI3K/Akt 通路）：囊肿局部常伴随缺氧状态，激活 HIF-1α 通路，刺激血管异常增生并加剧纤维化。此外，胰岛素抵抗引发的代偿性高胰岛素血症会通过 PI3K/Akt 通路异常刺激卵巢间质细胞合成雄激素，干扰卵泡正常发育 。","4. 水液与脂质代谢障碍：局部微循环障碍及淋巴回流受阻导致液体潴留，同时异常脂质代谢产生的毒性物质加剧局部炎症反应。"],"dims":[{"d":"活血化瘀","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"抑制 TGF-β/Smad 通路激活，下调促炎因子表达并减少胶原沉积，从而发挥活血化瘀与抗纤维化作用 。"},{"n":"桃仁提取物","m":"苦杏仁苷","mech":"抑制 NF-κB 磷酸化，阻断下游 TNF-α 和 IL-6 的释放；同时改善血液流变学，降低血液粘稠度，促进囊内淤血消散 。"}]},{"d":"利水渗湿","ings":[{"n":"茯苓提取物","m":"茯苓多糖","mech":"调节 AQP（水通道蛋白） 表达，增强肾小球滤过率；同时通过 MAPK 通路抑制氧化应激，发挥利水渗湿与免疫调节作用 。"},{"n":"薏苡仁提取物","m":"薏苡仁多糖","mech":"诱导 G2/M 期细胞周期阻滞，诱导异常卵巢组织细胞凋亡；抑制 VEGF 表达，抗血管新生，切断囊肿营养供给 。"}]},{"d":"调节代谢","ings":[{"n":"葛根提取物","m":"葛根黄酮","mech":"激活 PI3K/Akt 通路改善胰岛素抵抗，抑制 HIF-1α 积累以改善卵巢缺氧微环境，保护颗粒细胞免受凋亡 。"}]},{"d":"抗炎","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"清除自由基并激活 Nrf2/HO-1 抗氧化通路，同时强力抑制 NF-κB 介导的炎症反应，阻断炎症风暴对卵巢组织的破坏 。"}]},{"d":"抗炎调和","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"抑制 HMGB1/TLR4/NF-κB 炎症小体级联反应，下调 TNF-α 和 IL-6 释放，并发挥皮质激素样抗炎与免疫调和作用 。"}]}],"syn":"本配方构建了针对卵巢囊肿微环境的“抗炎-抗纤-调代谢”三位一体干预体系。姜黄与甘草双剑合璧，强力镇压 NF-κB 介导的慢性炎症；当归与桃仁深入阻断 TGF-β/Smad 通路，瓦解导致卵巢变硬的纤维粘连；茯苓与薏苡仁温和利水，疏通局部微循环与水液代谢通道，薏苡仁更能切断囊肿营养供给；葛根则从代谢根源入手，改善胰岛素抵抗与缺氧状态。多维协同旨在净化卵巢微生态，保护卵泡发育环境。"},{"no":35,"name":"静昕派固体饮料","issue":"更年期综合征","sys":"女性健康","sysId":5,"path":["更年期综合征（围绝经期综合征）的本质是卵巢功能衰退导致的雌激素波动性下降及下丘脑-垂体-卵巢轴（HPO轴）反馈调节失衡。这一内分泌剧变引发了多系统的连锁反应：","1. 神经-内分泌通路紊乱：雌激素水平的降低导致下丘脑体温调节中枢阈值下降，触发交感神经兴奋，引发血管舒缩症状（潮热、盗汗）。同时，雌激素对单胺类神经递质（如5-HT、GABA）的调节失衡，导致情绪中枢不稳定，产生焦虑、抑郁及睡眠障碍。","2. 骨代谢微环境失衡（高转换状态）：雌激素具有强大的抑制破骨细胞活性的功能。雌激素缺乏会导致破骨细胞分化加速，引发“破骨/成骨”失衡，骨吸收远大于骨形成，导致骨量快速流失和骨质疏松。","3. 氧化应激与神经炎症：卵巢功能衰退伴随线粒体功能下降，体内活性氧（ROS）大量蓄积，诱发全身性的氧化应激反应，进一步加剧血管内皮损伤和神经细胞的凋亡。"],"dims":[{"d":"缓解潮热与情绪","ings":[{"n":"葛根提取物","m":"葛根黄酮","mech":"可激活 雌激素受体β (ERβ) 通路，发挥植物雌激素样双向调节作用，稳定下丘脑体温调节中枢，减少血管舒缩症状 。"},{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"调节 GABA_A受体 及 GABA-B受体 活性，增强中枢神经抑制性递质功能；降低皮质醇水平，调节 HPA轴（下丘脑-垂体-肾上腺轴） 应激反应 。"}]},{"d":"支持骨骼健康","ings":[{"n":"碳酸钙","m":"碳酸钙","mech":"补充骨矿化原料，降低 PTH（甲状旁腺激素） 分泌；参与调节 RANKL/OPG信号通路，抑制破骨细胞的过度活化，减缓骨量流失 。"}]},{"d":"清心安神改善睡眠","ings":[{"n":"百合提取物","m":"百合多糖","mech":"高亲和力激活 ERβ（雌激素受体β） 通路，调节大脑神经递质；通过 肠-脑轴 改善肠道菌群，阻断外周炎症因子向中枢传递，发挥抗焦虑与神经保护作用 。"}]}],"syn":"本方案全面应对更年期症状：1. 缓解潮热与情绪波动维度直接针对核心血管舒缩和神经精神症状；2. 支持骨骼与心血管健康维度应对雌激素下降带来的长期风险；3. 神经系统支持与睡眠改善维度缓解焦虑、失眠等问题。多系统协同，提升生活质量。"},{"no":36,"name":"安和派固体饮料","issue":"溃疡性结肠炎","sys":"消化与胃肠","sysId":1,"path":["溃疡性结肠炎（Ulcerative Colitis, UC）是一种慢性非特异性肠道炎症性疾病，其核心病理机制围绕“肠道屏障崩溃-免疫失衡-菌群失调”的恶性循环展开：","1. 黏膜屏障与紧密连接破坏：UC患者肠道上皮细胞间的紧密连接蛋白（如Occludin、Claudins、ZO-1）表达显著降低，导致肠黏膜通透性增加，肠道内容物（毒素、细菌）大量渗漏至固有层，触发强烈的先天免疫反应 。","2. 免疫微环境极化与炎症级联：肠道菌群失衡及屏障破坏促使树突状细胞向促炎表型极化，过度激活T细胞（特别是Th1和Th17细胞），导致促炎细胞因子（如TNF-α、IL-1β、IL-6、IL-17）大量释放，进而引发全身性免疫失调 。","3. 氧化应激与线粒体损伤：炎症区域的活性氧（ROS）大量蓄积，超出机体抗氧化系统的清除能力，导致脂质过氧化和蛋白质变性，进一步加剧上皮细胞凋亡和黏膜溃疡 。","4. 肠道菌群-肠-脑轴紊乱：有害菌（如大肠杆菌）丰度增加，有益菌（如双歧杆菌、乳酸杆菌）减少，产短链脂肪酸（SCFAs）的能力下降，导致肠道微生态失去稳态。"],"dims":[{"d":"抗炎与黏膜修复","ings":[{"n":"洋葱提取物","m":"槲皮素","mech":"作为天然抗氧化剂，激活 Nrf2/HO-1 抗氧化通路清除ROS；同时抑制 NF-κB 核转位，并上调紧密连接蛋白（Occludin、ZO-1）的表达，重建肠道机械屏障 。"},{"n":"甘草提取物","m":"甘草酸","mech":"激活 Nrf2/PINK1 自噬通路清除受损线粒体，并通过调控 NOD2/RIP2/NF-κB 信号通路，从源头抑制TNF-α、IL-6等促炎因子的转录与释放 。"}]},{"d":"调节免疫反应","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"作为强效的 NF-κB 通路抑制剂，阻止其向细胞核转移；同时激活 Nrf2/HO-1 通路，双重阻断氧化应激与炎症风暴对结肠上皮的破坏 。"}]},{"d":"抗氧化与保护","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"争性抑制 TLR4/MyD88 受体复合物，阻断下游 MAPK/NF-κB 炎症信号传导，有效平衡Th1/Th2免疫反应，减少肠道免疫细胞过度浸润 。"}]},{"d":"微生态营养与健脾修复","ings":[{"n":"低聚果糖","m":"低聚果糖","mech":"作为优质益生元，特异性增殖肠道产丁酸菌，提升短链脂肪酸（SCFAs）水平，通过 GPR41/GPR43 受体调节肠道免疫，并滋养肠上皮细胞 。"},{"n":"山药提取物","m":"山药多糖","mech":"显著抑制 NF-κB/COX-2 信号通路的过度激活，减少促炎介质产生；同时上调紧密连接蛋白表达，并作为益生元促进有益菌定植，促进溃疡面愈合 。"}]}],"syn":"本方案通过四大路径协同管理UC：1. 抗炎与黏膜修复维度直接抑制NF-κB等关键炎症通路，减轻黏膜损伤并促进修复；2. 调节免疫反应维度平衡Th1/Th2/Th17免疫应答，减少过度免疫攻击；3. 抗氧化与保护维度清除自由基，保护肠道上皮细胞免受氧化损伤；4. 微生态营养与菌群调节维度为有益菌提供营养，抑制致病菌，巩固肠道屏障。四者协同，旨在控制炎症、促进愈合、恢复肠道稳态。"},{"no":37,"name":"克安派固体饮料","issue":"克罗恩病","sys":"消化与胃肠","sysId":1,"path":["克罗恩病（Crohn's Disease, CD）是一种慢性、易复发的胃肠道免疫炎症性疾病，其核心病理机制涉及复杂的免疫失调、遗传易感性与环境触发因素的相互作用 。其底层通路特征如下：","1. 异常免疫激活与炎症风暴：患者的肠道免疫系统对环境中的共生菌或食物抗原产生过度反应，导致树突状细胞异常活化并释放促炎细胞因子。这进一步促使 Th1/Th17 细胞极化，释放大量的 TNF-α、IL-17、IL-23 等炎症因子，形成正反馈循环，引发持续的黏膜全层炎症 。","2. 肠上皮屏障崩溃与“肠漏”：促炎因子（如 TNF-α）和炎症信号通路（如 NF-κB、MAPK）的过度激活，会导致肠上皮细胞间的紧密连接蛋白（如 ZO-1、Occludin）降解或移位，细胞间通透性急剧增加，引发严重的“肠漏”现象 。","3. 菌群失调与代谢物匮乏：屏障破坏使得肠道菌群易位，引发菌群结构紊乱（Dysbiosis）。有益菌减少导致短链脂肪酸（SCFAs）生成不足，无法为肠道上皮提供必要的能量支持，进一步加重免疫失衡 。"],"dims":[{"d":"抗炎","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"强效抑制 NF-κB 和 MAPK 信号通路的磷酸化激活，下调 TNF-α、IL-6 等促炎因子的转录；同时通过激活 Nrf2/ARE 抗氧化通路减轻肠道氧化应激，并调节 Th17/Treg 免疫平衡 。"}]},{"d":"黏膜营养与修复","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"抑制 NF-κB 介导的炎症反应；高亲和力激活 Wnt/β-catenin 信号通路，上调紧密连接蛋白（ZO-1、Claudins）的表达，促进肠黏膜上皮细胞的增殖与物理屏障的修复 。"},{"n":"山药提取物","m":"山药多糖","mech":"抑制 NF-κB/MAPK 通路的过度激活，降低促炎因子水平；通过上调紧密连接蛋白（Occludin、Claudin-1、MUC-2）的表达，降低肠道通透性，阻断“肠漏” 。"},{"n":"葡萄糖酸锌","m":"葡萄糖酸锌","mech":"作为金属依赖性酶的辅因子，锌参与调节 Th1/Th2/Th17 免疫平衡；通过下调炎症相关基因表达减少氧化损伤，并为肠上皮细胞提供能量，加速溃疡面的物理愈合 。"}]},{"d":"调节免疫与菌群","ings":[{"n":"复合益生菌粉（含鼠李糖乳杆菌）","m":"复合益生菌粉（含鼠李糖乳杆菌）","mech":"激活肠道单核/树突状细胞中的 STING/TBK1/RELA 信号通路，上调抗炎细胞因子 IL-10 的表达；重塑肠道菌群结构，促进有益菌定植，恢复肠道微生态稳态 。"}]},{"d":"基础营养支持","ings":[{"n":"碳酸钙","m":"碳酸钙","mech":"弥补克罗恩病常伴有的肠道吸收障碍导致的钙流失，维持血钙稳态；中和肠道局部过量的酸性代谢产物，减轻酸中毒对脆弱黏膜的刺激，为肠道修复提供中性环境 。"}]}],"syn":"本方案针对CD的复杂病理，从四个层面协同干预：1. 抗炎与抗纤维化维度强力抑制慢性炎症 cascade 并干预促纤维化因子，延缓疾病进展和并发症；2. 深度营养与黏膜修复维度提供关键营养素，支持肠上皮修复和全身营养状况；3. 调节免疫与菌群互作维度通过益生菌直接定植，调节肠道免疫微环境；4. 基础营养支持。四维协同，旨在控制活动性炎症、促进组织修复、改善营养状态。"},{"no":38,"name":"清甘派固体饮料","issue":"肝功能损伤","sys":"肝胆","sysId":6,"path":["肝功能损伤（如酒精性肝病、药物性肝损伤或非酒精性脂肪肝）的核心病理机制是肝脏代谢超负荷引发的系统性氧化应激风暴与持续性免疫炎症。","1. 氧化应激与脂质过氧化：当肝脏处理毒素（如酒精代谢产生的乙醛、药物毒性代谢物）或过量游离脂肪酸时，线粒体电子传递链泄漏大量活性氧（ROS）。ROS攻击肝细胞膜引发脂质过氧化，产生剧毒的丙二醛（MDA）和蛋白质羰基，直接破坏细胞结构与功能 。","2. 炎症级联反应失控：受损肝细胞释放损伤相关分子模式（DAMPs），激活肝内免疫细胞（如枯否细胞）释放TNF-α、IL-6等促炎因子。这些因子通过激活 NF-κB 和 MAPK 信号通路，招募更多免疫细胞聚集，形成“炎症-损伤-更炎症”的恶性循环 。","3. 胆汁淤积与代谢紊乱：严重损伤时，胆管上皮受损导致胆汁排泄受阻。胆汁酸（BA）反流至肝细胞，激活毒性受体（如FXR、TGR5失衡），进一步加重肝细胞凋亡和纤维化风险 。"],"dims":[{"d":"保肝修复","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"激活 Nrf2/ARE 抗氧化通路，上调HO-1、NQO1等II相解毒酶，清除自由基；同时通过调控 PPARα/γ 通路改善肝脏脂质沉积，减轻脂肪变性 。"}]},{"d":"健脾护肝","ings":[{"n":"山药提取物","m":"山药多糖","mech":"通过调节 肠-肝轴 增强肠道紧密连接蛋白（ZO-1/Occludin），阻止内毒素（LPS）入血；激活 AMPK/PPAR 通路促进脂肪酸β-氧化，改善酒精性肝损伤 。"}]},{"d":"抗氧化解毒","ings":[{"n":"西兰花种子浓缩粉","m":"萝卜硫素","mech":"作为强效的 Nrf2 通路激活剂，精准结合Keap1蛋白释放Nrf2入核，启动数百种抗氧化和解毒基因（如GST、NQO1），专攻II相解毒与氧化应激 。"}]},{"d":"抗炎利胆","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"双向调节炎症：一方面激活 Nrf2 提升抗氧化能力，另一方面强力抑制 NF-κB 和 MAPK 通路，减少促炎因子释放；同时刺激胆囊收缩，促进胆汁排泄 。"},{"n":"甘草提取物","m":"甘草酸","mech":"诱导肝脏II相代谢酶（UGT1A1）和外排转运体（MRP2），加速有毒物质排泄；通过 Nrf2/ARE 通路保护肝细胞；促进胆汁酸外排，改善胆汁淤积 。"}]}],"syn":"本配方构建了针对肝功能损伤的“抗氧化防御+抗炎症风暴+胆汁疏泄+肠肝轴调节”四维协同干预体系。西兰花与菊花作为核心抗氧化剂，强力开启Nrf2总开关，提升肝脏自身解毒酶水平以应对氧化应激；姜黄与甘草强强联手，从NF-κB炎症源头和胆汁排泄通道双向“灭火”；山药则从肠-肝轴入手，加固肠道防线，阻断炎症源头。五者协同旨在多靶点、全方位减轻肝脏负担，修复受损肝细胞。"},{"no":39,"name":"清晓派固体饮料","issue":"肝脏炎症","sys":"肝胆","sysId":6,"path":["肝脏炎症的发生是多通路交织的病理过程：","1. 代谢紊乱与氧化应激：肝脏作为代谢中枢，当处理过量能量底物（如酒精、游离脂肪酸）时，线粒体电子传递链受损，导致活性氧（ROS）爆发。ROS 不仅直接破坏肝细胞膜和细胞器，还会激活 NLRP3 炎症小体 。","2. 炎症信号级联放大：酒精代谢物（乙醛）或脂毒性物质激活 TLR4 和 NLRP3 模式识别受体，触发下游 NF-κB 和 MAPK 信号通路。这会导致大量促炎细胞因子（如 TNF-α、IL-1β、IL-6）释放，引发瀑布式的免疫攻击 。","3. 抗氧化防御系统崩溃：在持续炎症下，肝脏内源性抗氧化酶（如 SOD、GSH）被过度消耗，无法中和自由基，进一步加剧肝细胞凋亡和坏死。"],"dims":[{"d":"抗炎与免疫调节","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"作为天然的多靶点抗炎剂，通过抑制 TLR4/NF-κB 和 NLRP3 炎症小体 的组装与激活，阻断下游促炎因子的转录；同时作为强效的 Nrf2 通路激活剂，上调 HO-1 等抗氧化酶，中和 ROS 。"},{"n":"甘草提取物","m":"甘草酸","mech":"通过 Keap1-Nrf2 通路激活抗氧化反应，显著提升肝细胞抗氧化能力；同时强力抑制 NF-κB 和 MAPK 通路的磷酸化激活，减少促炎介质释放。此外，甘草甜素还能稳定肝细胞膜，促进肝细胞再生 。"}]},{"d":"抗氧化与保护","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"激活细胞保护性转录因子 Nrf2/ARE 通路，诱导超氧化物歧化酶（SOD）和谷胱甘肽（GSH）的生成，高效清除自由基；同步抑制 NF-κB 和 JAK2/STAT3 通路，降低系统性炎症水平 。"}]},{"d":"清热利湿辅助代谢","ings":[{"n":"荷叶提取物","m":"荷叶碱","mech":"激活肝脏能量代谢的核心激酶 AMPK。活化的 AMPK 一方面抑制 ACC 和 FAS 通路，减少内源性脂肪酸合成；另一方面促进脂肪酸的 β-氧化，加速代谢废物排出，从源头切断脂质毒性引发的炎症。"}]}],"syn":"本配方构建了一套多靶点协同干预体系：1. 抗炎与免疫调节维度核心抑制NF-κB等关键炎症通路，从源头减少促炎因子产生；2. 抗氧化与保护维度减轻氧化应激，防止脂质过氧化加重炎症；3.清热利湿辅助代谢，帮助排泄炎症介质。多靶点协同，快速控制肝脏炎症。"},{"no":40,"name":"利舒派固体饮料","issue":"慢性胆囊炎","sys":"肝胆","sysId":6,"path":["慢性胆囊炎的核心病理在于胆汁代谢失衡与持续性低度炎症的交织。","1. 胆汁淤积与胆固醇过饱和：胆囊收缩功能减弱或胆道微环境改变，导致胆汁排泄不畅。胆汁中胆固醇处于过饱和状态，极易析出结晶形成胆结石（胆固醇性结石），结石的物理摩擦和梗阻会反复诱发无菌性炎症 。","2. 胆汁酸稳态失调：胆汁酸（BAs）的合成、转运和肠肝循环受阻。肝脏中胆汁酸蓄积会产生强烈的细胞毒性，激活下游的 FXR 和 TGR5 受体失衡，引发肝细胞和胆囊上皮细胞的损伤 。","3. 炎症小体与神经肌肉功能障碍：胆囊壁的巨噬细胞在淤积胆汁或微小结石的刺激下，激活 NLRP3炎症小体 和 NF-κB 通路，释放IL-1β、IL-6等促炎因子。同时，胆道平滑肌（受迷走神经和胆囊收缩素CCK调控）痉挛，导致右上腹阵发性绞痛 。"],"dims":[{"d":"利胆抗炎与解痉","ings":[{"n":"薄荷提取物","m":"薄荷脑","mech":"作为天然的钙离子通道阻滞剂，直接松弛奥狄括约肌（Oddi括约肌）和胆囊平滑肌，降低胆道压力；同时通过激活 TRPM8冷感受体，发挥显著的平滑肌解痉镇痛作用，缓解胆绞痛 。"},{"n":"栀子提取物","m":"栀子苷","mech":"通过激活回肠远端的 FXR（法尼醇X受体） 和 TGR5 通路，上调胆汁酸外排转运体 BSEP 的表达，促进淤积胆汁酸经粪便排泄；同步抑制 NF-κB 和 NLRP3炎症小体，减轻胆囊壁的无菌性炎症 。"}]},{"d":"调节脂质代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"激活肝脏和脂肪组织的 AMPK 信号通路，抑制 SREBP-1c 和 FAS 酶的表达，减少内源性胆固醇合成；促进脂肪酸的 β-氧化，从源头降低血清和胆汁中的胆固醇浓度，防止结石进一步增大 。"}]},{"d":"清肝抗氧化","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"激活细胞保护性转录因子 Nrf2/ARE 通路，上调超氧化物歧化酶（SOD）和谷胱甘肽（GSH），清除胆汁淤积产生的过量活性氧（ROS）；抑制 MAPK 和 NF-κB 通路的磷酸化，阻断氧化应激向炎症反应的级联放大 。"}]}],"syn":"本方案针对胆囊炎三大病理环节：1. 利胆抗炎与解痉维度核心促进胆汁分泌、缓解痉挛疼痛并抑制炎症；2. 调节脂质代谢维度改善胆汁成分，减少胆固醇过饱和状态；3. 抗氧化与黏膜保护维度减轻胆汁对胆囊壁的刺激和氧化损伤。协同作用，旨在恢复胆囊正常功能。"},{"no":41,"name":"澈净派固体饮料","issue":"胆囊息肉","sys":"肝胆","sysId":6,"path":["胆囊息肉的发生与发展并非单一因素所致，其核心底层通路主要涉及以下三个方面：","1. 胆固醇代谢失衡与结晶沉积：这是绝大多数（约60%-80%）胆囊息肉（尤其是胆固醇性息肉）形成的主要机制。当机体脂质代谢紊乱（如高脂饮食、肥胖等导致的高胰岛素血症或高甘油三酯血症）时，肝脏分泌的胆固醇过量。胆汁中过量的胆固醇无法被胆汁酸和卵磷脂充分溶解，形成过饱和状态并析出微结晶。这些微结晶不断附着在受损或功能异常的胆囊黏膜表面，逐渐聚集成肉眼可见的息肉样突起 。","2. 慢性炎症与黏膜损伤修复异常：长期的慢性胆囊炎或胆道微感染会导致胆囊黏膜持续受到炎症因子（如TNF-α, IL-6）的刺激。这不仅会引发黏膜上皮细胞的异常增殖和间质纤维化，还会导致黏液分泌失调，包裹住早期的胆固醇结晶，加速息肉的生长 。","3. 氧化应激与细胞微环境恶化：胆汁淤积和炎症过程中产生的活性氧（ROS）会造成胆囊上皮细胞的氧化损伤。氧化应激不仅能直接破坏细胞膜结构，还能激活促炎信号通路，进一步恶化胆囊微环境，为息肉的形成和恶变提供土壤 。"],"dims":[{"d":"调节脂质代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"激活肝脏及肠道FXR（法尼酯X受体）和 LXRα 通路，促进胆汁酸合成与排泄；同时激活 AMPK 信号，抑制 SREBP-1c 及其下游靶酶 HMG-CoA还原酶 和 FAS，显著减少内源性胆固醇的生物合成，从源头降低胆汁胆固醇饱和度 。"}]},{"d":"利胆抗炎","ings":[{"n":"栀子提取物","m":"栀子苷","mech":"作为典型的肠肝循环调节剂，通过激活回肠末端的 FXR（法尼酯X受体） 和 SHP（小异二聚体伴侣） 通路，下调顶端钠依赖性胆酸转运体（ASBT）的表达。这有效减少了胆汁酸的重吸收，增加粪便排泄，从而解除胆汁淤积，防止胆固醇结晶析出 。"},{"n":"姜黄提取物","m":"姜黄素","mech":"作为强效的天然抗炎剂，特异性抑制 NF-κB p65 亚基的核转位及其下游 IκBα 降解，阻断促炎因子（IL-6, TNF-α）的产生；通过激活 Nrf2/ARE 抗氧化通路，上调HO-1和NQO1等酶，减轻胆囊黏膜的氧化应激损伤 。"}]},{"d":"清肝抗氧化","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"通过 Keap1-Nrf2 相互作用激活抗氧化应答元件，显著提升超氧化物歧化酶（SOD）和谷胱甘肽（GSH）水平；同步抑制 MAPK 和 NF-κB 通路的磷酸化级联反应，有效阻断氧化应激向慢性炎症的转化 。"}]}],"syn":"本配方构建了针对胆囊息肉病理微环境的“上游控脂-中游排石-下游抗炎抗氧化”全链条协同干预体系。\n1. 山楂提取物驻扎“上游”，通过双重阻断（抑制合成+促进排泄）显著降低胆汁中的胆固醇浓度，铲除息肉形成的物质基础。\n2. 栀子提取物主导“中游疏通”，通过重塑肠肝循环，强力冲刷淤积在胆囊内的胆汁酸，防止胆固醇微结晶沉积。\n3. 姜黄提取物与菊花提取物共同守护“下游防线”，姜黄素直接扑灭黏膜局部的慢性炎症之火，菊花提取物则清除氧化自由基，阻止黏膜上皮细胞在炎症和氧化双重打击下发生异常增生。四者协同，旨在多维度改善胆囊内环境，抑制息肉进展。"},{"no":42,"name":"淳和派固体饮料","issue":"肝脏健康支持","sys":"肝胆","sysId":6,"path":["现代社会中，肝脏作为人体的“化工厂”和代谢中枢，常年面临多重夹击：","1. 脂质代谢紊乱：长期高脂高糖饮食、久坐缺乏运动导致大量游离脂肪酸涌入肝脏。过多的脂肪酸不仅会在肝细胞内堆积形成脂肪变性（脂肪肝），还会通过 de novo lipogenesis (DNL) 途径进一步合成甘油三酯 。","2. 线粒体氧化应激爆发：当肝脏代谢负荷超载时，线粒体电子传递链发生“泄漏”，产生活性氧（ROS）爆发。ROS 不仅直接破坏肝细胞膜和细胞器，还会激活 NLRP3 炎症小体，引发恶性循环 。","3. 系统性低度炎症：肝脏不仅是代谢器官，也是免疫器官。受损的肝细胞和过量的脂质会激活 Kupffer细胞（肝巨噬细胞），使其释放 TNF-α、IL-6 等促炎因子，导致肝脏处于持续的低度炎症状态 。","4. 肠-肝轴失衡：肠道微生态失调导致内毒素（LPS）入血，经门静脉抵达肝脏，激活 TLR4/NF-κB"],"dims":[{"d":"清肝抗氧化","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"通过 Keap1-Nrf2 相互作用激活抗氧化应答元件，显著提升超氧化物歧化酶（SOD）和谷胱甘肽（GSH）水平；同步抑制 MAPK 和 NF-κB 通路的磷酸化级联反应，有效阻断氧化应激向慢性炎症的转化 。"}]},{"d":"调节脂质代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"激活肝脏和脂肪组织的 AMPK 信号通路，抑制 SREBP-1c 和 FAS 酶的表达，减少内源性脂肪酸合成；促进脂肪酸的 β-氧化，加速脂质分解排泄，从源头降低血清和肝脏中的脂质毒性 。"}]},{"d":"健脾抗炎","ings":[{"n":"山药提取物","m":"山药多糖","mech":"作为经典的益生元，山药多糖经肠道菌群发酵产生短链脂肪酸（SCFAs），增强肠道屏障功能，减少 LPS 入血，从而通过 肠-肝轴 降低全身性炎症；同时激活 PI3K/Akt 通路，改善外周胰岛素敏感性，减轻肝脏代谢负担 。"},{"n":"姜黄提取物","m":"姜黄素","mech":"作为天然的多靶点抗炎剂，通过抑制 TLR4/NF-κB 和 NLRP3炎症小体 的组装与激活，阻断下游促炎因子的转录；同时作为强效的 Nrf2 通路激活剂，上调 HO-1 等抗氧化酶，中和 ROS 。"}]}],"syn":"本方案提供日常全面护肝：1. 抗氧化与解毒支持维度是基础，持续清除自由基，增强解毒酶系统；2. 脂肪代谢与能量支持维度促进肝脏脂肪转运和代谢，防止脂质沉积；3. 通过健脾间接支持肝脏功能，并减轻慢性炎症对肝脏的潜在影响。三者协同，从日常代谢、解毒到长期结构维护，提供多层次健康支持。"},{"no":43,"name":"轻畅派固体饮料","issue":"脂肪肝","sys":"肝胆","sysId":6,"path":["肝脏是人体的代谢中枢，当长期摄入高热量、高脂肪饮食或存在胰岛素抵抗时，会导致肝脏内的能量底物超载。","1. 脂质毒性与脂肪堆积：过剩的游离脂肪酸（FFA）进入肝细胞后，超出了线粒体的氧化能力，被迫在胞浆内大量合成并堆积为甘油三酯（TG）。同时，这些脂质代谢中间产物（如神经酰胺、溶血磷脂酰胆碱）具有直接的细胞毒性，导致肝细胞发生“脂毒性”凋亡 。","2. 胰岛素抵抗与代谢紊乱：肝脏不仅是脂质仓库，也是糖代谢的核心。高胰岛素血症和慢性炎症会导致肝脏对胰岛素信号不敏感（IR），进而刺激肝脏过度合成葡萄糖（糖异生）和极低密度脂蛋白（VLDL），进一步加剧全身性的代谢紊乱 。","3. 氧化应激与炎症级联（NASH）：脂质堆积会引发线粒体电子传递链功能障碍，产生活性氧（ROS）爆发。ROS 不仅直接破坏肝细胞膜，还会激活 NF-κB、NLRP3炎症小体 等促炎通路，大量释放 TNF-α、IL-6 等炎症因子，将单纯的脂肪肝（NAFL）推向更危险的脂肪性肝炎（NASH）阶段 。"],"dims":[{"d":"促进肝脏脂肪代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"通过激活肝脏能量代谢的核心激酶 AMPK，一方面抑制 ACC 和 FAS 通路，减少内源性脂肪酸合成；另一方面促进脂肪酸的 β-氧化，加速代谢废物排出，从源头切断脂质毒性引发的炎症 。"},{"n":"荷叶提取物","m":"荷叶碱","mech":"激活肝脏 AMPK 信号通路，抑制脂肪合成酶的活性；同时促进胆固醇向胆汁酸的转化与排泄，降低血清和肝脏中的脂质浓度，改善肝脏脂质微环境 。"},{"n":"枸杞提取物","m":"枸杞多糖","mech":"枸杞多糖通过调节肠道菌群（如增加 Akkermansia 丰度）改善肠肝轴，减少内毒素入血，促进肝脏脂质转运，减轻肝细胞脂质沉积带来的氧化压力 。"}]},{"d":"改善胰岛素敏感性","ings":[{"n":"桑叶提取物","m":"DNJ","mech":"DNJ 作为天然 α-糖苷酶抑制剂，延缓肠道碳水化合物吸收，减轻肝脏糖代谢负担；桑叶黄酮强力激活 AMPK 及 PPARα 通路，促进脂肪酸氧化，并抑制 SREBP-1c 通路减少新生脂肪合成 。"}]},{"d":"抗炎抗氧化","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"激活 AMPK 和 SIRT1 长寿基因通路，抑制脂肪合成酶的表达；强效清除脂质过氧化产生的自由基，阻断“脂质堆积-氧化应激-炎症”的恶性循环 。"},{"n":"西兰花种子浓缩粉","m":"萝卜硫素","mech":"作为天然的 Nrf2 和 AMPK 双重激活剂，上调超氧化物歧化酶（SOD）和谷胱甘肽（GSH）水平；通过 AMPK/Nrf2/GPx4 轴减轻肝脏脂毒性，并刺激自噬清除受损细胞器 。"}]}],"syn":"本方案通过三大路径协同管理脂肪肝：1. 促进肝脏脂肪代谢维度通过激活肝脏AMPK信号通路，增强脂肪酸β-氧化，减少脂肪合成，从源头减少肝脏脂肪沉积；2. 改善胰岛素敏感性维度增强外周组织对胰岛素的响应，改善胰岛素抵抗，减少肝脏新生脂肪生成；3. 抗炎抗氧化维度减轻肝脏氧化应激和炎症反应，保护肝细胞免受损伤。三者协同，旨在安全、有效地减少肝脏脂肪含量，改善肝功能。"},{"no":44,"name":"启元派固体饮料","issue":"代谢健康支持","sys":"代谢与内分泌","sysId":3,"path":["代谢性综合征的核心在于细胞能量感应与底物利用的失衡，主要涉及三条关键生理通路：","1. AMPK（AMP活化蛋白激酶）能量感应通路：作为细胞的“低电量警报器”，AMPK的激活能抑制脂肪和胆固醇的合成，同时加速脂肪酸的β-氧化与葡萄糖的摄取，是改善代谢的核心总开关。","2. 胰岛素信号通路（PI3K/Akt）：负责将血液中的葡萄糖推入骨骼肌和脂肪细胞内加以利用。通路受阻会导致胰岛素抵抗和高血糖。","3. 糖异生与肠道糖吸收通路：肝脏过度输出葡萄糖以及肠道过快吸收葡萄糖是导致餐后高血糖和代谢负担加重的直接原因。"],"dims":[{"d":"能量代谢优化","ings":[{"n":"B族维生素复合物","m":"B族维生素 (B1, B2, B6, B12)","mech":"作为辅酶（如NAD⁺、FAD）的核心组成部分，全面参与碳水化合物、脂肪和蛋白质的代谢转化；特别是作为 NAD⁺ 的前体，为 Sirtuins（长寿蛋白） 和 PARP（DNA修复酶） 提供燃料，维持细胞代谢稳态 。"},{"n":"山楂提取物","m":"山楂黄酮","mech":"激活肝脏和脂肪组织的 AMPK 信号通路，抑制 SREBP-1c 和 FAS 酶的表达，减少内源性胆固醇和脂肪酸合成；同时促进脂肪酸的 β-氧化；此外还能调节肠道微生态，双向调节糖脂代谢 。"}]},{"d":"糖脂代谢调节","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"作为天然的 AMPK 激动剂，通过磷酸化激活 AMPK，抑制脂肪合成酶（ACC、FAS）的活性；同时改善外周组织对胰岛素的敏感性，促进全身能量消耗 。"},{"n":"桑叶提取物","m":"DNJ","mech":"作为天然的 α-糖苷酶抑制剂，在肠道刷状缘直接竞争性抑制碳水化合物水解酶的活性，延缓多糖分解为单糖，阻断过快的肠道糖吸收，平缓餐后血糖波动 。"},{"n":"葡萄糖酸镁","m":"葡萄糖酸镁","mech":"作为超过300种酶的辅因子，镁是 ATP合成酶 和糖酵解关键酶的必需激活剂。它直接参与线粒体氧化磷酸化过程，确保细胞能量货币（ATP）的高效生成，缓解代谢性疲劳 。"}]},{"d":"线粒体功能与代谢促进","ings":[{"n":"肉桂提取物","m":"肉桂醛","mech":"通过激活 PI3K/Akt 信号通路，显著提高胰岛素受体的底物磷酸化水平，改善胰岛素抵抗；同时直接作用于 AMPK，促进骨骼肌和脂肪细胞对葡萄糖的主动摄取与利用 。"}]}],"syn":"本方案从三个层面全面支持代谢健康：1. 能量代谢优化维度提供基础辅酶，保障碳水化合物、脂肪、蛋白质的高效能量转化；2. 糖脂代谢调节维度增强胰岛素敏感性，促进脂肪氧化，稳定血糖血脂；3. 代谢促进维度增强细胞能量工厂效能，促进热量消耗。三者协同，从细胞到系统层面优化整体代谢功能。"},{"no":45,"name":"舒泰派固体饮料","issue":"甲状腺功能亢进","sys":"代谢与内分泌","sysId":3,"path":["甲状腺功能亢进（甲亢）的核心病理是甲状腺腺体过度合成与释放甲状腺激素（T3/T4），导致机体处于一种“高代谢-氧化应激-免疫失衡”的病理状态。","1. 能量代谢失控与氧化应激：过量的甲状腺激素（T3）进入细胞核，与甲状腺激素受体（TR）结合，疯狂上调解偶联蛋白（UCPs）等基因的表达。这使得线粒体原本用于合成ATP的能量大量以热能形式散失，机体产热增加、基础代谢率飙升。同时，这种异常的电子传递链泄漏会引发大量的活性氧（ROS）爆发，导致全身性的氧化应激损伤 。","2. 免疫与神经性炎症：绝大多数甲亢（如Graves病）属于自身免疫性疾病，体内的促炎因子（如TNF-α, IL-6）水平升高，促使免疫系统错误地攻击甲状腺。此外，交感神经过度兴奋，导致肾上腺素和去甲肾上腺素大量释放，引发心率加快、血压升高、焦虑和失眠 。","3. 电解质流失与神经肌肉兴奋性增高：高代谢状态下，机体对钾、镁等电解质的消耗和随汗液/尿液的流失显著增加。镁离子的缺乏会导致细胞膜上的电压门控钙通道开放增加，使得神经末梢释放更多的神经递质，引起肌肉震颤（手抖）和肌肉无力 。"],"dims":[{"d":"调节免疫与清肝","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"通过激活 Nrf2/ARE 抗氧化通路，上调超氧化物歧化酶（SOD）和过氧化氢酶（CAT）的活性；同时通过抑制 NF-κB 通路的核转位，减少促炎因子（TNF-α, IL-6）的产生 。"},{"n":"桑葚提取物","m":"花青素","mech":"桑葚多糖通过清除自由基和调节免疫细胞因子，发挥免疫调节作用；花青素作为强效抗氧化剂，能保护甲状腺细胞免受氧化损伤，并有助于改善因甲亢引起的代谢紊乱和神经行为异常 。"}]},{"d":"抗炎与抗氧化","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"EGCG通过提供氢原子直接中和羟基自由基和超氧阴离子；同时它能抑制 MAPK 和 NF-κB 信号通路的磷酸化，阻断炎症信号的级联放大，降低全身性的炎症风暴"}]},{"d":"心血管与神经系统支持","ings":[{"n":"葡萄糖酸镁","m":"葡萄糖酸镁","mech":"Mg²⁺是Na⁺-K⁺-ATP酶的辅因子，能稳定细胞膜电位；它还能拮抗钙离子内流，降低神经肌肉接头的兴奋性；对心肌细胞而言，镁能稳定心肌电生理，降低心肌耗氧量，对抗甲亢引起的心律失常风险"},{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"能穿过血脑屏障，作用于GABA_A受体和5-HT受体，促进中枢神经系统的抑制性神经递质释放；通过提升GABA能神经传递，发挥镇静、催眠和抗焦虑作用 。"}]}],"syn":"本配方并未试图去“关闭”甲状腺本身的激素分泌工厂（这通常需要抗甲状腺药物或手术），而是构建了一个“抗氧化清道夫 + 神经镇静剂 + 电解质稳定锚”的外部支援体系，精准针对甲亢带来的次生灾害：\n1. 双剑合璧压制“炎症与免疫风暴”：绿茶浓缩粉与菊花提取物强强联手。绿茶提供强大的底层抗氧化火力，保护甲状腺细胞免受氧化损伤；菊花则从免疫层面进行调节，两者共同致力于熄灭甲状腺局部的慢性炎症之火。桑葚提取物凭借其丰富的多糖和花青素，进一步巩固抗氧化防线，并辅助调节紊乱的免疫功能 。\n2. 中西合璧安抚“狂跳的神经与心脏”：酸枣仁提取物从大脑中枢入手，通过提升GABA等抑制性递质，直接安抚因激素刺激而过度亢奋的大脑，改善焦虑与顽固性失眠；与此同时，葡萄糖酸镁在下半身发挥“镇定”作用，通过补充流失的镁离子，稳定神经肌肉接头和心肌细胞膜，有效缓解令人困扰的手抖、心慌和肌肉无力。\n五者协同，旨在改善甲亢患者的生活质量，减轻症状负担，为机体的自我修复创造相对平稳的内环境。"},{"no":46,"name":"甲源派固体饮料","issue":"甲状腺功能减退","sys":"代谢与内分泌","sysId":3,"path":["甲状腺功能减退（甲减）的核心病理在于甲状腺激素（T3/T4）的绝对或相对不足，导致机体基础代谢率全面下调。针对本产品的调理方向，其底层通路主要涉及：","1. 激素合成原料供给：甲状腺激素的合成高度依赖碘元素。虽然我国普遍推行加碘盐，但部分非缺碘性甲减（如桥本氏甲状腺炎后期）患者面临复杂的碘营养状态，维持适量的优质碘源对腺体功能的微调至关重要 。","2. 消化与脂质代谢迟滞：甲状腺激素是驱动胃肠蠕动和脂质氧化的核心引擎。当其不足时，患者极易出现胃肠动力匮乏导致的便秘，以及脂质分解减慢引发的血脂异常和体重增加。这需要通过促进消化液分泌和调节脂质代谢通路来改善 。","3. 细胞能量危机（AMPK通路受抑）：甲减状态下，细胞内的AMPK（单磷酸腺苷活化蛋白激酶）信号通路活性显著降低。AMPK被誉为细胞的“能量传感器”，当它受抑时，线粒体的脂肪酸氧化受阻，导致机体陷入“低能量-易疲劳”的恶性循环 。","4. 自身免疫性炎症与免疫失衡：相当一部分甲减由桥本氏甲状腺炎等自身免疫性疾病演变而来。此时，免疫系统错误地将甲状腺组织识别为敌人进行攻击，产生大量自身抗体（如TPOAb、TgAb），并伴随持续的局部慢性炎症，进一步破坏残存的甲状腺功能 。"],"dims":[{"d":"激素合成支持","ings":[{"n":"海带提取物","m":"碘","mech":"作为合成甲状腺激素不可或缺的原材料，参与甲状腺滤泡内的酪氨酸碘化过程；褐藻多糖辅助调节免疫微环境 。"},{"n":"山药提取物","m":"山药多糖","mech":"改善胃肠道微生态，促进消化吸收；其含有的锌、硒等微量元素是甲状腺激素合成酶的辅因子，同时具有潜在的免疫调节作用 。"}]},{"d":"能量代谢与抗氧化支持","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"刺激消化液分泌，增强胃肠蠕动，改善甲减常见的便秘；通过调节脂质代谢通路，辅助降低血清总胆固醇和低密度脂蛋白水平 。"},{"n":"枸杞提取物","m":"枸杞多糖","mech":"激活细胞内的 AMPK信号通路，加速脂肪酸氧化和葡萄糖摄取，提升线粒体ATP产出，从而改善全身基础代谢率和产热能力 。"}]},{"d":"免疫平衡支持","ings":[{"n":"香菇提取物","m":"香菇多糖","mech":"激活巨噬细胞、T淋巴细胞和自然杀伤细胞（NK细胞），调节Th1/Th2免疫平衡，降低甲状腺自身抗体水平，抑制局部慢性炎症反应 。"}]}],"syn":"本方案针对甲减核心环节协同支持：1. 支持甲状腺激素合成维度提供合成甲状腺激素的关键营养素原料；2. 改善代谢与能量产生维度针对甲减导致的代谢减缓、能量不足，通过关键辅酶和矿物质提升细胞能量代谢效率；3. 抗炎与免疫调节维度针对桥本甲状腺炎等自身免疫因素，通过调节免疫反应，减轻炎症。三者协同，为甲状腺功能提供全面营养支持。"},{"no":47,"name":"元力派固体饮料","issue":"慢性疲劳综合征","sys":"神经与睡眠","sysId":7,"path":["慢性疲劳综合征（CFS）并非简单的“累”，而是一种涉及全身多系统的复杂病理状态。其核心底层通路障碍主要包括：","1. 细胞能量代谢衰竭（线粒体功能障碍）：线粒体作为细胞的“发电厂”，其功能受损导致ATP（三磷酸腺苷）合成严重不足。同时，代谢过程中产生的乳酸无法及时清除，在肌肉和血液中堆积，引发严重的肌无力、运动后疲劳和酸痛。","2. 氧化应激与神经炎症风暴：线粒体功能低下会泄漏大量活性氧（ROS），打破体内的氧化还原平衡。这种氧化应激不仅直接损伤细胞，还会激活NF-κB等炎症通路，导致中枢神经系统（脑雾）和全身的慢性低度炎症。","3. HPA轴（下丘脑-垂体-肾上腺轴）功能紊乱：长期的身心压力导致皮质醇（压力激素）分泌节律异常。过度的炎症反应与失调的HPA轴形成恶性循环，导致患者出现睡眠障碍、焦虑抑郁和持续的疲劳感。","4. 肠道微生态失衡（肠-脑-免疫轴失调）：现代医学研究发现，CFS患者普遍存在肠道菌群多样性下降、肠道通透性增加（“肠漏”）的问题。肠道屏障的破坏使得内毒素入血，进一步加剧全身的免疫激活和炎症反应。"],"dims":[{"d":"优化细胞能量代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"激活细胞内 AMPK（腺苷酸活化蛋白激酶） 信号通路，促进线粒体生物合成与脂肪酸氧化，加速乳酸等疲劳代谢产物的清除，提升细胞能量产出效率 。"},{"n":"山药提取物","m":"山药多糖","mech":"激活 PI3K/AKT/GSK-3β 信号通路，促进骨骼肌和肝脏中糖原的合成与储备；同时通过调节脂代谢相关蛋白改善能量底物利用效率 。"}]},{"d":"增强抗氧化防御","ings":[{"n":"西兰花种子浓缩粉","m":"萝卜硫素","mech":"激活 Nrf2/ARE 抗氧化信号通路，上调超氧化物歧化酶（SOD）、过氧化氢酶等内源性抗氧化酶的表达，强力清除自由基 。"},{"n":"菊花提取物","m":"绿原酸","mech":"通过抑制 NF-κB 等炎症信号通路的激活，显著降低促炎因子（如TNF-α、IL-6）水平；同时清除超氧阴离子自由基，降低组织耗氧量 。"},{"n":"维生素C","m":"维生素C","mech":"作为强效的水溶性抗氧化剂，直接中和自由基；是肉碱和神经递质合成的重要辅因子，参与线粒体脂肪酸转运和去甲肾上腺素合成 。"}]},{"d":"调节HPA轴功能","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"调节 下丘脑-垂体-肾上腺（HPA轴） 功能，降低过高的皮质醇水平；调节 GABA能突触 通路，促进抑制性神经递质释放，诱导自然睡眠 。"}]},{"d":"改善肠道微生态","ings":[{"n":"复合益生菌粉（含嗜热链球菌）","m":"复合益生菌粉","mech":"发酵产生短链脂肪酸（SCFAs），修复肠道黏膜屏障（治疗“肠漏”），减少内毒素入血引发的系统性炎症 。"},{"n":"低聚果糖","m":"低聚果糖","mech":"作为益生元促进肠道双歧杆菌等有益菌增殖。"}]}],"syn":"本方案通过四大路径协同干预慢性疲劳综合征：1. 优化细胞能量代谢维度直接增强线粒体功能，提升ATP生成效率，对抗核心的能量危机；2. *增强抗氧化防御维度减轻氧化应激对肌肉和神经细胞的损伤，减少疲劳感；3. 调节HPA轴功能维度帮助平衡因长期应激导致的皮质醇等激素紊乱，改善精力分配与睡眠；4. 改善肠道微生态维度通过“肠脑轴”调节免疫和炎症反应，影响整体能量水平。四者协同，旨在从能量产生、神经内分泌、氧化应激和免疫炎症多层面系统性改善疲劳。"},{"no":48,"name":"安寐派固体饮料","issue":"睡眠","sys":"神经与睡眠","sysId":7,"path":["睡眠障碍（失眠、入睡困难、睡眠浅、早醒）是现代社会常见的健康挑战，其本质是中枢神经系统\"兴奋-抑制\"失衡与神经内分泌节律紊乱的综合表现。核心底层通路涉及：","1. GABA能系统抑制不足：γ-氨基丁酸（GABA）是哺乳动物中枢神经系统中主要的抑制性神经递质。失眠患者脑内GABA水平显著降低，且GABA_A受体α1、α2亚基表达下调，导致神经元过度兴奋、抑制性张力不足，表现为入睡困难与睡眠维持障碍。","2. 5-羟色胺（5-HT）与褪黑素节律失调：5-HT是合成褪黑素的前体，同时直接参与睡眠-觉醒周期的调控。下丘脑5-HT水平不足会导致慢波睡眠减少、昼夜节律紊乱。","3. HPA轴（下丘脑-垂体-肾上腺轴）过度激活：长期压力或焦虑导致CRF、ACTH、皮质醇（CORT）分泌节律异常，夜间皮质醇居高不下，引起\"越累越睡不着\"的应激性失眠。","4. 神经炎症与氧化应激：失眠状态下，促炎因子（TNF-α、IL-6）释放增加，激活NF-κB等炎症通路，引发中枢神经微炎症，进一步破坏睡眠结构。"],"dims":[{"d":"促进睡眠诱导","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"通过调节5-羟色胺能突触与GABA能突触通路发挥助眠作用；上调脑内GABA和5-HT水平，下调谷氨酸（Glu）和多巴胺（DA）；调节GABA_A受体α1（GABRA1）和γ2（GABRG2）亚基表达，并影响5-HT受体HTR1A与HTR2A 。"}]},{"d":"调节神经递质平衡","ings":[{"n":"γ-氨基丁酸(GABA)","m":"γ-氨基丁酸(GABA)","mech":"作为中枢主要抑制性神经递质，特异性结合GABA_A受体（五聚体配体门控氯离子通道），促使Cl⁻内流、神经元超极化，抑制动作电位发放；同时抑制巨噬细胞与小胶质细胞活化，下调NF-κB炎症通路，发挥神经保护作用 。"},{"n":"当归提取物","m":"阿魏酸","mech":"增强GABA_A受体功能，促进小鼠体内去甲肾上腺素释放，通过激活GABA能系统诱导睡眠；阿魏酸兼具神经保护作用 。"}]},{"d":"抗焦虑安神","ings":[{"n":"百合提取物","m":"百合多糖","mech":"调节下丘脑相关神经递质：提升5-HT与褪黑素（MT）水平，降低去甲肾上腺素（NE）；上调GABA_A受体与5-HT1A受体表达；逆转PCPA失眠模型中HPA轴的过度激活，降低CRF、ACTH、皮质酮水平，恢复HPA轴稳态 。"}]},{"d":"宁心抗炎","ings":[{"n":"茯苓提取物","m":"茯苓多糖","mech":"茯苓酸作为GABA_A受体正向变构调节剂，上调GABA_A受体α、β亚基，下调γ亚基，增强中枢抑制性递质作用；茯苓多糖通过调节肠道菌群产生短链脂肪酸（SCFAs），经肠-脑轴抑制HPA轴过度激活，降低皮质醇；同时抑制TNF-α/NF-κB炎症通路 。"}]}],"syn":"本方案通过四大路径协同改善睡眠：1. 调节神经递质维度增强GABA能系统抑制性信号，促进睡眠启动；2. 调节应激激素维度降低夜间皮质醇水平，减轻过度警觉；3. 营养神经系统维度提供色氨酸等原料支持血清素和褪黑素合成；4. 健脾宁心，安神助眠维度通过传统中药成分协同镇静。四维协同，从神经生理到心理层面全面促进自然睡眠。"},{"no":49,"name":"释然派固体饮料","issue":"焦虑症","sys":"神经与睡眠","sysId":7,"path":["焦虑症（GAD）并非单纯的心理问题，而是中枢神经系统、内分泌系统与免疫系统交叉互作的复杂病理生理状态。其底层核心通路异常主要集中在以下四个方面：","1. HPA轴过度激活与皮质醇风暴：长期的心理压力会导致下丘脑-垂体-肾上腺（HPA）轴功能失调，促肾上腺皮质激素释放激素（CRH）大量分泌，进而刺激肾上腺释放过量的皮质醇。高浓度的皮质醇会损伤海马神经元，进一步加剧焦虑情绪，形成“压力-焦虑-更压力”的恶性循环。","2. 神经递质失衡（GABA/谷氨酸与单胺类）：大脑杏仁核和前额叶皮层的兴奋-抑制失衡是关键。抑制性神经递质GABA功能不足，或兴奋性递质谷氨酸/去甲肾上腺素水平过高，会导致大脑处于“过度警觉”状态。同时，5-羟色胺（5-HT）和多巴胺系统的波动也直接影响情绪的稳定性。","3. 神经炎症与氧化应激：焦虑症患者的脑内（尤其是边缘系统）往往存在慢性低度神经炎症。小胶质细胞的过度激活会释放TNF-α、IL-1β等促炎因子，这些炎症介质能直接穿过血脑屏障，刺激迷走神经，引发焦虑和抑郁样行为。","4. 肠道-脑轴（Microbiome-Gut-Brain Axis）功能紊乱：肠道被称为“第二大脑”。焦虑状态下往往伴随“脑肠轴”双向通讯障碍，肠道通透性增加（肠漏）导致内毒素入血，引发全身炎症；同时肠道无法有效合成神经所需的营养物质（如GABA前体、色氨酸）。"],"dims":[{"d":"调节HPA轴与安神","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"1. 抑制HPA轴：降低下丘脑CRH和血清皮质酮水平 ；2. 调节神经递质：显著提升脑内GABA和5-HT含量，降低兴奋性递质谷氨酸（Glu）水平 ；3. 受体调节：上调GABA_A受体α1/γ2亚基表达，增强GABA受体的敏感性 。"}]},{"d":"养血柔肝","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"1. GABA_A受体调节：阿魏酸和藁本内酯可增强GABA_A受体的功能，产生类似苯二氮䓬类的镇静作用 ；2. 单胺类神经递质：促进突触间隙去甲肾上腺素（NE）和多巴胺（DA）的释放，改善情绪回路 ；3. 神经保护与循环：阿魏酸清除自由基，减轻焦虑伴随的氧化应激对神经元的损伤 。"}]},{"d":"健脾宁心","ings":[{"n":"茯苓提取物","m":"茯苓多糖","mech":"1. 肠-脑轴与神经炎症：水溶性多糖通过重塑肠道菌群（如增加有益菌丰度），抑制TNF-α/NF-κB信号通路介导的神经炎症 ；2. 神经递质提升：升高海马区5-HT、DA、GABA及BDNF水平，改善神经元可塑性 ；3. HPA轴负反馈：抑制慢性应激导致的HPA轴亢进，降低压力激素分泌 。"}]},{"d":"神经支持与镇静","ings":[{"n":"葡萄糖酸镁","m":"葡萄糖酸镁","mech":"1. NMDA受体拮抗：Mg²⁺是NMDA（N-甲基-D-天冬氨酸）受体的天然阻断剂，能有效抑制谷氨酸引起的神经元过度兴奋和钙超载 ；2. GABA能系统增强：促进GABA与受体的结合，并提高脑内GABA浓度 ；3. 物理性镇静：调节神经肌肉接头兴奋性，缓解因焦虑导致的肌肉僵硬、颤抖和入睡困难 。"}]}],"syn":"本配方打破了单一“镇静”的思路，构建了一套“中枢神经降速 + 内分泌压力重置 + 外周炎症阻断”的三维抗焦虑网络：\n1. 解决“大脑停不下来”的生理基础（葡萄糖酸镁 + 酸枣仁 + 当归）：葡萄糖酸镁从物理离子层面直接拮抗NMDA受体，给狂飙的神经元强行踩下物理刹车；酸枣仁和当归则从化学递质层面双管齐下——酸枣仁全面提升GABA和5-HT水平，当归增强GABA受体功能并促进多巴胺释放。四者协同，迅速降低大脑的基础唤醒水平，缓解心慌、手抖等躯体症状。\n2. 解决“压力激素失控”的根源问题（酸枣仁 + 茯苓）：针对焦虑症患者普遍存在的HPA轴亢进，酸枣仁负责抑制下丘脑的过度指令，茯苓则通过调节肠道菌群产生的短链脂肪酸等物质，增强HPA轴的负反馈调节能力 。两者联手将过高的皮质醇拉回正常区间，恢复大脑的结构可塑性。\n3. 解决“越焦虑越发炎”的恶性循环（茯苓 + 当归）：焦虑不仅是心理问题，更是全身炎症的触发点。茯苓多糖通过“脑肠轴”从源头扑灭系统性炎症的火苗 ，而当归的强效抗氧化成分（阿魏酸）则在局部保护神经元免受炎症因子的攻击 。这种身心同治的策略，能有效防止焦虑情绪的反复和恶化。"},{"no":50,"name":"欣怡派固体饮料","issue":"抑郁症","sys":"神经与睡眠","sysId":7,"path":["抑郁症并非单纯的心理“脆弱”，而是一种涉及神经递质失衡、内分泌紊乱、慢性炎症及神经结构损伤的复杂系统性疾病。其核心底层通路主要包括以下四个维度：","1. 单胺类神经递质假说：大脑中负责传递愉悦和动力信号的单胺类神经递质（如5-羟色胺、多巴胺、去甲肾上腺素）合成减少或受体敏感性下降，是导致情绪低落、兴趣丧失的直接原因 。","2. HPA轴过度激活：长期的负面应激使下丘脑-垂体-肾上腺（HPA）轴失控，导致压力激素（皮质醇）持续大量分泌。过高的皮质醇会对海马体等脑区产生毒性，并进一步抑制神经递质的合成 。","3. 神经炎症与氧化应激：现代抑郁症研究提出了“神经免疫”视角，抑郁症患者脑内常存在慢性低度炎症（小胶质细胞过度激活）和氧化应激，这些炎症因子会直接损伤神经元，破坏神经回路 。","4. 神经营养假说（神经可塑性受损）：抑郁症患者的脑源性神经营养因子（BDNF）水平通常较低，导致神经元萎缩、突触连接减少，大脑失去自我修复和适应的能力（即神经可塑性受损） 。"],"dims":[{"d":"调节单胺类神经递质","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"调节单胺类神经递质系统，促进5-羟色胺（5-HT）和多巴胺（DA）的释放，并抑制单胺氧化酶活性，提升脑内“快乐递质”的浓度 。"}]},{"d":"调节HPA轴","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"抑制HPA轴过度激活，降低血浆皮质醇水平；同时通过调节GABA能和5-HT能系统，发挥镇静安神作用，阻断焦虑向抑郁的转化 。"}]},{"d":"抗神经炎症","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"通过抑制TLR4/NF-κB、NLRP3等炎症小体通路，显著降低TNF-α、IL-1β等促炎因子；并作为强效抗氧化剂清除自由基，打破“炎症-氧化”恶性循环 。"}]},{"d":"促进神经营养因子表达","ings":[{"n":"DHA藻油","m":"二十二碳六烯酸 (DHA)","mech":"DHA是神经元细胞膜的重要组成部分，通过膜流动性机制增强神经递质受体的敏感性；EPA则能有效抑制促炎因子合成，协同姜黄素发挥抗炎抗抑郁作用 。"},{"n":"枸杞提取物","m":"枸杞多糖","mech":"激活cAMP/PKA/CREB、ERK/mTOR等信号通路，显著上调脑源性神经营养因子（BDNF）的表达，促进海马神经元的增殖、突触重塑和髓鞘修复 。"}]}],"syn":"本方案从多途径协同抗抑郁：1. 调节单胺类神经递质维度是核心，针对5-HT、NE、DA系统功能不足；2. 调节HPA轴维度纠正下丘脑-垂体-肾上腺轴过度激活；3. 抗神经炎症维度减轻抑郁症相关的神经炎症反应；4. 促进神经营养因子表达维度支持神经元健康与可塑性。多靶点协同，改善抑郁核心症状。"},{"no":51,"name":"风清派固体饮料","issue":"高尿酸","sys":"代谢与内分泌","sysId":3,"path":["高尿酸血症及痛风的发生，本质上是机体尿酸“生成过多、排泄不足”的代谢失衡问题。其核心底层通路主要集中在以下三个方面：","1. 肝脏嘌呤代谢紊乱（黄嘌呤氧化酶通路亢进）：体内大部分尿酸由肝脏中的黄嘌呤氧化酶（XOD）催化嘌呤代谢生成。当该酶活性异常增强时，尿酸的合成速度超过肾脏排泄能力，导致血尿酸浓度超标。","2. 肾脏排泄通道受阻（尿酸转运蛋白失衡）：肾脏是排泄尿酸的主要器官。当肾脏近端小管上皮细胞上的尿酸重吸收转运蛋白（如URAT1、GLUT9）过度活跃，或分泌转运蛋白（如ABCG2）功能不足时，尿酸会被大量重吸收入血，造成排泄障碍。此外，尿液偏酸性会导致尿酸易于结晶沉积。","3. 关节及软组织炎症风暴（NLRP3炎性小体激活）：当血尿酸浓度过高，尿酸盐结晶（MSU）会沉积在关节腔和皮下组织。这些结晶被免疫细胞吞噬后，会激活NLRP3炎性小体，引发瀑布式的炎症反应（释放IL-1β、IL-6、TNF-α等），导致痛风的红肿热痛。"],"dims":[{"d":"抑制尿酸生成","ings":[{"n":"酸樱桃提取物","m":"花青素","mech":"温和抑制肝脏中黄嘌呤氧化酶（XOD）的活性，减少内源性尿酸的合成；同时具有显著的碱化尿液能力，提升尿液pH值，增加尿酸在尿液中的溶解度 。"},{"n":"芹菜籽提取物","m":"芹菜素","mech":"双重调节：一方面竞争性抑制黄嘌呤氧化酶活性；另一方面通过利尿作用及调节肾脏尿酸盐转运蛋白（如抑制URAT1表达、增强ABCG2分泌），促进尿酸从肾脏排出 。"}]},{"d":"促进尿酸排泄","ings":[{"n":"柠檬酸钾","m":"柠檬酸钾","mech":"在体内代谢为碳酸氢盐，碱化尿液，将尿液pH值维持在6.2-6.9的理想范围；同时竞争性抑制尿酸重吸收，减少尿酸结晶的形成，打通肾脏排泄通道 。"},{"n":"茯苓提取物","m":"茯苓多糖","mech":"增强肾脏排泄功能，调节肾脏尿酸转运蛋白（下调URAT1和GLUT9以减少重吸收，上调OAT1以增加分泌），同时发挥抗炎特性，缓解肾脏及关节的炎症负荷 。"},{"n":"植物乳植杆菌","m":"植物乳植杆菌LP18","mech":"从肠道微生态切入：分泌嘌呤分解酶降解肠道内未吸收的大分子嘌呤；上调肠道尿酸分泌转运蛋白（如ABCG2/OAT3）表达；通过短链脂肪酸抑制肝脏XOD活性，多渠道降低血尿酸 。"}]},{"d":"抗炎镇痛","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"直接靶向并抑制NLRP3炎性小体的激活，阻断NF-κB信号通路，减少IL-1β等核心促炎因子的释放；同时抑制黄嘌呤氧化酶活性，从源头减少尿酸盐结晶这一炎症触发物的产生 。"}]}],"syn":"本配方通过三大路径协同干预：1. 抑制尿酸生成维度从源头减少内源性尿酸合成，降低尿酸负荷；2. 促进尿酸排泄维度通过调节肾脏尿酸盐转运蛋白（如抑制URAT1）和碱化尿液，增强肾脏排泄能力，并利用益生菌调节“肠肾轴”；3. 抗炎镇痛维度减轻尿酸盐结晶沉积引发的炎症风暴和疼痛。三者协同，旨在实现对高尿酸的全面、平稳管理。"},{"no":52,"name":"稳唐派固体饮料","issue":"高血糖","sys":"代谢与内分泌","sysId":3,"path":["持续性高血糖或2型糖尿病的发生与发展，本质上是机体糖代谢网络全面崩溃的结果，其核心底层通路主要集中在以下四个环节：","1. 碳水化合物过度吸收与餐后血糖失控：现代人饮食中高GI（升糖指数）的精制碳水化合物占比过高。在小肠中，α-淀粉酶和α-葡萄糖苷酶会迅速将复杂的淀粉和双糖分解为单糖（葡萄糖）并被大量吸收入血，导致餐后血糖短时间内飙升（血糖峰值）。","2. 胰岛素抵抗（IR）与信号通路受阻：这是2型糖尿病最核心的病理机制。长期高热量饮食、肥胖等因素会导致外周组织（尤其是骨骼肌、肝脏和脂肪组织）的细胞膜上胰岛素受体底物（IRS）磷酸化异常，使得胰岛素信号通路（如经典的PI3K/Akt通路）传导受阻。这导致胰岛素这把“钥匙”失效，无法有效打开细胞膜上的葡萄糖转运蛋白（GLUT4）通道，葡萄糖因此滞留在血液中无法被细胞利用 。","3. 肝脏糖异生与脂质代谢紊乱：在胰岛素抵抗状态下，肝脏失去了正常的负反馈调节，会过度激活糖异生途径（如上调PEPCK等关键酶），不断向血液中释放新的葡萄糖。同时，伴随而来的内脏脂肪堆积会加剧机体的慢性低度炎症，进一步恶化代谢环境 。","4. 关键辅酶耗竭与代谢酶活性下降：镁离子不仅是数百种酶促反应的辅因子，更是胰岛素受体酪氨酸激酶的关键激活剂。长期高血糖状态极易引发“低镁血症”，这会进一步削弱胰岛素的信号传递效率，并导致细胞内能量代谢（如三羧酸循环）停滞 。"],"dims":[{"d":"抑制碳水化合物吸收","ings":[{"n":"白芸豆提取物","m":"α-淀粉酶抑制剂","mech":"特异性地结合并占据小肠黏膜刷状缘上的α-淀粉酶活性位点，物理性地阻断淀粉大分子水解为麦芽糖和葡萄糖的过程，从而直接减少肠道单糖的绝对吸收量 。"},{"n":"桑叶提取物","m":"DNJ","mech":"DNJ作为强效的α-葡萄糖苷酶竞争性抑制剂，延缓双糖向单糖的转化；同时，桑叶中的黄酮和多糖可激活AMPK能量感应通路，促进骨骼肌和脂肪细胞中GLUT4向细胞膜转位，加速外周组织对葡萄糖的摄取与利用 。"}]},{"d":"提高胰岛素敏感性","ings":[{"n":"肉桂提取物","m":"肉桂醛","mech":"肉桂醛可上调胰岛素受体底物1（IRS-1）的磷酸化水平，级联激活下游的PI3K/Akt信号通路；同时激活AMPK通路抑制肝脏糖异生关键酶（PEPCK和G6Pase），从而全面提升胰岛素受体的敏感性 。"},{"n":"苦瓜提取物","m":"苦瓜皂苷","mech":"苦瓜多肽-P在结构上与胰岛素相似，可直接与胰岛素受体结合发挥类胰岛素作用；苦瓜皂苷同样能激活AMPK信号通路，促进葡萄糖转运；此外还能通过调节FoxO1等转录因子抑制肝脏的糖异生过程 。"}]},{"d":"促进葡萄糖代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"能减轻胰岛β细胞的氧化应激损伤，维持其正常分泌功能；同时改善脂质代谢，减少因高血脂引发的继发性胰岛素抵抗；其含有的机酸和膳食纤维可延缓胃排空速度，辅助平稳餐后血糖 。"},{"n":"葡萄糖酸镁","m":"葡萄糖酸镁","mech":"镁离子是胰岛素受体酪氨酸激酶不可或缺的“信使”，参与超过300种酶促反应。补充镁能稳定胰岛β细胞的离子通道，激活胰岛素信号传导，防止胰岛素分泌代偿性耗竭，从而从根源上改善胰岛素抵抗 。"}]}],"syn":"本配方并未依赖单一的降糖手段，而是构建了一套“源头截流 + 中段提速 + 后端修复”的全方位血糖稳态管理系统：\n1. 解决“餐后血糖过山车”的问题（白芸豆 + 桑叶）：白芸豆提取物像一道坚固的“闸门”，在小肠前端拦截大量淀粉的分解；紧随其后的桑叶提取物则像一位“交通协管员”，延缓剩余双糖的转化速度。两者强强联合，极大地削减了餐后血糖的峰值冲击，避免了血糖的剧烈波动。\n2. 解决“细胞对胰岛素不敏感”的问题（肉桂 + 苦瓜 + 山楂 + 葡萄糖酸镁）：肉桂和苦瓜作为主力军，分别从PI3K/Akt和AMPK两大核心通路入手，修复受损的胰岛素信号传导，提高细胞摄取葡萄糖的效率；山楂从旁协助，保护分泌胰岛素的“工厂”（胰岛β细胞）免受氧化损伤；而葡萄糖酸镁则为整个代谢系统提供必要的矿物质辅酶支持，确保酶促反应顺畅进行。\n3. 打破“高血糖-炎症-更抵抗”的恶性循环（山楂 + 肉桂）：山楂改善脂质代谢，肉桂减轻炎症因子（如NF-κB通路）的释放。它们共同作用，清理了由高血糖引发的代谢紊乱内环境，防止胰岛素抵抗的进一步恶化。\n六者协同，旨在多维度干预糖代谢的病理网络，辅助改善血糖水平，并提升整体代谢系统的健康韧性。"},{"no":53,"name":"轻澈派固体饮料","issue":"肥胖","sys":"代谢与内分泌","sysId":3,"path":["肥胖的本质是长期“能量摄入 > 能量消耗”导致的脂质代谢紊乱。其核心生物学通路主要集中在以下三个层面：","1. 消化道“源头阻截”通路：碳水化合物（淀粉）和脂肪是人体热量的主要来源。淀粉需经α-淀粉酶分解为葡萄糖才能吸收入血；脂肪则需经胆汁乳化和脂肪酶水解。阻断这些消化酶或延缓吸收速度，可直接减少热量摄入。","2. 脂肪组织“代谢燃脂”通路：在能量过剩时，身体通过AMPK（腺苷酸活化蛋白激酶）通路调控脂肪代谢。激活AMPK可抑制脂肪合成（抑制甘油三酯积累），同时加速脂肪酸的β-氧化（促进脂肪动员），从而减少白色脂肪堆积。","3. “肠-脑轴”与“肠-脂轴”微生态通路：肥胖者常伴有肠道菌群失调（厚壁菌门/拟杆菌门比例升高）。有益菌（如植物乳杆菌）的丰度下降会导致短链脂肪酸（SCFAs）产量减少。SCFAs不仅能通过迷走神经向大脑传递饱腹信号，还能抑制脂肪生成基因（如PPARγ），从根本上改善代谢内毒素血症和慢性炎症。"],"dims":[{"d":"抑制脂肪与碳水化合物吸收","ings":[{"n":"白芸豆提取物","m":"α-淀粉酶抑制剂","mech":"特异性结合并抑制唾液及胰腺α-淀粉酶活性，阻碍淀粉多糖水解为葡萄糖，降低餐后血糖峰值。"},{"n":"抗性糊精","m":"水溶性膳食纤维","mech":"胃内吸水膨胀延缓胃排空；小肠内不被消化酶分解；大肠内作为益生元发酵产生短链脂肪酸（SCFAs）。"}]},{"d":"促进脂肪动员与代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"激活AMPK信号通路，上调脂肪酸氧化关键酶（CPT1A），下调脂质合成基因（SREBP-1c, FAS），促进脂肪分解与代谢。"},{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"非酶促抗氧化；激活AMPK通路促进骨骼肌和肝脏的脂肪酸氧化；抑制脂肪合成酶活性。"}]},{"d":"调节肠道菌群与饱腹","ings":[{"n":"植物乳植杆菌","m":"植物乳植杆菌LP18","mech":"重塑肠道菌群结构，增加SCFAs（乙酸、丁酸）产量；通过SCFAs-GPR43-PPARγ轴抑制脂肪细胞分化和脂质堆。"}]},{"d":"调节肠道菌群与饱腹","ings":[{"n":"低聚果糖","m":"低聚果糖","mech":"促进双歧杆菌等有益菌增殖；发酵产物丁酸盐增强肠道紧密连接；通过肠-脑轴刺激GLP-1和PYY分泌，抑制食欲。"}]}],"syn":"该配方通过“物理阻断 + 生化代谢 + 微生态调节”的三维立体策略，实现协同减重：\n1. “堵”与“满”的双重防线：白芸豆提取物在消化源头“锁住”淀粉酶，抗性糊精在胃肠中吸水膨胀并提供极低热量，两者共同构建了减少热量摄入的第一道防线。\n2. “燃”与“阻”的脂肪管理：山楂提取物和绿茶浓缩物双管齐下，一方面激活AMPK通路加速体内已有脂肪的燃烧与氧化，另一方面抑制新的脂肪合成，解决脂肪堆积问题。\n3. “调”与“控”的底层重塑：植物乳杆菌与低聚果糖这对“菌+粮”组合，深入调节“肠-脂轴”和“肠-脑轴”。它们不仅通过产生SCFAs来改善代谢、抑制脂肪生成，还通过优化肠道菌群和分泌饱腹感激素，从神经内分泌层面帮助用户自然控制食欲，打破暴饮暴食的恶性循环。"},{"no":54,"name":"元本派固体饮料","issue":"肾脏健康支持","sys":"肾脏","sysId":9,"path":["肾脏作为人体的“净化工厂”，其功能受损通常涉及三条核心病理通路：","氧化应激与慢性炎症通路：高血压、高血糖或毒素刺激会导致肾脏组织产生活性氧（ROS），激活NF-κB/NLRP3等炎症信号通路，引发肾小管间质损伤和纤维化，加速肾功能衰退。","代谢紊乱与肾小球高滤过通路：异常代谢信号（如TGF-β/Smad）会导致肾小球系膜细胞增殖、基底膜增厚，引发蛋白漏出和肾小球硬化。","水盐代谢与容量负荷失衡通路：肾小管对钠、水重吸收调节失常（如NHE3、AQP蛋白表达异常），会导致水钠潴留、血容量增加，进一步升高肾小球内压，形成恶性循环。"],"dims":[{"d":"保护肾单位功能","ings":[{"n":"黑豆提取物","m":"黑豆多糖","mech":"抗氧化与抗炎：激活Nrf2/HO-1抗氧化通路，清除自由基；抑制TLR4/Myd88/NF-κB炎症信号通路，减少TNF-α、IL-6等炎性因子释放 。"},{"n":"枸杞提取物","m":"枸杞多糖","mech":"改善血流动力学与抗氧化：富含矢车菊素-3-葡萄糖苷等花青素，强效清除ROS；其异黄酮成分可调节肾素-血管紧张素系统（RAS），辅助改善肾小球内压 。"}]},{"d":"促进肾脏代谢修复","ings":[{"n":"山药提取物","m":"山药多糖","mech":"抗肾纤维化：抑制高糖诱导的AR/P38MAPK/CREB信号通路激活；拮抗TGF-β/Smad通路，抑制上皮-间质转化（EMT），减少细胞外基质（如纤连蛋白）的沉积 。"},{"n":"蓝莓提取物","m":"花青素","mech":"强效抗氧化与微循环改善：极强的自由基清除能力，保护肾血管内皮细胞免受氧化损伤；改善肾小球毛细血管的微循环灌注，减轻缺血再灌注损伤。"}]},{"d":"调节水盐平衡","ings":[{"n":"茯苓提取物","m":"茯苓多糖","mech":"抗炎与抗氧化协同：调节免疫细胞功能，抑制异常免疫反应；清除肾脏局部氧化自由基，减轻细胞凋亡，辅助维持肾小管上皮细胞的正常代谢功能。"},{"n":"薏苡仁提取物","m":"薏苡仁多糖","mech":"利水渗湿与水盐平衡：传统药食同源成分，具有温和的渗透性利尿作用；现代研究表明其有助于调节体内的电解质平衡（如水通道蛋白AQP的表达调节），促进代谢废物排出 。"}]}],"syn":"该配方形成了一个多维度的肾脏保护网络：枸杞与蓝莓构成第一道防线，通过强大的抗氧化能力中和肾脏内部的氧化应激，阻止炎症“导火索”点燃；山药与茯苓深入组织层面，一方面抑制病理性的纤维化进程，另一方面通过抗炎作用修复受损的肾组织；最后，黑豆与薏苡仁从宏观循环和水液代谢入手，稳定肾脏的血流动力学并调节水盐平衡。五者协同，旨在通过“抗炎抗氧化 + 抗纤维化 + 调节水盐”的三维机制，多靶点辅助维护肾脏的正常生理结构与微循环稳态。"},{"no":55,"name":"明澈派固体饮料","issue":"脑健康支持","sys":"神经与睡眠","sysId":7,"path":["脑健康（特别是认知功能维护、脑微环境稳态）的核心生物学逻辑在于“能量供应-血管灌注-神经保护”的三角稳态：","1. 能量代谢与神经活性维持：神经元是高度特化的耗能细胞，其突触可塑性、电信号传导和神经递质合成高度依赖于充足的能量底物（如葡萄糖）和结构性脂质（如DHA）。DHA作为大脑灰质和神经细胞膜磷脂的重要结构成分，直接参与神经信号的传递。","2. 脑部微循环与血脑屏障（BBB）稳态：脑缺血或微血管功能障碍会导致局部脑组织缺氧和营养匮乏，引发神经元凋亡。改善脑微循环需要激活血管生成信号（如VEGF、Ang-1），并维护紧密连接蛋白（如ZO-1、Occludin）的完整性。","3. 神经炎症与氧化应激防御：随着年龄增长或慢性压力，脑部极易积累活性氧（ROS）和发生慢性低度炎症（如NF-κB/NLRP3炎症小体激活）。这会诱发β-淀粉样蛋白（Aβ）聚集和神经退行性病变。强大的抗氧化防御系统（如Nrf2通路介导的抗氧化酶上调）是延缓脑衰老的关键。"],"dims":[{"d":"促进神经细胞活力","ings":[{"n":"黑芝麻提取物","m":"黑芝麻多糖","mech":"透过血脑屏障；激活AKT/IDE通路降解Aβ；抑制NF-κB通路减轻神经炎症；激活IRS-1/AKT改善脑胰岛素抵抗"},{"n":"DHA藻油","m":"二十二碳六烯酸 (DHA)","mech":"构成神经元细胞膜磷脂双分子层，维持膜流动性；激活Nrf2抗氧化信号通路；促进BDNF/TrkB及CREB-BDNF通路，增强突触可塑性。"}]},{"d":"改善脑部微循环","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"激活IGF-1/Akt信号通路，促进VEGF表达和脑微血管新生；上调紧密连接蛋白（ZO-1, Occludin）保护血脑屏障通透性 。"},{"n":"山楂提取物","m":"山楂黄酮","mech":"调控PI3K/Akt信号通路，保护缺血再灌注损伤；改善血液流变学（降低全血粘度），增加脑区氧供与代谢底物输送 。"}]},{"d":"抗氧化防御","ings":[{"n":"蓝莓提取物","m":"花青素","mech":"清除自由基，上调SOD等抗氧化酶活性；抑制小胶质细胞过度激活，降低TNF-α、IL-6等促炎因子水平；减轻神经退行性病变进程。"}]}],"syn":"本配方通过三大路径协同支持脑健康：1. 促进神经细胞活力维度直接提供神经细胞膜关键成分，增强神经传导效率；2. 改善脑部血流循环维度增加脑部供氧供血，提升脑能量代谢；3. 抗氧化防御维度保护脑组织免受自由基损伤。三者协同，为大脑提供全面营养支持。"},{"no":56,"name":"忆加派固体饮料","issue":"记忆力提升","sys":"神经与睡眠","sysId":7,"path":["记忆力减退（尤其是年龄相关性或慢性疲劳导致的认知功能下降）的底层生物学机制主要涉及以下通路的紊乱：","1. 神经递质失衡与突触功能障碍：学习记忆的核心在于海马区突触的可塑性。乙酰胆碱（ACh）是关键的记忆递质，其水平下降或降解过快（受乙酰胆碱酯酶AChE过度活跃影响）会直接导致神经信号传导阻滞和突触传递效率降低。","2. 能量代谢危机：神经元是高耗能细胞，高度依赖线粒体氧化磷酸化产生ATP。随着年龄增长或慢性压力，脑内线粒体功能受损、ATP合成不足，导致神经元无法维持正常的离子泵运转和电信号传导，进而引发突触传递障碍甚至神经元凋亡。","3. 神经炎症与氧化应激级联反应：脑内慢性低度炎症（如小胶质细胞过度激活释放TNF-α、IL-1β等）和活性氧（ROS）的大量堆积，会攻击神经细胞膜、线粒体DNA及突触结构，破坏血脑屏障，加速记忆核心区（如海马）的神经退行性变。"],"dims":[{"d":"增强神经传导效率","ings":[{"n":"酸枣仁提取物","m":"酸枣仁皂甙","mech":"上调胆碱乙酰转移酶(ChAT)，下调乙酰胆碱酯酶(AChE)，提升乙酰胆碱(ACh)水平；激活 PI3K/Akt/GSK-3β/CREB 信号通路，增强海马长时程增强(LTP)；清除自由基。"},{"n":"当归提取物","m":"阿魏酸","mech":"调节胆碱能系统（提高ChAT活性/降低AchE活性），增加脑内ACh浓度；抑制Caspase-3介导的细胞凋亡通路，上调Bcl-2；减轻脑内钙超载。"}]},{"d":"促进脑细胞能量代谢","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"提升线粒体氧化磷酸化效率，增加ATP合成；改善血液流变学（降低全血黏度），扩张脑血管，改善脑部微循环灌注；抑制脂质过氧化。"}]},{"d":"保护脑细胞免受损伤","ings":[{"n":"蓝莓提取物","m":"花青素","mech":"强效清除ROS，抑制NADPH氧化酶(NOX)激活，阻断氧化应激信号；抑制NF-κB/NLRP3炎症小体通路，降低微胶质细胞介导的神经炎症因子释放。"}]}],"syn":"本配方通过“递质传递 + 能量供给 + 损伤防御”的三维立体机制发挥协同增效作用：\n1. 信号传导的“畅通无阻”：酸枣仁和当归提取物双管齐下，一方面通过调节胆碱能系统提高乙酰胆碱的浓度，另一方面通过激活PI3K/Akt/CREB等神经营养通路，确保神经电信号在海马等核心脑区的快速、高效传递，直接改善“记不住、反应慢”的症状。\n2. 能量底座的“强力续航”：山楂提取物不仅通过改善脑部微循环为神经元输送充足的氧气和营养底物，还直接靶向线粒体，优化脑细胞的能量代谢效率。这为高强度的大脑思考和突触重塑提供了坚实的ATP能量底座。\n3. 神经细胞的“铜墙铁壁”：蓝莓提取物的强效抗氧化和抗炎作用，如同细胞的“盾牌”，有效中和了大脑在日常运转及应对压力时产生的自由基和炎症因子。它有效阻断了氧化应激引发的神经退行性变，保护了珍贵的神经元和突触结构免受损伤，从而从根本上延缓了记忆力的衰退。"},{"no":57,"name":"智御派固体饮料","issue":"脑卒中风险","sys":"心脑血管","sysId":4,"path":["脑卒中（尤其是缺血性脑卒中）的发病及复发是一个多因素交织的复杂病理过程，其核心底层通路主要聚焦于以下几个关键环节：","1. 脂质代谢紊乱与血管内皮损伤：长期不良生活方式导致血脂异常，游离脂肪酸等脂质在血管壁大量沉积，诱发血管内皮细胞产生氧化应激和慢性低度炎症。这会破坏血管内皮的完整性，促使单核细胞黏附并转化为巨噬细胞吞噬脂质，形成泡沫细胞，这是动脉粥样硬化斑块形成的始动环节。","2. 动脉粥样硬化与斑块不稳定：随着脂质核心的不断增大和炎症反应加剧，血管内皮下的胶原纤维帽变薄。在血流剪切力的冲击下，斑块极易破裂，暴露出的促凝物质会迅速激活血小板聚集和凝血瀑布反应，最终形成血栓。若血栓脱落随血流阻塞脑动脉，便会引发急性缺血性脑卒中。","3. 缺血缺氧级联反应：脑血管一旦闭塞，局部脑组织陷入急性缺血缺氧状态。这会导致神经元细胞内钙离子超载、兴奋性神经递质（如谷氨酸）大量释放，进而触发线粒体功能障碍、活性氧（ROS）爆发以及严重的神经炎症（如小胶质细胞过度激活），最终造成不可逆的神经元坏死和血脑屏障破坏。","4. 血小板异常聚集：血管内皮受损后，血小板会通过其表面的糖蛋白受体（如GPIIb/IIIa）发生交联聚集，同时释放ADP、血栓素A2等促凝因子，加速血栓的扩大，进一步加重脑部缺血面积。"],"dims":[{"d":"保护脑血管健康","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"激活 PI3K/Akt/eNOS 信号通路，促进一氧化氮（NO）释放，舒张血管平滑肌；抑制NF-κB炎症通路，减轻血管内皮氧化损伤。"},{"n":"山楂提取物","m":"山楂黄酮","mech":"激活 AMPK/PPAR 信号通路，加速脂肪酸β-氧化并抑制胆固醇合成酶（HMGCR），改善脂质代谢；抑制血小板聚集，降低血液粘稠度。"}]},{"d":"增强脑细胞抗缺氧能力","ings":[{"n":"黄芪提取物","m":"黄芪多糖","mech":"调控 TLR4/NF-κB/NLRP3 炎症小体通路，抑制小胶质细胞过度活化及促炎因子（IL-6, TNF-α）释放；稳定线粒体膜电位，抑制缺血再灌注后的细胞凋亡。"},{"n":"葛根提取物","m":"葛根黄酮","mech":"清除缺血组织氧自由基，降低丙二醛（MDA）和乳酸含量；抑制兴奋性氨基酸（谷氨酸）过度释放，减轻神经元兴奋性毒性，缩小脑梗死面积。"}]},{"d":"抗动脉粥样硬化","ings":[{"n":"DHA藻油","m":"二十二碳六烯酸 (DHA)","mech":"作为脑细胞膜核心结构成分，维持膜流动性；竞争性抑制促炎花生四烯酸代谢通路，下调 NLRP3 炎症小体，发挥抗炎和调节血脂的双重作用。"}]}],"syn":"本配方核心成分并非孤立起效，而是通过“血管维护 + 脂质调控 + 神经抗炎”的多维协同机制，构建起脑卒中的预防与辅助防御体系：\n1. 从源头阻断动脉粥样硬化的“清道夫”组合：山楂提取物和DHA藻油作为代谢层面的干预主力，前者通过激活AMPK通路强力干预脂质代谢、降低血脂，后者通过改善细胞膜结构和抗炎特性稳定斑块。两者双管齐下，有效延缓了血管壁的硬化进程，减少了脑卒中的病理基础。\n2. 维持血管通畅与微循环的“护道者”：当归提取物和葛根提取物侧重于血管本身的养护。当归通过促进血管舒张和内皮修复改善脑部微循环；葛根不仅辅助降脂，更能在突发缺血时迅速抗氧化、抗兴奋毒性。它们确保了脑部在常态下的供血充足以及异常时的血管弹性。\n3. 应对缺血打击的“神经卫士”：当脑部面临缺氧或微小血栓的潜在威胁时，黄芪提取物展现出强大的神经保护作用。它通过抑制过度的神经炎症和稳定线粒体功能，极大地增强了脑细胞自身的抗缺氧“韧性”，有效阻断了缺血缺氧引发的级联损伤。"},{"no":58,"name":"盈润派固体饮料","issue":"缺铁性贫血","sys":"血液","sysId":10,"path":["缺铁性贫血的本质是机体缺乏足够的铁元素，导致血红素合成受阻，进而引发血红蛋白生成不足。其底层通路主要涉及两个核心环节：","1. 铁代谢与吸收通路：膳食中的铁主要以难以吸收的三价铁（非血红素铁）形式存在。其在肠道上皮细胞（肠细胞）的吸收依赖于特定转运蛋白（如DMT1）的介导，这一过程极易受肠道环境（如植酸、单宁等抑制因子）及其他营养素（如维生素C）的双向调控。","2. 造血微环境与氧化应激通路：铁是线粒体电子传递链和血红素合成酶的辅因子。缺铁会导致骨髓造血微环境恶化，红细胞前体细胞能量代谢受损。此外，缺铁性贫血常伴随机体整体代谢率下降和氧化应激水平失衡，需要系统性调节以改善贫血带来的全身虚弱状态。"],"dims":[{"d":"补充造血原料","ings":[{"n":"红枣提取物","m":"红枣多糖","mech":"维生素C将Fe³⁺还原为Fe²⁺并促进肠细胞DMT1转运蛋白表达；cAMP激活HIF-1信号通路促进EPO分泌。"}]},{"d":"促进营养吸收","ings":[{"n":"枸杞提取物","m":"枸杞多糖","mech":"LBP保护造血干细胞免受骨髓微环境氧化损伤，促进CFU-GM（粒单系祖细胞）增殖分化；调节铁调素(Hepcidin)相关代谢。"},{"n":"维生素C","m":"维生素C","mech":"作为强效还原剂，在十二指肠刷状缘将三价铁还原为二价铁；与铁形成可溶性络合物，防止其在肠腔内沉淀。"}]},{"d":"益气养血","ings":[{"n":"龙眼肉提取物","m":"龙眼多糖","mech":"通过抗氧化清除自由基，降低氧化应激对新生红细胞的破坏；改善机体微循环携氧能力，辅助血红蛋白发挥携氧功能。"}]}],"syn":"本方案通过三大路径协同管理贫血：1. 补充造血原料维度直接提供铁、维生素等关键营养素，促进红细胞生成；2. 促进营养吸收维度利用维生素C增强铁的生物利用度；3. 益气养血。三者协同，从原料、吸收到生成环节全面改善贫血。"},{"no":59,"name":"质淳派固体饮料","issue":"骨质疏松","sys":"骨骼与关节","sysId":8,"path":["骨质疏松症的病理本质是以骨量减少、骨微结构破坏、骨脆性增加为特征，其根本原因在于骨代谢失衡。正常生理状态下，成骨细胞主导的骨形成与破骨细胞主导的骨吸收处于动态平衡。当机体进入老龄化、绝经后或因营养缺乏（如钙摄入不足）时，这一平衡被打破：","1. 肠道钙吸收屏障：随着年龄增长或维生素D缺乏，肠道上皮细胞对钙的通透性下降，导致钙吸收效率大幅降低，血液中可利用的钙减少，迫使骨骼释放钙来维持血钙稳定（高钙血症代偿），引发骨量丢失。","2. 骨代谢失衡（高转换状态）：雌激素水平骤降（如绝经后）或慢性炎症刺激，导致核因子κB受体活化因子配体（RANKL）/核因子κB受体活化因子（RANK）/骨保护素（OPG）信号通路失衡，破骨细胞过度活化。同时，成骨细胞分化受阻，导致“拆得快、建得慢”的负平衡。","3. 骨微环境恶化与干细胞衰老：骨髓微环境中活性氧（ROS）堆积，导致间充质干细胞（MSCs）向成骨细胞分化的能力减弱，甚至发生细胞衰老，直接削弱了骨骼自我修复和再生的“造血/成骨工厂”产能。"],"dims":[{"d":"提供骨骼核心矿物质","ings":[{"n":"柠檬酸钙","m":"柠檬酸钙","mech":"通过主动转运和被动扩散机制穿过肠上皮细胞进入血液，升高血钙浓度，为骨骼矿化提供必需的物理物质基础；其高溶解性确保了在不依赖胃酸环境下的高效吸收 。"}]},{"d":"促进钙沉积与骨代谢","ings":[{"n":"葛根提取物","m":"葛根黄酮","mech":"激活PI3K/Akt及MAPK（p38/ERK）信号通路，上调成骨细胞关键转录因子Runx2的表达；调节TRPM3通道，双向调控细胞内钙离子浓度，促进骨基质分泌与羟基磷灰石结晶沉积 。"},{"n":"黑豆提取物","m":"黑豆多糖","mech":"结合雌激素受体（ERα/ERβ），发挥植物雌激素样作用；上调骨保护素（OPG）表达，下调RANKL表达，抑制破骨细胞分化，从而减缓绝经后骨质流失 。"}]},{"d":"健脾益肾强筋骨","ings":[{"n":"山药提取物","m":"山药多糖","mech":"激活经典的Wnt/β-catenin信号通路，促进间充质干细胞向成骨细胞分化；协同激活PI3K/Akt通路，增强成骨细胞活性，巩固骨骼的“建筑框架” 。"},{"n":"茯苓提取物","m":"茯苓多糖","mech":"靶向PDIA6蛋白，激活G6PD/STAT3信号轴，延缓骨髓间充质干细胞的衰老；抑制STING/NF-κB通路过度激活，减少微环境炎症因子对成骨细胞的抑制作用 。"}]}],"syn":"1.“开源+节流”的钙稳态管理：柠檬酸钙从外部高效补充了骨骼重建的“砖瓦”（钙源）。与此同时，黑豆提取物通过模拟雌激素效应，像“加固堤坝”一样锁住体内的钙，减少破骨细胞对骨的破坏和钙的流失；葛根素则优化了肠道和细胞对钙的吸收与利用效率。两者协同，实现了钙的高效利用与保存。\n2.“拆旧建新”的平衡重塑：葛根提取物和黑豆提取物从正反两个维度精准调控骨代谢通路。葛根素激活成骨细胞的“施工热情”，加速骨基质合成与钙化；黑豆提取物则强力抑制破骨细胞的“破坏性拆除”。这种双向调节有效扭转了骨质疏松的高转换状态，重建骨重建的平衡。\n3.“源头赋能”的干细胞保护：山药和茯苓提取物着眼于骨质疏松的深层根源——骨髓微环境。山药提取物通过Wnt通路源源不断地制造新的“建骨工人”（成骨细胞），而茯苓提取物则像“防腐剂”一样，清除微环境中的氧化应激，延缓干细胞的衰老与耗竭。这为骨骼的长期健康储备了强大的再生潜能。"},{"no":60,"name":"顺安派固体饮料","issue":"骨关节炎","sys":"骨骼与关节","sysId":8,"path":["骨关节炎（OA）并非单纯的\"关节磨损\"，而是关节软骨、软骨下骨、滑膜及周围软组织共同参与的慢性炎症与退行性病变。其核心底层通路主要包括：","1. 软骨基质降解级联：在IL-1β、TNF-α等促炎因子刺激下，软骨细胞过度表达基质金属蛋白酶（MMP-13等）和聚集蛋白聚糖酶（ADAMTS），加速Ⅱ型胶原和聚集蛋白聚糖的分解，导致软骨失去弹性与缓冲能力 。","2. 炎症风暴与疼痛敏化：促炎因子激活NF-κB、MAPK（p38、JNK、ERK）等信号通路，引发滑膜增生、关节积液与疼痛介质（PGE2、NO）释放，形成\"炎症-疼痛-活动受限\"的恶性循环 。","3. 软骨细胞凋亡与自噬失衡：氧化应激（ROS堆积）抑制软骨细胞自噬流，诱导细胞凋亡；同时线粒体功能障碍进一步加剧基质合成能力下降 。","4. 微循环障碍与\"不通则痛\"：关节局部气血运行受阻，代谢废物堆积，滑膜组织水液代谢异常，表现为关节肿胀、屈伸不利。"],"dims":[{"d":"保护软骨","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抑制NF-κB核转位及MAPK通路，下调COX-2、iNOS表达，减少PGE2合成；同时抑制MMP-13等基质降解酶的转录 。"}]},{"d":"抗炎镇痛","ings":[{"n":"当归提取物","m":"阿魏酸","mech":"① 阿魏酸抑制TNF/TNFR信号转导，下调NF-κB通路，减少IL-1β、TNF-α释放 ；② 当归多糖通过ERK1/2通路诱导自噬，抑制软骨细胞凋亡 ；③ 上调聚集蛋白聚糖(Aggrecan)和糖基转移酶(GTs)基因表达，促进蛋白聚糖合成 ；④ 激活PPARγ/SOD2通路，清除ROS，改善软骨细胞线粒体代谢 。"},{"n":"桃仁提取物","m":"苦杏仁苷","mech":"抑制NF-κB信号通路，改善软骨细胞自噬流，下调MMP-13、ADAMTS5等基质降解酶的表达 。"}]},{"d":"健脾补肾强筋骨","ings":[{"n":"山药提取物","m":"山药多糖","mech":"激活Wnt/β-catenin信号通路，促进Ⅱ型胶原（Collagen Ⅱ）和聚集蛋白聚糖（Aggrecan）的合成 。"},{"n":"茯苓提取物","m":"茯苓多糖","mech":"抑制TLR4/NF-κB及JAK2/STAT3信号通路，减少促炎因子释放；调节水通道蛋白表达，减轻滑膜水肿 。"}]},{"d":"利湿除痹","ings":[{"n":"薏苡仁提取物","m":"薏苡仁多糖","mech":"抑制环氧合酶（COX）和脂氧合酶活性，减少炎症介质合成；调节IL-17、TNF等炎症信号通路 。"}]}],"syn":"该配方通过\"活血通络 + 抗炎镇痛 + 软骨修复 + 利水除痹\"的四维协同机制，构建起骨关节炎的全面干预体系：\n1. \"急则治标\"的炎症压制与止痛：姜黄提取物与薏苡仁提取物构成强有力的抗炎镇痛前阵。姜黄素精准抑制NF-κB等炎症核心通路，阻断疼痛信号传导并减少炎性渗出；薏苡仁则从\"利湿\"角度切入，调节炎症介质合成。两者协同可快速缓解关节红、肿、热、痛。\n2. \"活血通络\"的微循环重建：当归提取物与桃仁提取物双管齐下，构成\"活血化瘀\"的经典组合。当归通过阿魏酸抑制TNF信号、桃仁改善软骨细胞自噬，二者协同改善膝关节局部血液供应，加速代谢废物清除，并从通路层面减少基质金属蛋白酶对软骨的进一步破坏。\n3. \"培元固本\"的软骨修复：山药提取物通过Wnt/β-catenin通路促进胶原蛋白合成，为软骨基质修复提供\"建筑材料\"；当归多糖则通过上调聚集蛋白聚糖和糖基转移酶基因表达，从分子层面推动软骨基质的合成代谢 。二者协同，逆转\"分解>合成\"的病理状态。\n4. \"利水除痹\"的滑膜保护：茯苓提取物通过抑制TLR4/NF-κB通路减少滑膜炎症，同时调节水通道蛋白减轻关节肿胀，为软骨修复创造低炎症的微环境。\n六者协同，旨在多靶点、全链条地干预骨关节炎的病理进程，既缓解症状又兼顾软骨保护。"},{"no":61,"name":"妍护派固体饮料","issue":"妇科炎症预防","sys":"女性健康","sysId":5,"path":["妇科炎症（如细菌性阴道病BV、念珠菌性阴道炎VVC等）的发生与发展，本质上是泌尿生殖系统微生态失衡与黏膜免疫防御功能下降共同作用的结果。其底层生物学通路主要包括：","1. 致病菌黏附定植通路：致病菌（如致病性大肠杆菌、加德纳菌、白色念珠菌等）通过菌毛或生物膜结构黏附于泌尿生殖道上皮细胞，进而大量增殖，突破天然免疫防线。","2. 菌群失调通路：由于激素水平波动、抗生素滥用、免疫力下降等原因，导致局部优势有益菌（如乳酸杆菌）减少，无法维持正常的酸性环境（pH 3.8-4.5），进而引发致病菌占据优势。","3. 炎症级联反应通路：致病菌定植引发免疫系统的过度反应，激活NF-κB等核转录因子，促使促炎细胞因子（如IL-1β、IL-6、TNF-α）大量释放，导致红肿、瘙痒、分泌物异常等炎症症状。"],"dims":[{"d":"抑制致病菌","ings":[{"n":"蔓越莓提取物","m":"花青素","mech":"阻断致病性大肠杆菌菌毛（FimH）与尿路上皮细胞的甘露糖受体结合，干扰细菌生物膜形成，防止细菌定植 。"}]},{"d":"调节菌群平衡","ings":[{"n":"复合益生菌粉（鼠李糖乳杆菌）","m":"复合益生菌粉（鼠李糖乳杆菌）","mech":"竞争性黏附阴道黏膜上皮，占据生态位；代谢产生乳酸及过氧化氢，维持阴道微酸性环境；激活局部黏膜免疫。"},{"n":"低聚果糖","m":"低聚果糖","mech":"作为特异性益生元，靶向激活肠道及生殖道内源性双歧杆菌和乳酸杆菌，促进其增殖与代谢活性。"}]},{"d":"增强免疫屏障","ings":[{"n":"姜黄提取物","m":"姜黄素","mech":"抑制NF-κB信号通路及MAPK通路，下调COX-2和iNOS表达，减少前列腺素E2（PGE2）及促炎因子（IL-6, TNF-α）的合成与释放。"},{"n":"维生素C","m":"维生素C","mech":"参与胶原蛋白合成，修复受损的泌尿生殖道黏膜上皮；增强中性粒细胞趋化和吞噬活性；辅助抗氧化，减轻局部氧化应激。"}]}],"syn":"本方案通过三大途径协同预防妇科炎症：1. 抑制致病菌维度防止有害菌定植；2. 调节菌群平衡维度增加有益菌，维护微环境健康；3. 增强免疫屏障维度提升局部免疫力。协同作用，旨在维持泌尿生殖道健康。"},{"no":62,"name":"澈轻派固体饮料","issue":"内脏脂肪减少","sys":"代谢与内分泌","sysId":3,"path":["内脏脂肪堆积（中心性肥胖）本质上是机体长期处于“能量正平衡”状态，导致多余的能量以甘油三酯的形式储存在腹腔内的脂肪细胞中。其背后的核心生物学机制主要涉及三条代谢通路：","1. 脂肪合成通路过度活跃：在高糖、高脂饮食的刺激下，肝脏和脂肪细胞内的转录因子固醇调节元件结合蛋白-1c（SREBP-1c）和碳水化合物反应元件结合蛋白（ChREBP）被过度激活，驱动脂肪酸和甘油三酯的从头合成。","2. 脂肪分解与氧化通路受抑：正常的脂肪动员（脂肪分解）和线粒体β-氧化过程减缓，导致储存的脂肪无法被有效燃烧供能。","3. 产热与能量消耗通路减弱：机体基础代谢率下降，尤其是负责消耗能量产热的棕色脂肪组织（BAT）和米色脂肪组织活性降低，导致整体能量消耗减少。"],"dims":[{"d":"促进脂肪氧化","ings":[{"n":"绿茶浓缩粉","m":"表没食子儿茶素没食子酸酯(EGCG)","mech":"抑制磷酸二酯酶（PDE）活性，提高细胞内cAMP水平，激活蛋白激酶A（PKA），上调激素敏感性脂肪酶（HSL），促进脂肪水解；同时激活解偶联蛋白1（UCP1）促进线粒体产热和脂肪氧化。"}]},{"d":"抑制脂肪合成","ings":[{"n":"山楂提取物","m":"山楂黄酮","mech":"激活肝脏和脂肪组织中的AMPK/SREBP-1c信号轴，抑制脂肪酸合成酶（FAS）和固醇调节元件结合蛋白（SREBP）的表达，减少肝脏和内脏脂肪的异常蓄积。"},{"n":"桑叶提取物","m":"DNJ","mech":"激活单磷酸腺苷活化蛋白激酶（AMPK）信号通路，抑制乙酰辅酶A羧化酶（ACC）和脂肪酸合成酶（FAS）的活性，下调SREBP-1c等脂质合成关键转录因子的表达，从而阻断脂肪合成。"}]},{"d":"增加能量消耗","ings":[{"n":"肉桂提取物","m":"肉桂醛","mech":"激活β3-肾上腺素能受体（β3AR），通过PKA-AMPK信号级联反应上调解偶联蛋白1（UCP1）、PGC-1α等产热蛋白的表达；促进白色脂肪组织（WAT）的棕色化，增强线粒体氧化磷酸化和能量消耗。"}]}],"syn":"本方案通过多靶点协同减少内脏脂肪：1. 促进脂肪氧化维度增加能量消耗和脂肪分解；2. 抑制脂肪合成维度减少新的脂肪积累；3. 增加能量消耗维度通过产热效应提高代谢率。协同作用，针对性地减少腹部内脏脂肪。"},{"no":63,"name":"清润派固体饮料","issue":"肺功能支持","sys":"呼吸","sysId":11,"path":["肺部作为人体与外界空气交换的核心器官，时刻面临着吸入性刺激（如雾霾、粉尘、过敏原）和氧化应激的严峻挑战。其底层病理通路主要集中在：","1. 氧化应激与炎症级联反应：外界有害刺激导致肺部细胞产生活性氧（ROS）堆积，激活NF-κB等核心炎症通路，释放大量促炎因子（如TNF-α、IL-6），引发气道黏膜充血、水肿和敏感。","2. 呼吸道黏膜屏障受损：长期的炎症或感染会破坏脆弱的呼吸道纤毛和上皮细胞，导致黏膜分泌功能紊乱，痰液黏稠不易咳出，防御外敌的“城墙”出现漏洞。","3. 局部免疫防御薄弱：呼吸道黏膜免疫（如分泌型IgA）和先天免疫细胞（如巨噬细胞）活性下降，使得肺部极易遭受病毒、细菌的反复侵袭。"],"dims":[{"d":"清肺抗氧化","ings":[{"n":"菊花提取物","m":"绿原酸","mech":"激活Nrf2/ARE抗氧化信号通路，上调SOD、HO-1等内源性抗氧化酶表达；清除肺部过量ROS，抑制NF-κB及MAPK炎症信号通路的过度活化。"},{"n":"维生素C","m":"维生素C","mech":"作为强效水溶性抗氧化剂直接参与清除肺部自由基；支持胶原蛋白合成以维持呼吸道黏膜结构完整性；促进中性粒细胞趋化和吞噬功能，强化先天免疫。"}]},{"d":"缓解呼吸道不适","ings":[{"n":"甘草提取物","m":"甘草酸","mech":"促进呼吸道黏膜分泌，稀释痰液并增强纤毛运动；发挥类固醇样抗炎作用，抑制磷脂酶A2活性，减少组胺等过敏介质释放，保护气道上皮。"}]},{"d":"增强免疫防御","ings":[{"n":"葡萄糖酸锌","m":"葡萄糖酸锌","mech":"锌指蛋白（ZFP）的核心辅因子，调控呼吸道上皮细胞紧密连接蛋白合成；维持胸腺微环境稳态，促进T细胞成熟及巨噬细胞吞噬活性，维持黏膜免疫稳态。"}]}],"syn":"本方案从三个方面协同支持肺功能：1. 清肺抗氧化维度帮助减轻氧化应激对肺组织的损伤；2. 缓解呼吸道不适维度舒缓气道；3. 增强免疫防御维度支持呼吸道免疫。协同维护呼吸系统健康。"},{"no":64,"name":"基衡派固体饮料","issue":"基础机能支持","sys":"全身机能","sysId":12,"path":["“基础机能支持”并非针对单一疾病，而是聚焦于现代人群因年龄增长、慢性压力、不良生活方式（如熬夜、高脂高糖饮食）所引发的全身性机能退化。其底层病理生理学通路主要围绕以下三大核心衰老/亚健康机制展开：","1. 细胞能量危机与线粒体功能障碍：随着年龄增长或代谢压力，细胞内的“能量工厂”-线粒体功能衰退，导致ATP生成减少，细胞供能不足。同时，受损线粒体产生的过量活性氧（ROS）会引发严重的氧化应激，加速细胞老化。","2. 全身性慢性炎症（炎性衰老, Inflammaging）：这是机体功能下降的共性土壤。长期的微炎症状态不仅加速端粒磨损，还会诱发胰岛素抵抗、神经退行性疾病及心血管疾病。肠道屏障受损导致的“肠漏”和菌群失调，是引发系统性低度炎症的重要源头。","3. 细胞自噬失能与损伤累积：细胞自噬是清除受损蛋白质和细胞器、维持细胞内环境稳态的关键机制。当自噬流效率下降时，细胞内的代谢废物和受损组分不断累积，导致基因组不稳定和细胞衰老（僵尸细胞形成），进而拖累整体机能。","本品正是基于上述底层通路，通过“外源性抗氧化防护（叶黄素酯/虾青素）+ 线粒体生物发生（PQQ）+ 肠道微生态稳态（低聚异麦芽糖）”的多维干预，旨在从细胞层面重启机体的自我修复与防御系统。"],"dims":[{"d":"光衰老保护","ings":[{"n":"叶黄素酯","m":"叶黄素酯","mech":"黄斑色素沉积；蓝光过滤与单线态氧猝灭；Nrf2/ARE抗氧化通路激活。"}]},{"d":"强效抗氧化抗炎","ings":[{"n":"雨生红球藻","m":"虾青素","mech":"跨越血脑/视网膜屏障；强效清除自由基；抑制NF-κB炎症信号通路；抑制脂质过氧化链式反应。"}]},{"d":"代谢与肠道健康","ings":[{"n":"低聚异麦芽糖","m":"低聚异麦芽糖","mech":"选择性增殖双歧杆菌等有益菌；促进短链脂肪酸（SCFA）生成；维护肠道紧密连接（肠漏修复）；调节脑-肠轴。"}]},{"d":"细胞保护与抗衰老","ings":[{"n":"PQQ","m":"PQQ","mech":"结合并稳定 Trx1（硫氧还蛋白）；激活 PGC-1α/Nrf2 信号轴；诱导线粒体生物发生（生成新的健康线粒体）。"}]}],"syn":"本配方通过四大核心通路协同赋能人体基础机能：叶黄素酯构筑抗光防护屏障，抵御光老化伤害；雨生红球藻（天然虾青素）提供超强抗氧化与抗炎支持，从细胞源头清除自由基、延缓衰老；低聚异麦芽糖作为优质益生元，定向滋养肠道菌群，优化代谢环境与营养吸收效率；PQQ（吡咯喹啉醌二钠盐）则直击细胞能量工厂-线粒体，促进其新生与功能优化，提升全身能量水平与细胞修复能力。四重维度相互衔接，形成“护光-抗氧-健肠-赋能”的全链路基础机能支持体系，帮助身体维持年轻态与内在活力。"}];
+</script>
+<script>
+(function(){
+  "use strict";
+  const $ = (s,c)=> (c||document).querySelector(s);
+  const $$ = (s,c)=> Array.from((c||document).querySelectorAll(s));
+
+  /* ---------- 目录 ---------- */
+  const tocBtn = $("#tocBtn"), tocPanel = $("#tocPanel");
+  tocBtn.addEventListener("click", ()=>{
+    const open = tocPanel.classList.toggle("open");
+    tocBtn.setAttribute("aria-expanded", open ? "true":"false");
+  });
+  $$("#tocPanel a").forEach(a=>a.addEventListener("click",()=>{
+    tocPanel.classList.remove("open"); tocBtn.setAttribute("aria-expanded","false");
+  }));
+
+  /* ---------- 身份切换 ---------- */
+  const modeBtns = $$("[data-mode-btn]");
+  function setMode(m){
+    document.body.dataset.mode = m;
+    modeBtns.forEach(b=>b.setAttribute("aria-pressed", b.dataset.modeBtn===m ? "true":"false"));
+    $$(".b2b-only").forEach(el=>el.hidden = (m!=="b2b"));
+    $$(".b2c-only").forEach(el=>el.hidden = (m!=="b2c"));
+    $$(".t-b2b").forEach(el=>el.hidden = (m!=="b2b"));
+    $$(".t-b2c").forEach(el=>el.hidden = (m!=="b2c"));
+  }
+  modeBtns.forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.modeBtn)));
+
+  /* ---------- 静态案例的机制展开 ---------- */
+  $$(".ing-row").forEach(row=>{
+    const box = document.getElementById(row.dataset.mech);
+    if(!box) return;
+    const toggle = ()=>{
+      const open = row.getAttribute("aria-expanded")==="true";
+      row.setAttribute("aria-expanded", open?"false":"true");
+      box.classList.toggle("show", !open);
+    };
+    row.addEventListener("click", toggle);
+    row.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();} });
+  });
+
+  /* ---------- 产品墙 ---------- */
+  const grid = $("#grid"), chips = $("#chips"), q = $("#q"), cnt = $("#cnt"), empty = $("#empty");
+  const SYS = ["消化与胃肠","免疫与过敏","代谢与内分泌","心脑血管","女性健康","肝胆","神经与睡眠","骨骼与关节","肾脏","血液","呼吸","全身机能"];
+  let state = { sys:"全部", kw:"" };
+
+  function sysCount(s){ return PRODUCTS.filter(p=>p.sys===s).length; }
+  function chip(label,count){
+    return '<button type="button" class="chip" data-sys="'+label+'" aria-pressed="'+(state.sys===label)+'">'+label+'<b>'+count+'</b></button>';
+  }
+  chips.innerHTML = chip("全部", PRODUCTS.length) + SYS.map(s=>chip(s,sysCount(s))).join("");
+  function syncChips(){ $$(".chip",chips).forEach(c=>c.setAttribute("aria-pressed", c.dataset.sys===state.sys ? "true":"false")); }
+
+  chips.addEventListener("click", e=>{
+    const c = e.target.closest(".chip"); if(!c) return;
+    state.sys = c.dataset.sys; syncChips(); render();
+  });
+  let t;
+  q.addEventListener("input", ()=>{ clearTimeout(t); t=setTimeout(()=>{ state.kw=q.value.trim().toLowerCase(); render(); }, 120); });
+
+  function match(p){
+    if(state.sys!=="全部" && p.sys!==state.sys) return false;
+    if(!state.kw) return true;
+    return (p.name+" "+p.issue+" "+p.sys).toLowerCase().indexOf(state.kw)>=0;
+  }
+
+  function card(p){
+    return '<button class="card" type="button" data-no="'+p.no+'" data-sys="'+p.sys+'" aria-label="查看 '+p.name+' 详情">'
+      + '<div class="ph"><span class="no">'+String(p.no).padStart(2,"0")+'</span>'
+      + '<img src="assets/p'+String(p.no).padStart(2,"0")+'.jpg" alt="'+p.name+'" loading="lazy" width="820" height="820"></div>'
+      + '<div class="meta"><div class="nm">'+p.name+'</div><div class="is">'+p.issue+' · '+p.sys+'</div></div>'
+      + '</button>';
+  }
+
+  function render(){
+    const list = PRODUCTS.filter(match).sort((a,b)=>a.no-b.no);
+    grid.innerHTML = list.map(card).join("");
+    cnt.textContent = list.length + " / " + PRODUCTS.length;
+    empty.hidden = list.length>0;
+    if(state.sys!=="全部"){
+      $$(".card").forEach(c=>{ if(c.dataset.sys!==state.sys) c.classList.add("dim"); });
+    }
+  }
+  if(!grid.children.length) render();
+
+  /* ---------- 详情 ---------- */
+  const sheet = $("#sheet"), body = $("#sheetBody");
+  let lastFocus = null;
+
+  function openSheet(no){
+    const p = PRODUCTS.find(x=>x.no===no); if(!p) return;
+    const pathHtml = p.path.map((t,i)=>{
+      const isIntro = i===0 && t.length>40 && !/^\d\./.test(t);
+      return '<div class="m-path"><span class="n">'+(isIntro?"·":"P"+i)+'</span><p>'+t+'</p></div>';
+    }).join("");
+    const dimsHtml = p.dims.map((d,di)=>{
+      const ings = d.ings.map((it,ii)=>
+        '<div class="m-ing" data-i="'+di+"-"+ii+'">'
+        + '<div class="h"><div><div class="t">'+it.n+'</div>'+(it.m && it.m!==it.n ? '<div class="s">核心功能成分 · '+it.m+'</div>' : "")+'</div><div class="p" aria-hidden="true">+</div></div>'
+        + '<div class="b">'+it.mech+'</div></div>').join("");
+      return '<div class="m-dim"><div class="t"><span class="d">'+d.d+'</span><span class="c">'+d.ings.length+' 味</span></div>'+ings+'</div>';
+    }).join("");
+
+    body.innerHTML =
+      '<div class="sheet-top">'
+      + '<div class="img"><img src="assets/p'+String(p.no).padStart(2,"0")+'.jpg" alt="'+p.name+'"></div>'
+      + '<div><div class="no">NO. '+String(p.no).padStart(2,"0")+' / 64</div>'
+      + '<h3 id="sheetTitle">'+p.name+'</h3>'
+      + '<div class="tags"><span>'+p.issue+'</span><span>'+p.sys+'</span><span>固体饮料</span></div>'
+      + '<div class="syn-lite">'+ (p.syn || "本配方按通路失衡的多个维度组合原料。") +'</div>'
+      + '<div class="sheet-actions"><a class="btn" href="https://justnatural-ai.github.io/AI-Precision-Nutrition-tool/" target="_blank" rel="noopener">查看完整剂量与文献</a>'
+      + '<span class="note">剂量、临床研究有效量与文献原文收录在产品库中，按授权级别查看。</span></div>'
+      + '</div></div>'
+      + '<div class="acc"><div class="acc-head"><h4>这个健康问题的底层通路</h4><span class="t">'+p.path.length+' 条</span></div>'
+      + '<div class="acc-body">'+pathHtml+'</div></div>'
+      + '<div class="acc"><div class="acc-head"><h4>解决维度与原料</h4><span class="t">'+p.dims.length+' 个维度 · '+p.dims.reduce((n,d)=>n+d.ings.length,0)+' 味原料</span></div>'
+      + '<div class="acc-body">'+dimsHtml+'</div></div>'
+      + '<p class="acc-head" style="cursor:default;opacity:.55"><span style="font-size:11.5px">以上为该款产品原始资料的结构化呈现；具体配比与剂量请参见产品库。</span></p>';
+
+    $$(".m-ing",body).forEach(el=>el.querySelector(".h").addEventListener("click",()=>el.classList.toggle("open")));
+    sheet.classList.add("open");
+    sheet.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    $(".panel",sheet).scrollTop = 0;
+  }
+  function closeSheet(){
+    sheet.classList.remove("open");
+    sheet.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+    if(lastFocus) lastFocus.focus();
+  }
+  grid.addEventListener("click", e=>{
+    const c = e.target.closest(".card"); if(!c) return;
+    lastFocus = c; openSheet(parseInt(c.dataset.no,10));
+  });
+  $$("[data-close]",sheet).forEach(el=>el.addEventListener("click",closeSheet));
+  document.addEventListener("keydown", e=>{
+    if(e.key==="Escape"){ if(sheet.classList.contains("open")) closeSheet(); tocPanel.classList.remove("open"); }
+  });
+
+  /* ---------- 资料查看器 ---------- */
+  const viewer = $("#viewer"), vtable = $("#vtitle");
+  const DOC = { cert:{title:"首营资料", pages:"33 页"}, manual:{title:"产品说明书", pages:"1 页"} };
+  function openDoc(kind){
+    const d = DOC[kind]; if(!d) return;
+    $("#doc-cert").hidden = kind!=="cert";
+    $("#doc-manual").hidden = kind!=="manual";
+    vtable.innerHTML = d.title + '<b>' + d.pages + '</b>';
+    viewer.classList.add("open");
+    viewer.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    $(".vbody",viewer).scrollTop = 0;
+  }
+  function closeDoc(){
+    viewer.classList.remove("open");
+    viewer.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+  }
+  $$("[data-doc]").forEach(b=>b.addEventListener("click",()=>openDoc(b.dataset.doc)));
+  $$("[data-vclose]",viewer).forEach(b=>b.addEventListener("click",closeDoc));
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && viewer.classList.contains("open")) closeDoc(); });
+
+  /* ---------- 首屏网络动效（仅一次） ---------- */
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduce){
+    $$(".nline").forEach((p,i)=>{
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+      p.style.transition = "stroke-dashoffset 2.6s cubic-bezier(.25,.7,.2,1) "+(0.5+i*0.18)+"s";
+      requestAnimationFrame(()=>{ p.style.strokeDashoffset = 0; });
+    });
+    $$(".ndot").forEach((c,i)=>{
+      c.style.opacity = 0;
+      c.style.transition = "opacity 1.2s ease "+(1.2+i*0.12)+"s";
+      requestAnimationFrame(()=>{ c.style.opacity = c.getAttribute("data-o")||""; });
+    });
+  }
+})();
+</script>
+</body>
+</html>
